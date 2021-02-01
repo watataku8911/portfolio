@@ -29,10 +29,14 @@
       </td>
     </tr>
     <tr>
-      <th>スキル</th>
+      <th>スキルセット</th>
       <td class="skil">
-        HTML5/CSS3・JavaScript(JQuery,Vue.js,React)・PHP<br />
-        Vue.js/Firebaseの開発が得意。
+        <ul>
+          <li class="li">HTML5/CSS3・JavaScript(JQuery, Vue.js, React)・PHP</li>
+          <li class="li">Firebase(Authencation, Cloud Firestore, Realtime Database, Storage, Hosting)</li>
+          <br />
+          <li class="li">Vue.js/Firebaseの開発が得意。</li>
+        </ul>
       </td>
     </tr>
     <tr>
@@ -56,6 +60,10 @@
   text-align: right;
 }
 
+.li {
+  list-style: square !important;
+}
+
 /*PC*/
 @media screen and (min-width: 1026px) {
   .table {
@@ -76,6 +84,10 @@
     letter-spacing: 1px;
     word-wrap: break-word;
   }
+
+  th {
+    width: 35%;
+  }
 }
 
 /*スマホ*/
@@ -86,6 +98,10 @@
     margin-bottom: 20px;
     letter-spacing: 1px;
     word-wrap: break-word;
+  }
+
+  th {
+    width: 45%;
   }
 }
 </style>
