@@ -17,6 +17,13 @@
       <td>ラーメンなどの麺系</td>
     </tr>
     <tr>
+      <th>好きな色</th>
+      <td style="display: flex; align-items: center;">
+        #5bbee5
+        <p class="colorbox"></p>
+      </td>
+    </tr>
+    <tr>
       <th>経歴</th>
       <td>
         2019年にIT専門学校を卒業。その後、新卒でソフトウェア開発会社に入社するが病気が発覚し退社。
@@ -34,6 +41,7 @@
         <ul>
           <li class="li">HTML5/CSS3・JavaScript(JQuery, Vue.js, React)・PHP</li>
           <li class="li">Firebase(Authencation, Cloud Firestore, Realtime Database, Storage, Hosting)</li>
+          <li class="li">RDB(MySQL)</li>
           <br />
           <li class="li">Vue.js/Firebaseの開発が得意。</li>
         </ul>
@@ -62,6 +70,13 @@
 
 .li {
   list-style: square !important;
+}
+
+.colorbox {
+  width: 30px;
+  height: 30px;
+  background-color: #5bbee5;
+  margin-left: 13px;
 }
 
 /*PC*/
