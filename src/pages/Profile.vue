@@ -3,6 +3,7 @@
     <Profile />
     <Table />
     <Blog />
+    <div class="module--spacing--small"></div>
     <SubContents />
   </section>
 </template>
@@ -36,6 +37,10 @@ export default {
   letter-spacing: 5px;
   display: block;
   text-align: right;
+}
+
+.module--spacing--small {
+  height: 20px;
 }
 /*PC*/
 @media screen and (min-width: 1026px) {
