@@ -1,7 +1,7 @@
 <template>
 <div class="privacy">
         <h4 class="privacy-ttl">プライバシーポリシー</h4>
-        <div class="module--spacing--small"></div>
+        <div class="module--spacing--verySmall"></div>
         <p>Watataku's（以下、「当サイト」）では、個人情報の取り扱いについて下記のように定めます。</p>
         <h5>【個人情報の取得】</h5>
         <p>
@@ -38,9 +38,6 @@
 </template>
 
 <style scoped>
-.module--spacing--small {
-  height: 10px;
-}
 .privacy li {
   list-style: square inside;
 }

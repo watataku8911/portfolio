@@ -1,5 +1,5 @@
 <template>
-  <section id="profile-contents" class="profile-contents">
+  <section id="profile-contents" class="profile-contents" v-if="imageLoad != 'complete'">
     <Profile />
     <Table />
     <Blog />
@@ -9,25 +9,19 @@
 </template>
 
 <script>
-
 import Profile from "../components/profile/ProfileDetail";
 import Table from "../components/profile/Table";
 import Blog from "../components/profile/Blog";
 import SubContents from "../components/profile/SubContents";
 
 export default {
+  props: ["imageLoad"],
   components: {
     Profile,
     Table,
     Blog,
     SubContents,
   },
-  data() {
-    return {
-      users: [],
-      imageLoading: "stand-by",
-    };
-  }
 };
 </script>
 
@@ -39,9 +33,6 @@ export default {
   text-align: right;
 }
 
-.module--spacing--small {
-  height: 20px;
-}
 /*PC*/
 @media screen and (min-width: 1026px) {
   .profile-contents {

@@ -27,7 +27,6 @@
   .sub_content {
     background-color: #5bbee5;
     border-radius: 50px 50px 0px 0px;
-    margin-top: 10vh;
   }
 
   .sns {
@@ -53,7 +52,6 @@
   .sub_content {
     background-color: #5bbee5;
     border-radius: 50px 50px 0px 0px;
-    margin-top: 10vw;
   }
 
   .sns {
@@ -79,7 +77,6 @@
   .sub_content {
     background-color: #5bbee5;
     border-radius: 50px 50px 0px 0px;
-    margin-top: 2.5vw;
   }
 
   .sns {

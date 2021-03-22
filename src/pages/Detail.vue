@@ -71,25 +71,6 @@ export default {
 </script>
 
 <style>
-.load {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 1000;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-}
-
-.CommunicationError {
-  font-size: 4vh;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-}
 
 /*PC*/
 @media screen and (min-width: 1026px) {

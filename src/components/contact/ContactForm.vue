@@ -62,9 +62,7 @@
     </p>
     <div class="module--spacing--small"></div>
     <Privacy />
-    <div class="module--spacing--small"></div>
-    <div class="module--spacing--small"></div>
-    <div class="module--spacing--small"></div>
+    <div class="module--spacing--veryLarge"></div>
     <Button
       :disabled="!checked"
       @push="submitForm"
@@ -72,11 +70,8 @@
       msg="送信"
     />
     <div class="module--spacing--small"></div>
-    <div class="module--spacing--small"></div>
     <p><ErrMsg msg="※一週間経っても返信がない場合、恐れ入りますが「TwitterのDM」またはwatano.takuya@gmail.comまで。" /></p>
-    <div class="loading">
-      <pulse-loader :loading="isLoading"></pulse-loader>
-    </div>
+    <pulse-loader :loading="isLoading"></pulse-loader>
   </div>
 </template>
 
@@ -207,9 +202,6 @@ export default {
 </script>
 
 <style scoped>
-.module--spacing--small {
-  height: 10px;
-}
 
 
 </style>

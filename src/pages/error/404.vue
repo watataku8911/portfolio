@@ -29,7 +29,12 @@ export default {};
 /*PC*/
 @media screen and (min-width: 1026px) {
   .error {
-    height: 110vh;
+    font-size: 2vh;
+    border: 3px solid black;
+    width: 85%;
+    margin: 0 auto;
+    background-color: #cdebf7;
+    padding-bottom: 5%;
   }
 
   .error_box {
@@ -72,9 +77,12 @@ export default {};
 /*タブレット*/
 @media screen and (min-width: 482px) and (max-width: 1025px) {
   .error {
-    margin-top: 80px;
-    padding-top: 10%;
-    height: calc(80vh + 30px);
+    padding-bottom: 10%;
+    font-size: 2vh;
+    border: 2px solid black;
+    width: 90%;
+    margin: auto;
+    background-color: #cdebf7;
   }
 
   .err_msg {
@@ -112,24 +120,41 @@ export default {};
 @media screen and (max-width: 481px) {
   .error {
     padding: 10%;
-    height: calc(81vh + 50px);
+    border: 2px solid black;
+    width: 99%;
+    margin: 0 auto;
+    background-color: #cdebf7;
   }
 
   .err_msg {
     text-align: center;
     color: red;
     font-weight: bold;
-    margin-top: 100px;
+    margin-top: 20px;
   }
 
   .err_msg span {
     font-size: 100px;
   }
 
-  h3,
-  .mess,
+  #cause {
+    text-align: left;
+  }
+
+  #cause li {
+    color: #666;
+  }
+
+  h3 {
+    letter-spacing: 1px;
+    padding: 0;
+  }
+
   #white_box {
-    display: none;
+    width: 85%;
+    margin: 55px auto 0;
+    border: solid 1px #666;
+    padding: 3%;
   }
 }
 </style>

@@ -36,7 +36,7 @@
   <!---- /div.categories ------->
 </template>
 <script>
-import firebase from '../../firebase/firebace.config'
+import {db} from '../../firebase/index'
 
 export default {
   data() {
@@ -52,7 +52,6 @@ export default {
   },
   methods: {
     async getCategories() {
-      const db = firebase.firestore();
       let query = await db.collection("categories").orderBy("category_id");
       query.get()
       .then((resp) => {

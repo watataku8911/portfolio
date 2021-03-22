@@ -4,7 +4,7 @@
       <img
         v-bind:src="this.image"
         v-bind:alt="this.title"
-        class="detail-work_img"
+        class="detail-work-img"
       />
     </div>
     <p class="url" v-show="isHide">
@@ -13,24 +13,26 @@
     <p class="detail-message" v-show="isHide">
       <span v-html="nl2br(this.description)"></span>
     </p>
-      <router-link
-        v-bind:to="{
-          name: 'Content',
-          hash: '#work-contents',
-          params: { page: this.page, categoryId: categoryId },
-        }"
-        v-smooth-scroll="{ duration: 1000, offset: -50 }"
-        class="btn"
-        v-show="isHide"
-        >一覧へ戻る</router-link
-      >
+    <div class="module--spacing--small"></div>
+    <router-link
+      v-bind:to="{
+        name: 'Content',
+        hash: '#work-contents',
+        params: { page: this.page, categoryId: categoryId },
+      }"
+      v-smooth-scroll="{ duration: 1000, offset: -50 }">
+      <Button msg="一覧へもどる" @push="backPage" v-show="isHide"/>
+    </router-link>
   </div>
 </template>
 <script>
-import firebase from '../../firebase/firebace.config'
+import {db} from '../../firebase/index'
+import Button from '../UIKit/Button'
 
 export default {
-  components: {},
+  components: {
+    Button
+  },
   data() {
     return {
       id: this.$route.params.id,
@@ -56,7 +58,6 @@ export default {
   },
   methods: {
     async searchIdWork() {
-      const db = firebase.firestore();
       let query =  await db.collection("works").doc(this.id)
       query.get()
       .then((resp) => {
@@ -82,25 +83,33 @@ export default {
       str = str.replace(/(\n|\r)/g, "<br />");
       return str;
     },
+    backPage() {
+      return;
+    }
   },
 };
 </script>
 
 <style>
+.inner a:hover {
+  text-decoration: underline;
+}
+.inner .btn:hover {
+  text-decoration: none;
+}
 /*PC*/
 @media screen and (min-width: 1026px) {
   .inner {
     width: 100%;
+    height: 95%;
     position: relative;
   }
 
-  .inner .detail-work_img {
-    max-width: 40%;
+  .inner .detail-work-img {
+    max-width: 90%;
+    height: 80vh;
     border-radius: 5px;
-    -moz-box-shadow: -8px 6px 5px -3px #b29d9e;
-    -webkit-box-shadow: -8px 6px 5px -3px #b29d9e;
-    -o-box-shadow: -8px 6px 5px -3px #b29d9e;
-    -ms-box-shadow: -8px 6px 5px -3px #b29d9e;
+    box-shadow: -8px 6px 5px -3px #b29d9e;
     margin-bottom: 10px;
     object-fit: cover;
   }
@@ -123,29 +132,21 @@ export default {
     padding: 1%;
     text-align: left;
   }
-
-  .btn {
-    margin-top: 20px;
-    width: 30%;
-    border-radius: 150px;
-    background: linear-gradient(to bottom, #5bbee4 0%, #52eac1 100%);
-  }
 }
 /*タブレット*/
 @media screen and (min-width: 482px) and (max-width: 1025px) {
   .inner {
     width: 100%;
+    height: 95%;
     overflow: hidden;
     position: relative;
   }
 
-  .inner .detail-work_img {
-    max-width: 40%;
+  .inner .detail-work-img {
+    max-width: 90%;
+    height: calc(35vw + 15vh);
     border-radius: 5px;
-    -moz-box-shadow: -8px 6px 5px -3px #b29d9e;
-    -webkit-box-shadow: -8px 6px 5px -3px #b29d9e;
-    -o-box-shadow: -8px 6px 5px -3px #b29d9e;
-    -ms-box-shadow: -8px 6px 5px -3px #b29d9e;
+    box-shadow: -8px 6px 5px -3px #b29d9e;
     margin-bottom: 10px;
     object-fit: cover;
   }
@@ -167,29 +168,21 @@ export default {
     padding: 1%;
     text-align: left;
   }
-
-  .btn {
-    margin-top: 20px;
-    width: 30%;
-    border-radius: 150px;
-    background: linear-gradient(to bottom, #5bbee4 0%, #52eac1 100%);
-  }
 }
 /*スマホ*/
 @media screen and (max-width: 481px) {
   .inner {
     width: 100%;
+    height: 95%;
     overflow: hidden;
     position: relative;
   }
 
-  .inner .detail-work_img {
-    max-width: 60%;
+  .inner .detail-work-img {
+    max-width: 95%;
+    height: 40vh;
     border-radius: 5px;
-    -moz-box-shadow: -8px 6px 5px -3px #b29d9e;
-    -webkit-box-shadow: -8px 6px 5px -3px #b29d9e;
-    -o-box-shadow: -8px 6px 5px -3px #b29d9e;
-    -ms-box-shadow: -8px 6px 5px -3px #b29d9e;
+    box-shadow: -8px 6px 5px -3px #b29d9e;
     margin-bottom: 10px;
     object-fit: cover;
   }
@@ -211,13 +204,6 @@ export default {
     border: solid 1px #444;
     padding: 1%;
     text-align: left;
-  }
-
-  .btn {
-    margin-top: 20px;
-    width: 50%;
-    border-radius: 150px;
-    background: linear-gradient(to bottom, #5bbee4 0%, #52eac1 100%);
   }
 }
 </style>

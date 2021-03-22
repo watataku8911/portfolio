@@ -12,8 +12,6 @@
       v-on:works="getItems"
       v-on:loadStart="onLoadStart"
       v-on:loadComplete="onLoadComplete"
-      v-on:showPageBar="onShowPageBar"
-      v-on:hidePageBar="onHidePageBar"
       v-on:notCommunicationError="communication"
       v-on:communicationError="communicationError"
       v-on:emptyWorks="emptyWorks"
@@ -23,7 +21,6 @@
     <CommutionError
       v-show="isCommunicationError"
       v-on:loadStart="onLoadStart"
-      v-on:hidePageBar="onHidePageBar"
       v-on:notCommunicationError="communication"
       v-on:notEmptyWorks="notEmptyWorks"
       v-on:reLoad="reLoad"
@@ -32,8 +29,7 @@
     <p v-show="isEmptyWorks" class="msg">Coming Soon...</p>
 
     <a href="#work-contents" v-smooth-scroll="{ duration: 1000, offset: -50 }">
-      <paginate
-        v-show="isPaginate"
+      <paginate v-if="(getPageCount > 1)"
         v-model="currentPage"
         :page-count="getPageCount"
         :page-range="3"
@@ -70,7 +66,6 @@ export default {
       works: [],
       categoryId: this.$route.params.categoryId,
       isLoading: true,
-      isPaginate: true,
       isCommunicationError: true,
       isEmptyWorks: true,
     };
@@ -88,13 +83,6 @@ export default {
     },
     onLoadComplete() {
       this.isLoading = false;
-    },
-
-    onShowPageBar() {
-      this.isPaginate = true;
-    },
-    onHidePageBar() {
-      this.isPaginate = false;
     },
 
     communicationError() {
@@ -142,16 +130,6 @@ export default {
 </script>
 
 <style>
-.load {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 1000;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-}
-
 .pagination {
   position: absolute;
   bottom: 1.5vh;

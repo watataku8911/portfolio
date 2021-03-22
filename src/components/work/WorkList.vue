@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import firebase from '../../firebase/firebace.config'
+import {db} from '../../firebase/index'
 
 export default {
   props: ["currentPage", "parPage", "categoryId"],
@@ -54,7 +54,6 @@ export default {
   },
   created() {
     this.$emit("loadStart");
-    this.$emit("hidePageBar");
     this.$emit("notEmptyWorks");
     this.$emit("notCommunicationError");
 
@@ -63,7 +62,6 @@ export default {
   },
   methods: {
      async getWorks() {
-      const db = firebase.firestore();
       let query = await db.collection("works").where("deleted_flg", "==", false).orderBy("updated_at", "desc")
       query = (Number(this.categoryId) != 0) ? query.where('category_id', '==', Number(this.categoryId)) : query;
 
@@ -78,17 +76,14 @@ export default {
           this.$emit("works", this.works);
           this.$emit("loadComplete");
           if (this.works.length == 0) {
-            this.$emit("hidePageBar");
             this.$emit("emptyWorks");
           } else {
-            this.$emit("showPageBar");
             this.$emit("notEmptyWorks");
           }
         })
         .catch((err) => {
           this.$emit("communicationError");
           this.$emit("loadComplete");
-          this.$emit("hidePageBar");
           this.$emit("notEmptyWorks");
         });
     },
@@ -99,7 +94,6 @@ export default {
       this.works = [];
 
       this.$emit("loadStart");
-      this.$emit("hidePageBar");
       this.$emit("notCommunicationError");
       this.$emit("notEmptyWorks");
       setTimeout(() => {
@@ -115,31 +109,21 @@ export default {
  WOKEリストアニメーション
 --------------------------------------------------- */
 .inner .item:nth-child(1) {
-  -webkit-animation: example 0.5s ease 0.5s 1 forwards;
   animation: example 0.5s ease 0.5s 1 forwards;
 }
 
 .inner .item:nth-child(2) {
-  -webkit-animation: example 0.5s ease 1s 1 forwards;
   animation: example 0.5s ease 1s 1 forwards;
 }
 
 .inner .item:nth-child(3) {
-  -webkit-animation: example 0.5s ease 1.5s 1 forwards;
   animation: example 0.5s ease 1.5s 1 forwards;
 }
 
 .inner .item:nth-child(4) {
-  -webkit-animation: example 0.5s ease 2s 1 forwards;
   animation: example 0.5s ease 2s 1 forwards;
 }
 
-@-webkit-keyframes example {
-  100% {
-    opacity: 1;
-    transform: translate(0, 0px);
-  }
-}
 @keyframes example {
   100% {
     opacity: 1;
@@ -154,6 +138,10 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50% -50%);
+}
+
+.inner .item .work_img:hover {
+  box-shadow: 0px 0px 0px 0px;
 }
 
 
@@ -177,19 +165,9 @@ export default {
     width: calc(9vh + 12vw);
     height: 490px;
     border-radius: 89px 5px 87px 68px;
-    -moz-box-shadow: -8px 6px 5px -3px #b29d9e;
-    -webkit-box-shadow: -8px 6px 5px -3px #b29d9e;
-    -o-box-shadow: -8px 6px 5px -3px #b29d9e;
-    -ms-box-shadow: -8px 6px 5px -3px #b29d9e;
+    box-shadow: -8px 6px 5px -3px #b29d9e;
     object-fit: cover;
     transform: rotate(5deg);
-  }
-
-  .inner .item .work_img:hover {
-    -moz-box-shadow: 0px 0px 0px 0px #2f2d33;
-    -webkit-box-shadow: 0px 0px 0px 0px #2f2d33;
-    -o-box-shadow: 0px 0px 0px 0px #2f2d33;
-    -ms-box-shadow: 0px 0px 0px 0px #2f2d33;
   }
 }
 /*タブレット*/
@@ -212,20 +190,10 @@ export default {
     width: calc(3vh + 16.5vw);
     height: calc(30vw + 7vh);
     border-radius: 89px 5px 87px 68px;
-    -moz-box-shadow: -8px 6px 5px -3px #b29d9e;
-    -webkit-box-shadow: -8px 6px 5px -3px #b29d9e;
-    -o-box-shadow: -8px 6px 5px -3px #b29d9e;
-    -ms-box-shadow: -8px 6px 5px -3px #b29d9e;
+    box-shadow: -8px 6px 5px -3px #b29d9e;
     z-index: 10;
     object-fit: cover;
     transform: rotate(5deg);
-  }
-
-  .inner .item .work_img:hover {
-    -moz-box-shadow: 0px 0px 0px 0px #2f2d33;
-    -webkit-box-shadow: 0px 0px 0px 0px #2f2d33;
-    -o-box-shadow: 0px 0px 0px 0px #2f2d33;
-    -ms-box-shadow: 0px 0px 0px 0px #2f2d33;
   }
 }
 /*スマホ*/
@@ -249,18 +217,8 @@ export default {
     width: 90%;
     height: 260px;
     border-radius: 89px 5px 87px 68px;
-    -moz-box-shadow: -8px 6px 5px -3px #b29d9e;
-    -webkit-box-shadow: -8px 6px 5px -3px #b29d9e;
-    -o-box-shadow: -8px 6px 5px -3px #b29d9e;
-    -ms-box-shadow: -8px 6px 5px -3px #b29d9e;
+    box-shadow: -8px 6px 5px -3px #b29d9e;
     object-fit: cover;
-  }
-
-  .inner .item .work_img:hover {
-    -moz-box-shadow: 0px 0px 0px 0px #2f2d33;
-    -webkit-box-shadow: 0px 0px 0px 0px #2f2d33;
-    -o-box-shadow: 0px 0px 0px 0px #2f2d33;
-    -ms-box-shadow: 0px 0px 0px 0px #2f2d33;
   }
 }
 </style>
