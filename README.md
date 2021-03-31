@@ -4,4 +4,9 @@
 
 [https://watataku-portfolo.web.app/](https://watataku-portfolo.web.app/)
 
-I created my portfolio using Vue.js / Firebaee
+## Technology used
+
+- Vue.js(VueCLI3)
+- Firebase(Authentication, Firestore, Storage, Hosting)
+- PWA
+- Node.js

@@ -1,11 +1,18 @@
 .DS_Store
-node_modules/
-/dist/
+node_modules
+/dist
+src/firebase/firebase.config.js
+src/seacretDirectory
+
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-seacretDirectory/
-firebase/
 
 # Editor directories and files
 .idea
@@ -14,3 +21,4 @@ firebase/
 *.ntvs*
 *.njsproj
 *.sln
+*.sw?
