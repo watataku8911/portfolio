@@ -6,8 +6,6 @@
 
 ## Technology used
 
-### Technology used
-
 **User Page**
 
 - Vue.js(VueCLI3)
@@ -15,7 +13,7 @@
 - PWA
 
 **Admin Page**
-just minutes
+[https://github.com/watataku8911/watataku-portfolio-admin](https://github.com/watataku8911/watataku-portfolio-admin)
 
 - Vue.js(VueCLI3)
 - Firebase(Authentication, Firestore, Storage)
