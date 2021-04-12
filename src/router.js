@@ -45,11 +45,9 @@ export default new Router({
       meta: { title: "Watataku’s ポートフォリオサイト | 404 NOT FOUND" }
     }
   ],
-  scrollBehavior (to, from, savedPosition) {
+  scrollBehavior (savedPosition) {
     if (savedPosition) {
       return savedPosition
-    } else {
-      return { x: 0, y: 0 }
     }
   }
 })

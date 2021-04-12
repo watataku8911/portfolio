@@ -189,7 +189,7 @@ export default {
 
   .inner .item .work_img {
     width: calc(3vh + 16.5vw);
-    height: calc(30vw + 7vh);
+    height: calc(31vw + 7vh);
     border-radius: 89px 5px 87px 68px;
     box-shadow: -8px 6px 5px -3px #b29d9e;
     background-color: #eee;

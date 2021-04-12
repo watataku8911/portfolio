@@ -1,5 +1,5 @@
 <template>
-  <div class="sub_content">
+  <div class="sub_contents">
     <div class="sns">
       <div class="item">
         <a href="https://twitter.com/watataku8911" target="_blank">
@@ -21,14 +21,12 @@
 </template>
 
 <style>
-
+.sub_contents {
+  background-color: #5bbee5;
+  border-radius: 50px 50px 0px 0px;
+}
 /*PC*/
 @media screen and (min-width: 1026px) {
-  .sub_content {
-    background-color: #5bbee5;
-    border-radius: 50px 50px 0px 0px;
-  }
-
   .sns {
     display: flex;
     height: 45vh;
@@ -49,11 +47,6 @@
 
 /*タブレット*/
 @media screen and (min-width: 482px) and (max-width: 1025px) {
-  .sub_content {
-    background-color: #5bbee5;
-    border-radius: 50px 50px 0px 0px;
-  }
-
   .sns {
     display: flex;
     height: 35vw;
@@ -74,11 +67,6 @@
 
 /*スマホ*/
 @media screen and (max-width: 481px) {
-  .sub_content {
-    background-color: #5bbee5;
-    border-radius: 50px 50px 0px 0px;
-  }
-
   .sns {
     display: flex;
     height: 30vh;

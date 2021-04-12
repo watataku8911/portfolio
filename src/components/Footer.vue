@@ -2,32 +2,25 @@
   <footer class="footer">
     <ul class="f-links">
       <li>
-        <a
-          href="#profile-contents"
-          v-smooth-scroll="{ duration: 1000, offset: -50 }"
-        >
-          <router-link to="/" class="link">PLOFILE</router-link>
-        </a>
+        <router-link to="/#profile-contents" class="link" v-smooth-scroll="{ duration: 1000, offset: -50 }">PLOFILE</router-link>
       </li>
       <li>
-        <a
-          href="#work-contents"
-          v-smooth-scroll="{ duration: 1000, offset: -50 }"
-        >
-          <router-link
-            v-bind:to="{ name: 'Content', params: { page: 1, categoryId: 0 } }"
+         <router-link
+            v-bind:to="{
+              name: 'Content',
+              hash: '#work-contents',
+              params: { page: 1, categoryId: 0 },
+            }"
             class="link"
+            v-smooth-scroll="{ duration: 1000, offset: -50 }"
             >WORKS</router-link
           >
-        </a>
       </li>
       <li>
-        <a href="#c-box" v-smooth-scroll="{ duration: 1000, offset: -50 }">
-          <router-link to="/contact" class="link">CONTACT</router-link>
-        </a>
+          <router-link to="/contact#c-box" class="link" v-smooth-scroll="{ duration: 1000, offset: -50 }">CONTACT</router-link>
       </li>
     </ul>
-    <small> &copy; 2019 Watataku. </small>
+    <small> &copy; 2021 Watataku. </small>
   </footer>
 </template>
 
@@ -64,6 +57,7 @@ footer .link:hover {
   .footer .link {
     color: #fff;
     font-size: 3vh;
+    letter-spacing: 2.5px;
     padding-top: 2.5%;
     padding-right: 2.5%;
     padding-left: 2.5%;
@@ -73,12 +67,12 @@ footer .link:hover {
     position: absolute;
     top: 50%;
     left: 50%;
+    letter-spacing: 3px;
     transform: translateY(-50%) translateX(-50%);
     text-align: center;
     display: block;
     color: #fff;
     font-size: 2.5vh;
-    letter-spacing: 1px;
   }
 }
 /*タブレット*/
@@ -97,13 +91,15 @@ footer .link:hover {
 
   .footer .link {
     color: #fff;
-    font-size: calc(2vh + 2vw);
+    letter-spacing: 3px;
+    font-size: calc(1vh + 2vw);
     padding-top: 2.5%;
     padding-right: 2.5%;
     padding-left: 2.5%;
   }
 
   .footer small {
+    letter-spacing: 1px;
     margin-top: 3vh;
     position: absolute;
     top: 50%;
@@ -112,7 +108,7 @@ footer .link:hover {
     text-align: center;
     display: block;
     color: #fff;
-    font-size: calc(2vh + 1vw);
+    font-size: calc(1vh + 1vw);
   }
 }
 /*スマホ*/
@@ -147,6 +143,7 @@ footer .link:hover {
     display: block;
     color: #fff;
     font-size: 1.5vh;
+    letter-spacing: 1px;
   }
 }
 </style>

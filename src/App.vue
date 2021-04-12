@@ -11,10 +11,9 @@
     <transition name="fade">
       <div v-show="!loading">
         <div class="triangle_"></div>
-        <Header class="header" v-bind:class="pStyle" />
+        <Header />
         <MainImage
           v-on:image-load-finish="imageLoadFinish"
-          v-bind:class="notfound"
         />
         <router-view v-on:image-load-finish="imageLoadFinish" />
 
@@ -23,7 +22,7 @@
           <ShareFacebook imageName="icon_facebook_black.svg" />
         </section>
 
-        <Footer class="footer" />
+        <Footer />
       </div>
     </transition>
   </div>
@@ -49,9 +48,6 @@ export default {
     return {
       loading: true,
       bar: false,
-      scrollY: 0,
-      pStyle: "",
-      notfound: "",
       image: "stand-by",
     };
   },
@@ -84,7 +80,6 @@ export default {
 </script>
 
 <style>
-@charset "UTF8";
 @import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
 
 .opning {
@@ -113,21 +108,28 @@ export default {
 
 #bar {
   /*アニメーションセッティング*/
-  animation: typewriter 1s linear 0s 1 normal;
+  animation: typewriter 1s ease-in 0s 1 normal;
   height: 5px;
   background: linear-gradient(to right, #5bbee4 0%, #52eac1 100%);
   position: absolute;
   top: 0;
+  will-change: transform;
 }
 
 @keyframes typewriter {
   /*タイプライターライクなアニメーション*/
-  from {
-    width: 0;
+  0% {
+    width: 0%;
   }
-  to {
+  100% {
     width: 100%;
   }
+}
+
+.loader {
+  position: absolute;
+  bottom: 0%;
+
 }
 
 /*アニメーション中のスタイル*/

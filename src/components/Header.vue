@@ -3,26 +3,20 @@
     <div
       class="navToggle"
       @click="naviOpen()"
-      :class="{ 'is-active': active }"
+      :class="{'is-active': active }"
     >
       <span></span>
       <span></span>
       <span></span>
     </div>
-
     <transition name="top">
       <nav class="navi" v-show="navi">
         <ul class="navi__wrap">
           <li>
-            <router-link to="/#profile-contents" @click.native="naviClose()" v-smooth-scroll="{ duration: 1000, offset: -50 }"
-              >PLOFILE</router-link
-            >
+            <router-link to="/#profile-contents" @click.native="naviClose()" v-smooth-scroll="{ duration: 1000, offset: -50 }">PLOFILE</router-link>
           </li>
           <li>
-            <!-- <a
-              href="#work-contents"
-            > -->
-              <router-link
+            <router-link
                 v-bind:to="{
                   name: 'Content',
                   hash: '#work-contents',
@@ -30,14 +24,10 @@
                 }"
                 @click.native="naviClose()"
                 v-smooth-scroll="{ duration: 1000, offset: -50 }"
-                >WORKS</router-link
-              >
-            <!-- </a> -->
+                >WORKS</router-link>
           </li>
           <li>
-            <router-link to="/contact#c-box" @click.native="naviClose()" v-smooth-scroll="{ duration: 1000, offset: -50 }"
-              >CONTACT</router-link
-            >
+              <router-link to="/contact#c-box" @click.native="naviClose()" v-smooth-scroll="{ duration: 1000, offset: -50 }">CONTACT</router-link>
           </li>
         </ul>
         <section class="navi-share-sns-area">
@@ -67,14 +57,36 @@ export default {
   },
   methods: {
     naviOpen() {
+      this.no_scroll();
+
       this.active = !this.active;
       this.navi = !this.navi;
+
+      if(!this.active && !this.navi) {
+        this.ok_scroll();
+      }
     },
     naviClose() {
+      this.ok_scroll();
+
       this.active = false;
       this.navi = false;
     },
-  },
+    // スクロール禁止
+    no_scroll() {
+      document.addEventListener("mousewheel", this.scroll_control, { passive: false });
+      document.addEventListener("touchmove", this.scroll_control, { passive: false });
+    },
+    // スクロール禁止解除
+    ok_scroll() {
+      document.removeEventListener("mousewheel", this.scroll_control, { passive: false });
+      document.removeEventListener('touchmove', this.scroll_control, { passive: false });
+    },
+    // スクロール関連メソッド
+    scroll_control(event) {
+        event.preventDefault();
+    }
+  }
 };
 </script>
 
@@ -180,4 +192,18 @@ export default {
 .navi-share-sns-area {
   display: flex;
 }
+
+@media screen and (min-width: 1026px) {
+
+}
+
+/*タブレット*/
+@media screen and (min-width: 482px) and (max-width: 1025px) {
+  
+}
+
+@media screen and (max-width: 481px) {
+  
+}
+
 </style>

@@ -13,7 +13,7 @@
 		</ul>
 		<LocationHref
 			href="https://qiita.com/watataku8911"
-			msg="MORE ＞"
+			msg="MORE ▶︎"
 			v-show="finish"
 		/>
 	</article>
@@ -49,7 +49,7 @@ export default {
     async getBlog() {
       await axios
         .get(
-          qiitaApiURL(),
+          qiitaApiURL(1, 2),
           { headers: this.headers }
         )
         .then((resp) => {

@@ -5,14 +5,14 @@
     </div>
 
     <div id="pic_down">
-      <img src="@/assets/pic_down.webp" width="88" height="31" />
+      <img src="@/assets/pic_down.webp" width="88" height="31" alt="" />
     </div>
 
     <div id="bg_header_inpage_nomal">
-      <img src="@/assets/line_perple_top.webp" class="line_perple_top" alt />
-      <img src="@/assets/line_blue_top.webp" class="line_blue_top" alt />
-      <img src="@/assets/line_pink_top.webp" class="line_pink_top" alt />
-      <img src="@/assets/line_pink_top2.webp" class="line_pink_top2" alt />
+      <img src="@/assets/line_perple_top.webp" class="line_perple_top" alt="" />
+      <img src="@/assets/line_blue_top.webp" class="line_blue_top" alt="" />
+      <img src="@/assets/line_pink_top.webp" class="line_pink_top" alt="" />
+      <img src="@/assets/line_pink_top2.webp" class="line_pink_top2" alt="" />
     </div>
   </div>
 </template>
@@ -69,7 +69,6 @@ export default {
 }
 
 #pic_down {
-  position: relative;
   width: 30%;
   text-align: center;
   margin: 0 auto;
@@ -78,15 +77,16 @@ export default {
   animation-duration: 1s;
   animation-iteration-count: infinite;
   animation-timing-function: ease;
+  will-change: transform;
 }
 
 @keyframes picdown {
   /*タイプライターライクなアニメーション*/
-  from {
-    top: 0px;
+  0% {
+    transform: translateY(0);
   }
-  to {
-    top: 20px;
+  100% {
+    transform: translateY(20px);
   }
 }
 
