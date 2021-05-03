@@ -97,8 +97,9 @@ export default {
   }
 
   .categories ul {
+    padding-left: 5px;
+    padding-right: 5px;
     background-color: white;
-    padding: 1vh;
     border-radius: 5px;
     box-shadow: 0px 0px 31px -13px #000;
   }
@@ -127,7 +128,7 @@ export default {
   }
 
   .categories .category {
-    font-size: 2vh;
+    font-size: calc(1.5vh + 1.5vw);
     font-weight: bold;
     color: #000;
     letter-spacing: 2px;
@@ -135,14 +136,13 @@ export default {
 
   .categories ul {
     background-color: white;
-    padding: 1vh;
     border-radius: 5px;
     box-shadow: 0px 0px 31px -13px #000;
   }
 
   .categories ul li {
-    font-size: 1.5vh;
-    line-height: 5vh;
+    font-size: calc(1vh + 1vw);
+    line-height: calc(2.5vh + 2.5vw);
   }
 
   .categories ul li a {
@@ -164,7 +164,7 @@ export default {
   }
 
   .categories .category {
-    font-size: 1.5vh;
+    font-size: 1.8vh;
     font-weight: bold;
     color: #000;
     letter-spacing: 2px;
@@ -172,7 +172,6 @@ export default {
 
   .categories ul {
     background-color: white;
-    padding: 1vh;
     border-radius: 5px;
     box-shadow: 0px 0px 31px -13px #000;
   }

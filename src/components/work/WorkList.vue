@@ -55,47 +55,48 @@ export default {
   created() {
     this.$emit("loadStart");
     this.$emit("notEmptyWorks");
-    this.$emit("notCommunicationError");
 
-    //work検索API実行
     this.getWorks();
   },
   methods: {
-     async getWorks() {
-      let query = await db.collection("works").where("deleted_flg", "==", false).orderBy("updated_at", "desc")
+    async getWorks() {
+      let query = db.collection("works").where("deleted_flg", "==", false).orderBy("updated_at", "desc")
       query = (Number(this.categoryId) != 0) ? query.where('category_id', '==', Number(this.categoryId)) : query;
 
-      query.get()
+      await query.get()
       .then((resp) => {
-        const workList = [];
-        resp.forEach((doc) => {
-          const data = doc.data();
-          workList.push([doc.id, data]);
-          this.works = workList;
-        })
-        this.$emit("works", this.works);
-        this.$emit("loadComplete");
-        if (this.works.length == 0) {
-          this.$emit("emptyWorks");
+        if(resp.metadata.fromCache) {
+          this.$emit("loadComplete");
+          this.$emit("communicationError");
         } else {
-          this.$emit("notEmptyWorks");
+          this.$emit("loadComplete");
+
+          if(resp.size == 0) {
+            this.$emit("emptyWorks");
+            this.$emit("notCommunicationError");
+          } else {
+            const workList = [];
+            resp.forEach((doc) => {
+              const data = doc.data();
+              workList.push([doc.id, data]);
+              this.works = workList;
+            })
+            this.$emit("works", this.works);
+            this.$emit("showPaginate");
+            this.$emit("notEmptyWorks");
+          }
         }
       })
-      .catch(() => {
-        this.$emit("communicationError");
-        this.$emit("loadComplete");
-        this.$emit("notEmptyWorks");
-      });
-    },
+    }
   },
   watch: {
     // セレクトボックスをタップすると実行
     categoryId() {
       this.works = [];
-
       this.$emit("loadStart");
       this.$emit("notCommunicationError");
       this.$emit("notEmptyWorks");
+      this.$emit("hidePaginate");
       setTimeout(() => {
         this.getWorks();
       }, 1000);
@@ -189,7 +190,7 @@ export default {
 
   .inner .item .work_img {
     width: calc(3vh + 16.5vw);
-    height: calc(31vw + 7vh);
+    height: calc(31vw + 50px);
     border-radius: 89px 5px 87px 68px;
     box-shadow: -8px 6px 5px -3px #b29d9e;
     background-color: #eee;
