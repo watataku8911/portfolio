@@ -1,6 +1,6 @@
 <template>
   <div class="communicationError">
-    <span>CommunicationError!!</span>
+    <span>ConnectionError!!</span>
     <br />
     <button v-on:click="retry" class="retry">try again</button>
   </div>

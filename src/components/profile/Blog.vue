@@ -1,7 +1,7 @@
 <template>
   <div class="blog">
-    <h2 class="b-new-article">最新記事</h2>
-    <BlogQiita />
+    <h2 class="b-new-article" >最新記事</h2>
+    <BlogQiita  />
   </div>
 </template>
 <script>
@@ -14,30 +14,26 @@ export default {
 };
 </script>
 <style scoped>
+.blog {
+  position: relative;
+}
 /*PC*/
 @media screen and (min-width: 1026px) {
-  .blog {
-    position: relative;
-  }
-
   .b-new-article {
     font-size: 5vh;
     font-weight: bold;
     letter-spacing: 50px;
+    margin-left: 50px;
     color: #343437;
   }
 }
 /*タブレット*/
 @media screen and (min-width: 482px) and (max-width: 1025px) {
-  .blog {
-    position: relative;
-  }
-
   .b-new-article {
-    text-align: center;
     font-size: 5vw;
     font-weight: bold;
     letter-spacing: 10px;
+    margin-left: 10px;
     color: #343437;
   }
 }
@@ -47,6 +43,7 @@ export default {
     font-size: 5vh;
     font-weight: bold;
     letter-spacing: 10px;
+    margin-left: 10px;
     color: #343437;
   }
 }

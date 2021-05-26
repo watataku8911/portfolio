@@ -17,22 +17,22 @@
           </li>
           <li>
             <router-link
-                v-bind:to="{
-                  name: 'Content',
-                  hash: '#work-contents',
-                  params: { page: 1, categoryId: 0 },
-                }"
-                @click.native="naviClose()"
-                v-smooth-scroll="{ duration: 1000, offset: -50 }"
-                >WORKS</router-link>
+              v-bind:to="{
+                name: 'Content',
+                hash: '#work-contents',
+                params: { page: 1, categoryId: 0 },
+              }"
+              @click.native="naviClose()"
+              v-smooth-scroll="{ duration: 1000, offset: -50 }"
+              >WORKS</router-link>
           </li>
           <li>
               <router-link to="/contact#c-box" @click.native="naviClose()" v-smooth-scroll="{ duration: 1000, offset: -50 }">CONTACT</router-link>
           </li>
         </ul>
         <section class="navi-share-sns-area">
-          <ShareTwitter imageName="icon_twitter_white.svg" />
-          <ShareFacebook imageName="icon_facebook_white.svg" />
+          <ShareTwitter color="white" />
+          <ShareFacebook color="white" />
         </section>
       </nav>
     </transition>

@@ -3,7 +3,6 @@
     <h2 class="work-title">WORKS</h2>
     <pulse-loader :loading="isLoading" class="load"></pulse-loader>
     <Categories ref="categories" v-on:categoryId="changeCategoryId" />
-
     <WorkList
       ref="work"
       v-bind:currentPage="this.currentPage"
@@ -16,8 +15,9 @@
       v-on:communicationError="communicationError"
       v-on:emptyWorks="emptyWorks"
       v-on:notEmptyWorks="notEmptyWorks"
+      v-on:showPaginate="showPaginate"
+      v-on:hidePaginate="hidePaginate"
     />
-
     <CommutionError
       v-show="isCommunicationError"
       v-on:loadStart="onLoadStart"
@@ -25,22 +25,20 @@
       v-on:notEmptyWorks="notEmptyWorks"
       v-on:reLoad="reLoad"
     />
-
     <p v-show="isEmptyWorks" class="msg">Coming Soon...</p>
-
-    <a href="#work-contents" v-smooth-scroll="{ duration: 1000, offset: -50 }">
-      <paginate v-if="(getPageCount > 1)"
-        v-model="currentPage"
-        :page-count="getPageCount"
-        :page-range="3"
-        :margin-pages="2"
-        :click-handler="clickCallback"
-        :prev-text="'＜'"
-        :next-text="'＞'"
-        :container-class="'pagination'"
-        :page-class="'page-item'"
-      ></paginate>
-    </a>
+  
+    <paginate v-if="(getPageCount > 1)"
+      v-show="isPaging"
+      v-model="currentPage"
+      :page-count="getPageCount"
+      :click-handler="clickCallback"
+      :page-range="3"
+      :margin-pages="2"
+      :prev-text="'＜'"
+      :next-text="'＞'"
+      :container-class="'pagination'"
+      :page-class="'page-item'"
+    ></paginate>
   </section>
 </template>
 
@@ -68,6 +66,7 @@ export default {
       isLoading: true,
       isCommunicationError: true,
       isEmptyWorks: true,
+      isPaging: true
     };
   },
   methods: {
@@ -99,14 +98,21 @@ export default {
       this.isEmptyWorks = false;
     },
 
+    showPaginate() {
+      this.isPaging = true;
+    },
+    hidePaginate() {
+      this.isPaging = false;
+    },
+
     clickCallback() {
       this.$router.push({
         name: "Content",
         params: {
           page: this.currentPage,
+          categoryId: this.categoryId
         },
       });
-
     },
 
     reLoad() {
@@ -132,18 +138,21 @@ export default {
 <style>
 .pagination {
   position: absolute;
-  bottom: 1.5vh;
+  bottom: 0;
   left: 50%;
   transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 }
+
+
 /*PC*/
 @media screen and (min-width: 1026px) {
   .work-title {
     font-weight: bold;
     font-size: 7vh;
     letter-spacing: 50px;
+    margin-left: 50px;
   }
 
   .work-contents {
@@ -151,7 +160,7 @@ export default {
     border: 3px solid black;
     width: 85%;
     margin: 0 auto;
-    height: 775px;
+    height: 670px;
     background-color: #cdebf7;
   }
 
@@ -174,7 +183,8 @@ export default {
   .work-title {
     font-weight: bold;
     letter-spacing: 15px;
-    font-size: 5vh;
+    font-size: calc(2vh + 3vw);
+    margin-left: 15px;
   }
 
   .work-contents {
@@ -182,7 +192,7 @@ export default {
     border: 2px solid black;
     width: 90%;
     margin: 0 auto;
-    height: calc(60vw + 40px);
+    height: calc(52vw + 34px);
     background-color: #cdebf7;
   }
   .msg {
@@ -204,7 +214,8 @@ export default {
   .work-title {
     font-weight: bold;
     letter-spacing: 15px;
-    font-size: 5vh;
+    margin-left: 15px;
+    font-size: 3vh;
   }
 
   .work-contents {
@@ -212,7 +223,7 @@ export default {
     border: 2px solid black;
     width: 99%;
     margin: 0 auto;
-    height: 750px;
+    height: 650px;
     background-color: #cdebf7;
   }
 

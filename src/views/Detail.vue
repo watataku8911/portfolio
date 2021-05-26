@@ -87,7 +87,7 @@ export default {
     width: 85%;
     margin: 0 auto;
     overflow: hidden;
-    height: calc(100vw + 20px);
+    height: calc(58vw + 65vh);
     background-color: #cdebf7;
   }
 }
@@ -105,7 +105,7 @@ export default {
     border: 2px solid black;
     width: 90%;
     margin: 0 auto;
-    height: calc(90vw + 280px);
+    height: calc(85vw + 35vh);
     background-color: #cdebf7;
   }
 }
@@ -123,7 +123,7 @@ export default {
     border: 2px solid black;
     width: 99%;
     margin: 0 auto;
-    height: calc(98vh + 220px);
+    height: calc(98.5vh + 70px);
     background-color: #cdebf7;
   }
 }

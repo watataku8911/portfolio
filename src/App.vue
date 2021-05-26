@@ -15,13 +15,11 @@
         <MainImage
           v-on:image-load-finish="imageLoadFinish"
         />
-        <router-view v-on:image-load-finish="imageLoadFinish" />
-
-        <section class="share-sns-area">
-          <ShareTwitter imageName="icon_twitter_black.svg" />
-          <ShareFacebook imageName="icon_facebook_black.svg" />
-        </section>
-
+        <main>
+          <router-view v-on:image-load-finish="imageLoadFinish" />
+        </main>
+        <div class="module--spacing--large"></div>
+        <div class="module--spacing--large"></div>
         <Footer />
       </div>
     </transition>
@@ -32,17 +30,14 @@
 import MainImage from "./components/MainImage";
 import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
-import ShareTwitter from "./components/ShareTwitter.vue";
-import ShareFacebook from "./components/ShareFacebook.vue";
+
 
 export default {
   name: "app",
   components: {
     MainImage,
     Header,
-    Footer,
-    ShareTwitter,
-    ShareFacebook,
+    Footer
   },
   data() {
     return {
@@ -129,8 +124,8 @@ export default {
 .loader {
   position: absolute;
   bottom: 0%;
-
 }
+
 
 /*アニメーション中のスタイル*/
 .fade-leave-active,
@@ -150,48 +145,43 @@ export default {
   display: none;
 }
 
-.share-sns-area {
-  z-index: 10;
-  display: flex;
-  align-items: flex-end;
-  flex-direction: column-reverse;
-  position: fixed;
-  right: 1vw;
-  bottom: 0;
-}
-
-.share-link:hover {
-  display: block;
-  transform: scale(1.3, 1.3);
-}
-
-
-
 /*PC*/
 @media screen and (min-width: 1026px) {
   .triangle_ {
     position: absolute;
     top: 0;
     right: 0;
-    background-image: url(assets/bg_triangle_top_right.webp);
-    background-repeat: no-repeat;
-    height: 100vh;
-    width: 100vh;
     z-index: -999;
+    border-top: 550px solid #B1E0F3;
+    border-right: 550px solid #B1E0F3;
+    border-bottom: 550px solid transparent;
+    border-left: 550px solid transparent;
   }
 }
 /*タブレット*/
 @media screen and (min-width: 482px) and (max-width: 1025px) {
-  .header {
-    z-index: 999;
-    width: 100%;
+  .triangle_ {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -999;
+    border-top: 300px solid #B1E0F3;
+    border-right: 300px solid #B1E0F3;
+    border-bottom: 300px solid transparent;
+    border-left: 300px solid transparent;
   }
 }
 /*スマホ*/
 @media screen and (max-width: 481px) {
-  .header {
-    width: 100%;
-    z-index: 999;
+  .triangle_ {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -999;
+    border-top: 150px solid #B1E0F3;
+    border-right: 150px solid #B1E0F3;
+    border-bottom: 150px solid transparent;
+    border-left: 150px solid transparent;
   }
 }
 </style>

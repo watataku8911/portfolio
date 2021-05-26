@@ -3,7 +3,10 @@
     <h2 class="profile">PLOFILE</h2>
     <div class="right-left">
       <div class="left">
-        <img src="@/assets/icon/icon_watataku's_radius.webp" width="200" height="200" alt="Watatakuのアイコン"/>
+        <picture>
+          <source srcset="@/assets/Hight_icon_watataku's_radius.webp" type="image/webp"/>
+          <img src="@/assets/Hight_icon_watataku's_radius.png" width="200" height="200" alt="Watatakuのアイコン" />
+        </picture>
         <p class="name">Watataku</p>
       </div>
 
@@ -44,6 +47,7 @@ export default {
     font-size: 7vh;
     font-weight: bold;
     letter-spacing: 50px;
+    margin-left: 50px;
     color: #343437;
   }
 
@@ -93,6 +97,7 @@ export default {
   .profile {
     font-weight: bold;
     letter-spacing: 15px;
+    margin-left: 15px;
   }
 
   .right-left {
@@ -142,6 +147,7 @@ export default {
   .profile {
     font-weight: bold;
     letter-spacing: 2px;
+    margin-left: 2px;
   }
 
   .left img {

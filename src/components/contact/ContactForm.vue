@@ -70,7 +70,7 @@
       msg="送信"
     />
     <div class="module--spacing--small"></div>
-    <p><ErrMsg msg="※一週間経っても返信がない場合、恐れ入りますが「TwitterのDM」またはwatano.takuya@gmail.comまで。" /></p>
+    <p style="text-align: left;"><ErrMsg msg="※一週間経っても返信がない場合、恐れ入りますが「Twitter等のDM」または「watano.takuya@gmail.com」までお願いします。" /></p>
     <pulse-loader :loading="isLoading"></pulse-loader>
   </div>
 </template>
@@ -136,7 +136,7 @@ export default {
         method: "POST",
         body: JSON.stringify(payload),
       }).then(() => {
-        alert("送信が完了しました。追ってご連絡いたします🙌");
+        alert("お問い合わせありがとうございます。追ってご連絡いたします🙌");
         this.firstName = "";
         this.lastName = "";
         this.email = "";

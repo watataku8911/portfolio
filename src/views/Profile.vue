@@ -3,7 +3,6 @@
     <Profile />
     <Table />
     <Blog />
-    <div class="module--spacing--small"></div>
     <SubContents />
   </section>
 </template>

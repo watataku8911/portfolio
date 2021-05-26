@@ -55,6 +55,7 @@ export default {
   created() {
     this.$emit("loadStart");
     this.$emit("notEmptyWorks");
+    this.$emit("notCommunicationError");
 
     this.getWorks();
   },
@@ -68,6 +69,7 @@ export default {
         if(resp.metadata.fromCache) {
           this.$emit("loadComplete");
           this.$emit("communicationError");
+          this.$emit("hidePaginate");
         } else {
           this.$emit("loadComplete");
 
@@ -162,7 +164,6 @@ export default {
   }
 
   .inner .item .work_img {
-    z-index: 10;
     width: calc(9vh + 12vw);
     height: 490px;
     border-radius: 89px 5px 87px 68px;
@@ -182,19 +183,16 @@ export default {
   .inner .item {
     width: 25%;
     float: left;
-    margin-top: 3%;
-    margin-bottom: calc(8vw - 18px);
     opacity: 0;
     transform: translate(0, 50px);
   }
 
   .inner .item .work_img {
     width: calc(3vh + 16.5vw);
-    height: calc(31vw + 50px);
+    height: calc(30vw + 45px);
     border-radius: 89px 5px 87px 68px;
     box-shadow: -8px 6px 5px -3px #b29d9e;
     background-color: #eee;
-    z-index: 10;
     object-fit: cover;
     transform: rotate(5deg);
   }
@@ -209,14 +207,12 @@ export default {
   .inner .item {
     width: 50%;
     float: left;
-    margin-top: 3%;
     opacity: 0;
     transform: translate(0, 50px);
   }
 
   .inner .item .work_img {
     transform: rotate(5deg);
-    z-index: 10;
     background-color: #eee;
     width: 90%;
     height: 260px;

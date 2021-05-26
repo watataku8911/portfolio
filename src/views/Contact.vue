@@ -22,6 +22,7 @@ export default {
     font-weight: bold;
     font-size: 7vh;
     letter-spacing: 20px;
+    margin-left: 20px;
     margin-bottom: 5vh;
   }
 
@@ -45,6 +46,7 @@ export default {
     font-weight: bold;
     font-size: 7vh;
     letter-spacing: 20px;
+    margin-left: 20px;
     margin-bottom: 5vh;
   }
 

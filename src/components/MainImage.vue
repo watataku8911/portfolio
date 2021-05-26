@@ -1,18 +1,22 @@
 <template>
-  <div id="image">
+  <div id="image_box">
+    <div class="module--spacing--large"></div>
     <div id="main_image">
       <p>Watataku's</p>
     </div>
+    <div id="pic_down"></div>
 
-    <div id="pic_down">
-      <img src="@/assets/pic_down.webp" width="88" height="31" alt="" />
-    </div>
+    <div class="module--spacing--veryLarge"></div>
+    <div class="module--spacing--small"></div>
 
-    <div id="bg_header_inpage_nomal">
-      <img src="@/assets/line_perple_top.webp" class="line_perple_top" alt="" />
-      <img src="@/assets/line_blue_top.webp" class="line_blue_top" alt="" />
-      <img src="@/assets/line_pink_top.webp" class="line_pink_top" alt="" />
-      <img src="@/assets/line_pink_top2.webp" class="line_pink_top2" alt="" />
+    <div class="bg_header_inpage_nomal">
+      <picture>
+        <source srcset="@/assets/Hight_bg_flower01_pc.webp" type="image/webp" media="(min-width: 1026px)" />
+        <source srcset="@/assets/Hight_bg_flower01_pc.png" type="image/png"  media="(min-width: 1026px)" />
+        <source srcset="@/assets/bg_flower01.webp" type="image/webp" media="(max-width: 482px)"/>
+        <img src="@/assets/bg_flower01.png" class="flower"/>
+      </picture>
+
     </div>
   </div>
 </template>
@@ -21,63 +25,38 @@ import imagesLoaded from "imagesloaded";
 
 export default {
   mounted() {
-    imagesLoaded(
-      document.getElementById("main_image"),
-      { background: true },
-      () => {
-        this.$emit("image-load-finish", "complete");
-      }
-    );
+    window.onload = () => {
+      imagesLoaded(
+        document.getElementById("main_image"),
+        { background: true },
+        () => {
+          this.$emit("image-load-finish", "complete");
+        }
+      );
+    }
   },
 };
 </script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
 
-.line_perple_top {
-  width: 100vw;
-  z-index: -99;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.line_blue_top {
-  height: 50vh;
-  width: 100vw;
-  z-index: -99;
-  position: absolute;
-  top: -10vh;
-  right: 0;
-}
-
-.line_pink_top {
-  height: 50vh;
-  width: 100vw;
-  z-index: -99;
-  position: absolute;
-  top: 30vh;
-  right: 0;
-}
-
-.line_pink_top2 {
-  width: 100vw;
-  z-index: -99;
-  position: absolute;
-  top: 60vh;
-  right: 0;
-}
-
 #pic_down {
-  width: 30%;
-  text-align: center;
-  margin: 0 auto;
-  margin-bottom: 60px;
+  text-align: -webkit-center;
   animation-name: picdown;
   animation-duration: 1s;
   animation-iteration-count: infinite;
   animation-timing-function: ease;
   will-change: transform;
+}
+
+#pic_down::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-top: 5px solid #000;
+  border-right: 5px solid #000;
+  transform: rotate(135deg);
 }
 
 @keyframes picdown {
@@ -95,15 +74,13 @@ export default {
     position: relative;
     border-radius: 150pt;
     box-shadow: 7px 10px 22px 9px #2f2d33;
-    max-width: 80%;
-    height: 75vh;
+    max-width: 85%;
+    height: 80vh;
     margin: 0 auto;
-    background-image: url(../assets/main.webp);
+    background-image: url(../assets/Hight_main.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: right;
-    margin-bottom: 5vh;
-    margin-top: 3vw;
   }
 
   #main_image p {
@@ -117,6 +94,18 @@ export default {
     font-family: "Bad Script", cursive;
     letter-spacing: 5px;
   }
+
+  .bg_header_inpage_nomal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -999;
+  }
+
+  .flower {
+    width: 95vw;
+    height: 90vw;
+  }
 }
 
 /*タブレット*/
@@ -126,14 +115,12 @@ export default {
     border-radius: 40pt;
     box-shadow: -10px 10px 13px -2px #2f2d33;
     width: 75%;
-    height: 55.5vh;
+    height: 60vh;
     margin: 0 auto;
-    background-image: url(../assets/main.webp);
+    background-image: url(../assets/Hight_main.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: right;
-    margin-bottom: 60px;
-    margin-top: 5vw;
   }
 
   #main_image p {
@@ -147,6 +134,18 @@ export default {
     font-family: "Bad Script", cursive;
     letter-spacing: 5px;
   }
+
+  .bg_header_inpage_nomal {
+    position: absolute;
+    top: 15%;
+    left: 0;
+    z-index: -999;
+  }
+
+  .flower {
+    width: calc(10vh + 80vw);
+    height: calc(60vh + 10vw);
+  }
 }
 
 @media screen and (max-width: 481px) {
@@ -155,14 +154,12 @@ export default {
     border-radius: 10%;
     box-shadow: -5px 5px 13px -2px #2f2d33;
     width: 85%;
-    height: 50vh;
+    height: calc(45vh + 25vw);
     margin: 0 auto;
-    background-image: url(../assets/main.webp);
+    background-image: url(../assets/Hight_main.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: right;
-    margin-bottom: 30px;
-    margin-top: 25px;
   }
 
   #main_image p {
@@ -175,6 +172,18 @@ export default {
     color: #eee;
     font-family: "Bad Script", cursive;
     letter-spacing: 5px;
+  }
+
+  .bg_header_inpage_nomal {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    z-index: -999;
+  }
+
+  .flower {
+    width: 80vw;
+    height: 50vh;
   }
 }
 </style>

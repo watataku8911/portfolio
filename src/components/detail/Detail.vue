@@ -58,8 +58,8 @@ export default {
   },
   methods: {
     async searchIdWork() {
-      let query =  await db.collection("works").doc(this.id)
-      query.get()
+      let query = db.collection("works").doc(this.id)
+      await query.get()
       .then((resp) => {
         const data = resp.data();
         this.title = data.title;
@@ -162,7 +162,7 @@ export default {
 
   .detail-message {
     width: 90%;
-    height: calc(10vh + 8vw);
+    height: calc(3vh + 20vw);
     word-break: break-all;
     margin: 0% auto;
     overflow-y: scroll;
@@ -182,7 +182,7 @@ export default {
 
   .inner .detail-work-img {
     max-width: 95%;
-    height: 40vh;
+    height: 30vh;
     border-radius: 5px;
     box-shadow: -8px 6px 5px -3px #b29d9e;
     margin-bottom: 10px;

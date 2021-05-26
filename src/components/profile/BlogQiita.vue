@@ -16,10 +16,15 @@
 			msg="MORE ▶︎"
 			v-show="finish"
 		/>
+    <CommutionError
+      v-show="isCommunicationError"
+      v-on:reLoad="reLoad"
+    />
 	</article>
 </template>
 
 <script>
+import CommutionError from "../UIKit/CommutionError"
 import LocationHref from "../UIKit/LocationHref"
 import PulseLoader from "vue-spinner/src/PulseLoader";
 import axios from "axios";
@@ -31,6 +36,7 @@ export default {
       blogs: [],
       isLoading: true,
       finish: false,
+      isCommunicationError: false,
       headers: {
         "Content-Type": "application/json;charset=UTF-8",
         "Access-Control-Allow-Origin": "*",
@@ -38,6 +44,7 @@ export default {
     };
 	},
 	components: {
+    CommutionError,
 		LocationHref,
 		PulseLoader
 	},
@@ -56,10 +63,19 @@ export default {
           this.blogs = resp.data;
           this.isLoading = false;
           this.finish = true;
+          this.isCommunicationError = false;
         })
         .catch(() => {
-          this.isLoading = true;
+          this.isLoading = false;
+          this.isCommunicationError = true;
         });
+    },
+    reLoad() {
+      this.isLoading = true;
+      this.isCommunicationError = false;
+      setTimeout(() => {
+        this.getBlog();
+      }, 1000);
     },
   },
 };
@@ -74,6 +90,10 @@ export default {
 
 /*PC*/
 @media screen and (min-width: 1026px) {
+  .qiita {
+    height: 225px;
+  }
+
   .qiita-h3 {
     text-align: left;
     font-size: 3vh;
@@ -102,6 +122,10 @@ export default {
 }
 /*タブレット*/
 @media screen and (min-width: 482px) and (max-width: 1025px) {
+  .qiita {
+    height: 223px
+  }
+
 	.qiita-h3 {
     text-align: left;
     font-size: 1.5rem;
@@ -124,6 +148,10 @@ export default {
 }
 /*スマホ*/
 @media screen and (max-width: 481px) {
+  .qiita {
+    height: calc(28vh + 50px);
+  }
+
 	.qiita-h3 {
     text-align: left;
     font-size: 3vh;

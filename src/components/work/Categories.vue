@@ -52,8 +52,8 @@ export default {
   },
   methods: {
     async getCategories() {
-      let query = await db.collection("categories").orderBy("category_id");
-      query.get()
+      let query = db.collection("categories").orderBy("category_id");
+      await query.get()
       .then((resp) => {
         const categoryList = [];
         resp.forEach((doc) => {
@@ -86,7 +86,7 @@ export default {
     position: absolute;
     right: 3vh;
     top: 1vh;
-    z-index: 20;
+    z-index: 99;
   }
 
   .categories .category {
@@ -124,7 +124,7 @@ export default {
     position: absolute;
     right: 3.5vh;
     top: 1vh;
-    z-index: 20;
+    z-index: 99;
   }
 
   .categories .category {
@@ -158,9 +158,9 @@ export default {
 @media screen and (max-width: 481px) {
   .categories {
     position: absolute;
-    left: 0.5vh;
+    right: 0.5vh;
     top: 1vh;
-    z-index: 20;
+    z-index: 99;
   }
 
   .categories .category {
