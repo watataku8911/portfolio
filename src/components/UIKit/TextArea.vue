@@ -21,9 +21,7 @@ export default {
 </script>
 
 <style scoped>
-textarea {
-  margin-top: 40px !important;
-}
+
 .materialize-textarea {
   height: 180px !important;
 }

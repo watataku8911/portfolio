@@ -6,7 +6,7 @@
       </p>
       <div class="input-field col s6">
         <TextInput
-          placeholder="田中"
+          placeholder=""
           type="text"
           v-model="firstName"
           :value="firstName"
@@ -15,7 +15,7 @@
       </div>
       <div class="input-field col s6">
         <TextInput
-          placeholder="太郎"
+          placeholder=""
           type="text"
           v-model="lastName"
           :value="lastName"
@@ -32,7 +32,7 @@
       </p>
       <div class="input-field col s12">
         <TextInput
-          placeholder="hogehoge@example.com"
+          placeholder=""
           type="text"
           v-model="email"
           :value="email"
@@ -46,12 +46,12 @@
       </p>
       <div class="input-field col s12">
         <TextArea
-          placeholder="お仕事のご相談などのご用件を承っております。"
+          placeholder=""
           rows="0"
           cols="0"
           v-model="description"
         />
-        <label>Content Of Inquiry</label>
+        <label>Contents</label>
       </div>
     </div>
     <p>

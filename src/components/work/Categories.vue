@@ -4,27 +4,16 @@
     class="categories"
     v-on:mouseover="mouseover"
     v-on:mouseleave="mouseleave"
+    v-if="isCategoriesLoaded == true"
   >
     <a href="javascript:void[0]" class="category">Category</a>
-    <ul v-show="isCategoryFlg">
-      <li>
-        <router-link
-          v-bind:to="{
-            name: 'Content',
-            params: { page: 1, categoryId: 0 },
-            hash: '#work-contents'
-          }"
-          @click.native="click(0)"
-          v-smooth-scroll="{ duration: 1000, offset: -50 }"
-          >全て</router-link
-          >
-      </li>
+    <ul v-if="isCategoryFlg">
       <li v-for="item in this.categories" v-bind:key="item.category_id">
         <router-link
           v-bind:to="{
             name: 'Content',
             params: { page: 1, categoryId: item.category_id },
-            hash: '#work-contents'
+            hash: '#work-contents',
           }"
           @click.native="click(item.category_id)"
           v-smooth-scroll="{ duration: 1000, offset: -50 }"
@@ -36,12 +25,13 @@
   <!---- /div.categories ------->
 </template>
 <script>
-import {db} from '../../firebase/index'
+import { db } from "../../firebase/index";
 
 export default {
   data() {
     return {
       isCategoryFlg: false,
+      isCategoriesLoaded: false,
       categories: [],
       categoryId: this.$route.params.categoryId,
     };
@@ -53,15 +43,15 @@ export default {
   methods: {
     async getCategories() {
       let query = db.collection("categories").orderBy("category_id");
-      await query.get()
-      .then((resp) => {
+      await query.get().then((resp) => {
         const categoryList = [];
         resp.forEach((doc) => {
           const data = doc.data();
           categoryList.push(data);
           this.categories = categoryList;
-        })
-      })
+          this.isCategoriesLoaded = true;
+        });
+      });
     },
     mouseover() {
       this.isCategoryFlg = true;
@@ -83,14 +73,14 @@ export default {
 /*PC*/
 @media screen and (min-width: 1026px) {
   .categories {
+    z-index: 1;
     position: absolute;
-    right: 3vh;
     top: 1vh;
-    z-index: 99;
+    right: 1vw;
   }
 
   .categories .category {
-    font-size: 2vh;
+    font-size: 1.3em;
     font-weight: bold;
     color: #000;
     letter-spacing: 2px;
@@ -105,7 +95,7 @@ export default {
   }
 
   .categories ul li {
-    font-size: 1.5vh;
+    font-size: 1em;
     line-height: 5vh;
   }
 
@@ -121,14 +111,14 @@ export default {
 /*タブレット*/
 @media screen and (min-width: 482px) and (max-width: 1025px) {
   .categories {
+    z-index: 1;
     position: absolute;
-    right: 3.5vh;
     top: 1vh;
-    z-index: 99;
+    right: 1vh;
   }
 
   .categories .category {
-    font-size: calc(1.5vh + 1.5vw);
+    font-size: 2em;
     font-weight: bold;
     color: #000;
     letter-spacing: 2px;
@@ -141,7 +131,7 @@ export default {
   }
 
   .categories ul li {
-    font-size: calc(1vh + 1vw);
+    font-size: 1.5em;
     line-height: calc(2.5vh + 2.5vw);
   }
 
@@ -157,14 +147,13 @@ export default {
 /*スマホ*/
 @media screen and (max-width: 481px) {
   .categories {
+    z-index: 1;
     position: absolute;
-    right: 0.5vh;
-    top: 1vh;
-    z-index: 99;
+    right: 0;
   }
 
   .categories .category {
-    font-size: 1.8vh;
+    font-size: 1.3em;
     font-weight: bold;
     color: #000;
     letter-spacing: 2px;
@@ -177,7 +166,7 @@ export default {
   }
 
   .categories ul li {
-    font-size: 1.5vh;
+    font-size: 1em;
     line-height: 5vh;
   }
 

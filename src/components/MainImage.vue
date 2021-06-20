@@ -1,23 +1,9 @@
 <template>
-  <div id="image_box">
-    <div class="module--spacing--large"></div>
-    <div id="main_image">
+  <div class="image_box">
+    <div class="main_image">
       <p>Watataku's</p>
     </div>
-    <div id="pic_down"></div>
-
-    <div class="module--spacing--veryLarge"></div>
-    <div class="module--spacing--small"></div>
-
-    <div class="bg_header_inpage_nomal">
-      <picture>
-        <source srcset="@/assets/Hight_bg_flower01_pc.webp" type="image/webp" media="(min-width: 1026px)" />
-        <source srcset="@/assets/Hight_bg_flower01_pc.png" type="image/png"  media="(min-width: 1026px)" />
-        <source srcset="@/assets/bg_flower01.webp" type="image/webp" media="(max-width: 482px)"/>
-        <img src="@/assets/bg_flower01.png" class="flower"/>
-      </picture>
-
-    </div>
+    <div class="pic_down"></div>
   </div>
 </template>
 <script>
@@ -27,20 +13,20 @@ export default {
   mounted() {
     window.onload = () => {
       imagesLoaded(
-        document.getElementById("main_image"),
+        document.getElementsByClassName("main_image"),
         { background: true },
         () => {
           this.$emit("image-load-finish", "complete");
         }
       );
-    }
+    };
   },
 };
 </script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bad+Script&display=swap");
 
-#pic_down {
+.pic_down {
   text-align: -webkit-center;
   animation-name: picdown;
   animation-duration: 1s;
@@ -49,7 +35,7 @@ export default {
   will-change: transform;
 }
 
-#pic_down::after {
+.pic_down::after {
   content: "";
   display: block;
   width: 40px;
@@ -70,7 +56,7 @@ export default {
 }
 
 @media screen and (min-width: 1026px) {
-  #main_image {
+  .main_image {
     position: relative;
     border-radius: 150pt;
     box-shadow: 7px 10px 22px 9px #2f2d33;
@@ -83,7 +69,7 @@ export default {
     background-position: right;
   }
 
-  #main_image p {
+  .main_image p {
     position: absolute;
     top: 35%;
     left: 35%;
@@ -94,23 +80,11 @@ export default {
     font-family: "Bad Script", cursive;
     letter-spacing: 5px;
   }
-
-  .bg_header_inpage_nomal {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -999;
-  }
-
-  .flower {
-    width: 95vw;
-    height: 90vw;
-  }
 }
 
 /*タブレット*/
 @media screen and (min-width: 482px) and (max-width: 1025px) {
-  #main_image {
+  .main_image {
     position: relative;
     border-radius: 40pt;
     box-shadow: -10px 10px 13px -2px #2f2d33;
@@ -123,7 +97,7 @@ export default {
     background-position: right;
   }
 
-  #main_image p {
+  .main_image p {
     position: absolute;
     top: 30%;
     left: 50%;
@@ -134,22 +108,10 @@ export default {
     font-family: "Bad Script", cursive;
     letter-spacing: 5px;
   }
-
-  .bg_header_inpage_nomal {
-    position: absolute;
-    top: 15%;
-    left: 0;
-    z-index: -999;
-  }
-
-  .flower {
-    width: calc(10vh + 80vw);
-    height: calc(60vh + 10vw);
-  }
 }
 
 @media screen and (max-width: 481px) {
-  #main_image {
+  .main_image {
     position: relative;
     border-radius: 10%;
     box-shadow: -5px 5px 13px -2px #2f2d33;
@@ -159,10 +121,10 @@ export default {
     background-image: url(../assets/Hight_main.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: right;
+    background-position: center right;
   }
 
-  #main_image p {
+  .main_image p {
     position: absolute;
     top: 30%;
     left: 50%;
@@ -172,18 +134,6 @@ export default {
     color: #eee;
     font-family: "Bad Script", cursive;
     letter-spacing: 5px;
-  }
-
-  .bg_header_inpage_nomal {
-    position: absolute;
-    top: 20%;
-    left: 0;
-    z-index: -999;
-  }
-
-  .flower {
-    width: 80vw;
-    height: 50vh;
   }
 }
 </style>

@@ -19,7 +19,5 @@ export default {
 </script>
 
 <style  scoped>
-input {
-  margin-top: 30px !important;
-}
+
 </style>

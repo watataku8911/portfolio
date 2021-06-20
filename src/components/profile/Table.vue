@@ -41,9 +41,14 @@
         <td class="skil">
           <ul>
             <li class="li">HTML5/CSS3</li>
-            <li class="li">JavaScript(JQuery, Node.js, Vue.js/Nuxt.js, React)</li>
-            <li class="li">PHP</li>
-            <li class="li">Firebase(Authencation, Cloud Firestore, Realtime Database, Storage, Cloud Functions, Hosting)</li>
+            <li class="li">
+              JavaScript(JQuery, Vue.js/Nuxt.js, React/Next.js)・TypeScript
+            </li>
+            <li class="li">PHP・Node.js</li>
+            <li class="li">
+              Firebase(Authencation, Cloud Firestore, Realtime Database,
+              Storage, Cloud Functions, Hosting)
+            </li>
             <li class="li">RDB(MySQL)</li>
             <br />
             <li class="li">Vue.js/Firebaseの開発が得意。</li>
@@ -58,8 +63,7 @@
         <th>資格</th>
         <td>
           webデザイナー検定 ベーシック
-          <br />情報活用試験１級
-          <br />システムエンジニア認定
+          <br />情報活用試験１級 <br />システムエンジニア認定
         </td>
       </tr>
     </tbody>
@@ -67,7 +71,7 @@
 </template>
 
 <style>
-.table .finish{
+.table .finish {
   display: block;
   text-align: right;
 }

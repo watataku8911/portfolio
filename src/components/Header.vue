@@ -1,10 +1,7 @@
 <template>
   <header>
-    <div
-      class="navToggle"
-      @click="naviOpen()"
-      :class="{'is-active': active }"
-    >
+    <div class="triangle"></div>
+    <div class="navToggle" @click="naviOpen()" :class="{ 'is-active': active }">
       <span></span>
       <span></span>
       <span></span>
@@ -13,7 +10,12 @@
       <nav class="navi" v-show="navi">
         <ul class="navi__wrap">
           <li>
-            <router-link to="/#profile-contents" @click.native="naviClose()" v-smooth-scroll="{ duration: 1000, offset: -50 }">PLOFILE</router-link>
+            <router-link
+              to="/#profile-contents"
+              @click.native="naviClose()"
+              v-smooth-scroll="{ duration: 1000, offset: -50 }"
+              >PLOFILE</router-link
+            >
           </li>
           <li>
             <router-link
@@ -24,10 +26,16 @@
               }"
               @click.native="naviClose()"
               v-smooth-scroll="{ duration: 1000, offset: -50 }"
-              >WORKS</router-link>
+              >WORKS</router-link
+            >
           </li>
           <li>
-              <router-link to="/contact#c-box" @click.native="naviClose()" v-smooth-scroll="{ duration: 1000, offset: -50 }">CONTACT</router-link>
+            <router-link
+              to="/contact#c-box"
+              @click.native="naviClose()"
+              v-smooth-scroll="{ duration: 1000, offset: -50 }"
+              >CONTACT</router-link
+            >
           </li>
         </ul>
         <section class="navi-share-sns-area">
@@ -62,7 +70,7 @@ export default {
       this.active = !this.active;
       this.navi = !this.navi;
 
-      if(!this.active && !this.navi) {
+      if (!this.active && !this.navi) {
         this.ok_scroll();
       }
     },
@@ -74,19 +82,27 @@ export default {
     },
     // スクロール禁止
     no_scroll() {
-      document.addEventListener("mousewheel", this.scroll_control, { passive: false });
-      document.addEventListener("touchmove", this.scroll_control, { passive: false });
+      document.addEventListener("mousewheel", this.scroll_control, {
+        passive: false,
+      });
+      document.addEventListener("touchmove", this.scroll_control, {
+        passive: false,
+      });
     },
     // スクロール禁止解除
     ok_scroll() {
-      document.removeEventListener("mousewheel", this.scroll_control, { passive: false });
-      document.removeEventListener('touchmove', this.scroll_control, { passive: false });
+      document.removeEventListener("mousewheel", this.scroll_control, {
+        passive: false,
+      });
+      document.removeEventListener("touchmove", this.scroll_control, {
+        passive: false,
+      });
     },
     // スクロール関連メソッド
     scroll_control(event) {
-        event.preventDefault();
-    }
-  }
+      event.preventDefault();
+    },
+  },
 };
 </script>
 
@@ -193,17 +209,43 @@ export default {
   display: flex;
 }
 
+/*PC*/
 @media screen and (min-width: 1026px) {
-
+  .triangle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -999;
+    border-top: 550px solid #b1e0f3;
+    border-right: 550px solid #b1e0f3;
+    border-bottom: 550px solid transparent;
+    border-left: 550px solid transparent;
+  }
 }
-
 /*タブレット*/
 @media screen and (min-width: 482px) and (max-width: 1025px) {
-  
+  .triangle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -999;
+    border-top: 300px solid #b1e0f3;
+    border-right: 300px solid #b1e0f3;
+    border-bottom: 300px solid transparent;
+    border-left: 300px solid transparent;
+  }
 }
-
+/*スマホ*/
 @media screen and (max-width: 481px) {
-  
+  .triangle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -999;
+    border-top: 150px solid #b1e0f3;
+    border-right: 150px solid #b1e0f3;
+    border-bottom: 150px solid transparent;
+    border-left: 150px solid transparent;
+  }
 }
-
 </style>

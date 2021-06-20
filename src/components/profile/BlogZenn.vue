@@ -1,39 +1,35 @@
 <template>
-  <article class="qiita">
+  <article class="zenn">
     <ul v-for="blog in blogs" v-bind:key="blog.id">
       <li>
-        <p class="qiita-title">
-          <a v-bind:href="blog.url" target="_blank" class="click">
+        <p class="zenn-title">
+          <a v-bind:href="blog.link" target="_blank" class="click">
             {{ blog.title }}
           </a>
         </p>
       </li>
     </ul>
     <div class="module--spacing--small"></div>
-    <p class="jump-qiita">
-      <a href="https://qiita.com/watataku8911" target="_blank">
-        <Button msg="MORE ▶︎" @push="jumpQiita" v-show="finish" />
+    <p class="jump-zenn">
+      <a href="https://zenn.com/watataku" target="_blank">
+        <Button msg="MORE ▶︎" @push="jumpZenn" v-show="finish" />
       </a>
     </p>
-    <CommutionError v-show="isCommunicationError" v-on:reLoad="reLoad" />
-    <pulse-loader :loading="isLoading"></pulse-loader>
+    <p class="just-minutes" v-if="isEmptyFlg">Coming Soon...</p>
   </article>
 </template>
 
 <script>
-import CommutionError from "../UIKit/CommutionError";
 import Button from "../UIKit/Button";
-import PulseLoader from "vue-spinner/src/PulseLoader";
 import axios from "axios";
-import { qiitaApiURL } from "../../seacretDirectory/seacret";
+import { getZennData } from "../../seacretDirectory/seacret";
 
 export default {
   data() {
     return {
       blogs: [],
-      isLoading: true,
       finish: false,
-      isCommunicationError: false,
+      isEmptyFlg: true,
       headers: {
         "Content-Type": "application/json;charset=UTF-8",
         "Access-Control-Allow-Origin": "*",
@@ -41,38 +37,37 @@ export default {
     };
   },
   components: {
-    CommutionError,
     Button,
-    PulseLoader,
   },
   created() {
     //API実行
-    this.getBlog();
+    this.getZenn();
   },
   methods: {
-    async getBlog() {
-      await axios
-        .get(qiitaApiURL(1, 2), { headers: this.headers })
+    async getZenn() {
+      axios
+        .get(getZennData())
         .then((resp) => {
-          this.blogs = resp.data;
-          this.isLoading = false;
-          this.finish = true;
-          this.isCommunicationError = false;
+          if (resp.data.items.length == 0) {
+            this.isEmptyFlg = true;
+            this.finish = false;
+          } else {
+            this.blogs = resp.data.items;
+            this.isEmptyFlg = false;
+            this.finish = true;
+          }
         })
-        .catch(() => {
-          this.isLoading = false;
-          this.isCommunicationError = true;
-        });
+        .catch(() => {});
     },
-    reLoad() {
-      this.isLoading = true;
-      this.isCommunicationError = false;
-      setTimeout(() => {
-        this.getBlog();
-      }, 1000);
-    },
-    jumpQiita() {
+    jumpZenn() {
       return;
+    },
+  },
+  watch: {
+    blogs() {
+      if (this.blogs.length > 2) {
+        this.blogs.pop();
+      }
     },
   },
 };
@@ -81,17 +76,17 @@ export default {
 <style scoped>
 /*PC*/
 @media screen and (min-width: 1026px) {
-  .qiita {
+  .zenn {
     height: 245px;
   }
 
-  .qiita-title {
+  .zenn-title {
     text-align: left;
     margin-bottom: 10px;
     padding-left: 1%;
   }
 
-  .qiita-title a {
+  .zenn-title a {
     font-size: 3vh;
     color: rgb(99, 103, 103);
     line-height: 1.75;
@@ -100,28 +95,34 @@ export default {
       "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
   }
 
-  .qiita-title a:hover {
+  .zenn-title a:hover {
     color: #5bbee4;
     border-bottom: #5bbee4 2px solid;
   }
 
-  .jump-qiita {
+  .jump-zenn {
     text-align: right;
     padding-right: 25px;
+  }
+
+  .just-minutes {
+    font-family: "Kaushan Script", cursive;
+    font-family: "Bad Script", cursive;
+    font-size: 8em;
   }
 }
 /*タブレット*/
 @media screen and (min-width: 482px) and (max-width: 1025px) {
-  .qiita {
+  .zenn {
     height: 223px;
   }
 
-  .qiita-title {
+  .zenn-title {
     text-align: left;
     padding-left: 1%;
   }
 
-  .qiita-title a {
+  .zenn-title a {
     color: rgb(99, 103, 103);
     line-height: 1.75;
     font-size: 1.5rem;
@@ -130,30 +131,42 @@ export default {
       "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
   }
 
-  .jump-qiita {
+  .jump-zenn {
     text-align: right;
     padding-right: 25px;
+  }
+
+  .just-minutes {
+    font-family: "Kaushan Script", cursive;
+    font-family: "Bad Script", cursive;
+    font-size: 5em;
   }
 }
 /*スマホ*/
 @media screen and (max-width: 481px) {
-  .qiita {
+  .zenn {
     height: calc(28vh + 50px);
   }
 
-  .qiita-title {
+  .zenn-title {
     text-align: left;
     margin-bottom: 5px;
     padding-left: 1%;
   }
 
-  .qiita-title a {
+  .zenn-title a {
     color: rgb(99, 103, 103);
     line-height: 1.75;
     font-size: 3vh;
     letter-spacing: 0.1rem;
     font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
       "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
+  }
+
+  .just-minutes {
+    font-family: "Kaushan Script", cursive;
+    font-family: "Bad Script", cursive;
+    font-size: 4em;
   }
 }
 </style>
