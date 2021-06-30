@@ -11,7 +11,7 @@
       </tr>
       <tr>
         <th>好きなもの</th>
-        <td>野球観戦, 坂道アイドル, プログラミング</td>
+        <td>WEB, 野球観戦, 坂道アイドル</td>
       </tr>
       <tr>
         <th>好きな食べ物</th>
@@ -57,7 +57,7 @@
       </tr>
       <tr>
         <th>勉強中</th>
-        <td class="studing">WEBデザイン・UI/UXデザイン・モダンなWEB技術</td>
+        <td class="studing">WEBデザイン, UI/UXデザイン, モダンなWEB技術</td>
       </tr>
       <tr>
         <th>資格</th>
@@ -71,6 +71,14 @@
 </template>
 
 <style>
+.table {
+  table-layout: fixed;
+  width: 100%;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  word-wrap: break-word;
+}
+
 .table .finish {
   display: block;
   text-align: right;
@@ -87,27 +95,7 @@
   margin-left: 13px;
 }
 
-/*PC*/
-@media screen and (min-width: 1026px) {
-  .table {
-    table-layout: fixed;
-    width: 100%;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-    word-wrap: break-word;
-  }
-}
-
 @media screen and (min-width: 482px) and (max-width: 1025px) {
-  .table {
-    font-size: 1.5em;
-    table-layout: fixed;
-    width: 100%;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-    word-wrap: break-word;
-  }
-
   th {
     width: 35%;
   }
@@ -115,14 +103,6 @@
 
 /*スマホ*/
 @media screen and (max-width: 481px) {
-  .table {
-    table-layout: fixed;
-    width: 100%;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-    word-wrap: break-word;
-  }
-
   th {
     width: 45%;
   }

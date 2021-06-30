@@ -75,6 +75,18 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Bad+Script&display=swap");
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  text-align: center;
+  width: 100%;
+}
+
 .opning {
   background-color: #fff;
   width: 100%;

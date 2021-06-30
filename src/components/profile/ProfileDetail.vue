@@ -4,8 +4,16 @@
     <div class="right-left">
       <div class="left">
         <picture>
-          <source srcset="@/assets/Hight_icon_watataku's_radius.webp" type="image/webp"/>
-          <img src="@/assets/Hight_icon_watataku's_radius.png" width="200" height="200" alt="Watatakuのアイコン" />
+          <source
+            srcset="@/assets/Hight_icon_watataku's_radius.webp"
+            type="image/webp"
+          />
+          <img
+            src="@/assets/Hight_icon_watataku's_radius.png"
+            width="200"
+            height="200"
+            alt="Watatakuのアイコン"
+          />
         </picture>
         <p class="name">Watataku</p>
       </div>
@@ -23,7 +31,9 @@
         <p class="message">
           はじめまして。この度は「Watataku's」をご覧いただき誠にありがとうございます。<br />
           こちらのサイトはマークアップエンジニア/フロントエンドエンジニア志望のWatatakuが制作したページです。<br />
-          誰しもが<i style="font-weight: bold">「使いやすく、見やすく、多種多様のデバイスから見てもデザイン崩れのないページ・アプリ開発」</i>を心がけています。よろしくお願いします。
+          誰しもが<i style="font-weight: bold"
+            >「使いやすく、見やすく、多種多様のデバイスから見てもデザイン崩れのないページ・アプリ開発」</i
+          >を心がけています。よろしくお願いします。
         </p>
       </div>
     </div>
@@ -31,8 +41,8 @@
 </template>
 <script>
 export default {
-  props: ["users"]
-}
+  props: ["users"],
+};
 </script>
 <style>
 /*PC*/
@@ -41,7 +51,6 @@ export default {
     overflow: hidden;
     margin-bottom: 30px;
   }
-
 
   .profile {
     font-size: 7vh;
@@ -82,6 +91,7 @@ export default {
   }
 
   .right .message {
+    font-size: calc(112.5% + 0.25vw);
     line-height: 5vh;
     letter-spacing: 5px;
   }
@@ -171,7 +181,7 @@ export default {
   }
 
   .right .message {
-    font-size: 15px;
+    font-size: 18px;
     line-height: 30px;
     letter-spacing: 1px;
   }

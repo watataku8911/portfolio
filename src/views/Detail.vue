@@ -9,12 +9,19 @@
     <!-- 画面中央に出しているやつ(ローディングなど) -->
 
     <h2 class="detail-title">{{ this.title }}</h2>
-    <div class="image">
+    <div class="image_box">
       <img
-        v-bind:src="this.image"
-        v-bind:alt="this.title"
+        :src="this.image"
+        :alt="this.title"
         class="detail-work-img"
         loading="eager"
+        @click="openModal"
+      />
+      <Modal
+        :image="this.image"
+        :alt="this.title"
+        v-if="isOpenModal"
+        @close="closeModal"
       />
     </div>
     <p v-show="isHide">
@@ -39,12 +46,14 @@
 
 <script>
 import { db } from "../firebase/index";
+import Modal from "../components/Modal";
 import Button from "../components/UIKit/Button";
 import PulseLoader from "vue-spinner/src/PulseLoader";
 import CommutionError from "../components/UIKit/CommutionError";
 
 export default {
   components: {
+    Modal,
     Button,
     PulseLoader,
     CommutionError,
@@ -59,8 +68,10 @@ export default {
       url: "",
       description: "",
       isHide: false,
+      isImgLoading: true,
       isLoading: true,
       isCommunicationError: true,
+      isOpenModal: false,
       headers: {
         "Content-Type": "application/json;charset=UTF-8",
         "Access-Control-Allow-Origin": "*",
@@ -110,6 +121,37 @@ export default {
         this.searchIdWork();
       }, 1000);
     },
+
+    openModal() {
+      this.isOpenModal = true;
+      this.no_scroll();
+    },
+    closeModal() {
+      this.isOpenModal = false;
+      this.ok_scroll();
+    },
+    // スクロール禁止
+    no_scroll() {
+      document.addEventListener("mousewheel", this.scroll_control, {
+        passive: false,
+      });
+      document.addEventListener("touchmove", this.scroll_control, {
+        passive: false,
+      });
+    },
+    // スクロール禁止解除
+    ok_scroll() {
+      document.removeEventListener("mousewheel", this.scroll_control, {
+        passive: false,
+      });
+      document.removeEventListener("touchmove", this.scroll_control, {
+        passive: false,
+      });
+    },
+    // スクロール関連メソッド
+    scroll_control(event) {
+      event.preventDefault();
+    },
   },
 };
 </script>
@@ -129,6 +171,10 @@ export default {
 
 .btn:hover {
   text-decoration: none;
+}
+
+.detail-work-img:hover {
+  box-shadow: 0 0 0 0 rgba(115, 112, 112, 0.6);
 }
 /*PC*/
 @media screen and (min-width: 1026px) {
@@ -150,13 +196,12 @@ export default {
   }
 
   .detail-work-img {
+    box-shadow: 11px 12px 26px 7px rgba(115, 112, 112, 0.6);
     max-width: 95%;
     height: 80vh;
     border-radius: 5px;
-    box-shadow: -8px 6px 5px -3px #b29d9e;
     margin-bottom: 10px;
     object-fit: cover;
-    background-color: #eee;
   }
 
   .url {
@@ -197,13 +242,12 @@ export default {
   }
 
   .detail-work-img {
+    box-shadow: 11px 12px 26px 7px rgba(115, 112, 112, 0.6);
     max-width: 90%;
     height: calc(35vw + 15vh);
     border-radius: 5px;
-    box-shadow: -8px 6px 5px -3px #b29d9e;
     margin-bottom: 10px;
     object-fit: cover;
-    background-color: #eee;
   }
 
   .url {
@@ -243,13 +287,12 @@ export default {
   }
 
   .detail-work-img {
+    box-shadow: 11px 12px 26px 7px rgba(115, 112, 112, 0.6);
     max-width: 95%;
     height: 30vh;
     border-radius: 5px;
-    box-shadow: -8px 6px 5px -3px #b29d9e;
     margin-bottom: 10px;
     object-fit: cover;
-    background-color: #eee;
   }
 
   .url {

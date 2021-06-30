@@ -28,11 +28,12 @@
           class="push"
           v-smooth-scroll="{ duration: 1000, offset: -50 }"
         >
+          <Loading />
           <img
             :src="work[1][1].imagePath"
             :alt="work[1][1].title"
             class="work_img"
-            loading="eager"
+            loading="lazy"
           />
         </router-link>
       </div>
@@ -59,12 +60,14 @@ import { db } from "../firebase/index";
 
 import Categories from "../components/work/Categories";
 import CommutionError from "../components/UIKit/CommutionError";
+import Loading from "../components/Loading.vue";
 import PulseLoader from "vue-spinner/src/PulseLoader";
 
 export default {
   components: {
     Categories,
     CommutionError,
+    Loading,
     PulseLoader,
   },
   data() {
@@ -217,7 +220,6 @@ export default {
 
 .item .work_img:hover {
   box-shadow: 0 0 0 0 rgba(115, 112, 112, 0.6);
-  opacity: 0.9;
 }
 /*PC*/
 @media screen and (min-width: 1026px) {
