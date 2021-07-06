@@ -14,7 +14,11 @@
 
     <!-- 実際のWORK出力 -->
     <div class="items">
-      <div class="item" v-for="work in getItems" v-bind:key="work[1][0]">
+      <div
+        class="item"
+        v-for="(work, index) in getItems"
+        v-bind:key="work[1][0]"
+      >
         <router-link
           v-bind:to="{
             name: 'Detail',
@@ -28,13 +32,16 @@
           class="push"
           v-smooth-scroll="{ duration: 1000, offset: -50 }"
         >
-          <Loading />
-          <img
-            :src="work[1][1].imagePath"
-            :alt="work[1][1].title"
-            class="work_img"
-            loading="lazy"
-          />
+          <div class="image-box">
+            <img
+              :src="work[1][1].imagePath"
+              :alt="work[1][1].title"
+              class="work_img"
+              loading="lazy"
+              @load="loadComplete(index)"
+            />
+            <Loading v-show="isImageLoaded[index]" />
+          </div>
         </router-link>
       </div>
       <!-- 実際のWORK出力 -->
@@ -80,6 +87,7 @@ export default {
       isLoading: true,
       isCommunicationError: true,
       isEmptyWorks: true,
+      isImageLoaded: [true, true, true, true],
       headers: {
         "Content-Type": "application/json;charset=UTF-8",
         "Access-Control-Allow-Origin": "*",
@@ -110,6 +118,7 @@ export default {
     },
 
     clickCallback() {
+      this.isImageLoaded = [true, true, true, true];
       this.$router.push({
         name: "Content",
         params: {
@@ -163,6 +172,10 @@ export default {
         this.getWorks();
         this.$refs.categories.getCategories();
       }, 1000);
+    },
+
+    loadComplete(index) {
+      this.$set(this.isImageLoaded, index, false);
     },
   },
 
@@ -240,6 +253,7 @@ export default {
   }
 
   .items {
+    text-align: center;
     width: 100%;
     height: 500px;
     display: flex;
@@ -252,13 +266,22 @@ export default {
     transform: translate(0, 20px);
   }
 
-  .item .work_img {
-    box-shadow: 11px 12px 26px 7px rgba(115, 112, 112, 0.6);
+  .item .image-box {
+    border: black solid 1px;
     width: calc(9vh + 12vw);
     height: 490px;
     border-radius: 89px 5px 87px 68px;
-    object-fit: cover;
+    margin: 0% auto;
     transform: rotate(5deg);
+  }
+
+  .item .work_img {
+    box-shadow: 11px 12px 26px 7px rgba(115, 112, 112, 0.6);
+    height: 490px;
+    border-radius: 89px 5px 87px 68px;
+    width: 100%;
+    height: 490px;
+    object-fit: cover;
   }
 
   .msg {
@@ -300,13 +323,21 @@ export default {
     transform: translate(0, 20px);
   }
 
-  .item .work_img {
-    box-shadow: 11px 12px 26px 7px rgba(115, 112, 112, 0.6);
+  .item .image-box {
+    border: black solid 1px;
     width: calc(3vh + 16.5vw);
     height: calc(30vw + 45px);
     border-radius: 89px 5px 87px 68px;
-    object-fit: cover;
+    margin: 0% auto;
     transform: rotate(5deg);
+  }
+
+  .item .work_img {
+    box-shadow: 11px 12px 26px 7px rgba(115, 112, 112, 0.6);
+    width: 100%;
+    height: calc(30vw + 45px);
+    border-radius: 89px 5px 87px 68px;
+    object-fit: cover;
   }
 
   .msg {
@@ -349,10 +380,17 @@ export default {
     transform: translate(0, 20px);
   }
 
-  .item .work_img {
-    box-shadow: 11px 12px 26px 7px rgba(115, 112, 112, 0.6);
+  .item .image-box {
+    border: solid #000 1px;
     transform: rotate(5deg);
     width: 90%;
+    height: 260px;
+    border-radius: 89px 5px 87px 68px;
+  }
+
+  .item .work_img {
+    box-shadow: 11px 12px 26px 7px rgba(115, 112, 112, 0.6);
+    width: 100%;
     height: 260px;
     border-radius: 89px 5px 87px 68px;
     object-fit: cover;

@@ -9,8 +9,7 @@
     <transition name="fade">
       <div v-show="!loading">
         <div class="module--spacing--large"></div>
-        <Header />
-        <MainImage v-on:image-load-finish="imageLoadFinish" />
+        <Header v-on:image-load-finish="imageLoadFinish" />
         <div class="module--spacing--veryLarge"></div>
         <div class="module--spacing--small"></div>
         <main class="site-main">
@@ -26,14 +25,12 @@
 </template>
 
 <script>
-import MainImage from "./components/MainImage";
-import Header from "./components/Header.vue";
+import Header from "./components/Header";
 import Footer from "./components/Footer.vue";
 
 export default {
   name: "app",
   components: {
-    MainImage,
     Header,
     Footer,
   },
@@ -88,6 +85,7 @@ export default {
 }
 
 .opning {
+  position: relative;
   background-color: #fff;
   width: 100%;
   height: 100vh;
@@ -99,7 +97,6 @@ export default {
   background: linear-gradient(to right, #5bbee4 0%, #52eac1 100%);
   position: absolute;
   top: 0;
-  will-change: transform;
 }
 
 @keyframes typewriter {
@@ -113,7 +110,7 @@ export default {
 
 .line-1 {
   position: absolute;
-  top: 45%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   transition: all 300ms ease-in-out;
