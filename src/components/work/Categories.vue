@@ -80,7 +80,7 @@ export default {
   }
 
   .categories .category {
-    font-size: 1.3em;
+    font-size: 1.5em;
     font-weight: bold;
     color: #000;
     letter-spacing: 2px;
@@ -118,7 +118,7 @@ export default {
   }
 
   .categories .category {
-    font-size: 2em;
+    font-size: 2.2em;
     font-weight: bold;
     color: #000;
     letter-spacing: 2px;

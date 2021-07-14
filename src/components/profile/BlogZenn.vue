@@ -74,6 +74,11 @@ export default {
 </script>
 
 <style scoped>
+.jump-zenn {
+  text-align: right;
+  padding-right: 25px;
+}
+
 /*PC*/
 @media screen and (min-width: 1026px) {
   .zenn {
@@ -100,11 +105,6 @@ export default {
     border-bottom: #5bbee4 2px solid;
   }
 
-  .jump-zenn {
-    text-align: right;
-    padding-right: 25px;
-  }
-
   .just-minutes {
     font-family: "Kaushan Script", cursive;
     font-family: "Bad Script", cursive;
@@ -129,11 +129,6 @@ export default {
     letter-spacing: 0.1rem;
     font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
       "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
-  }
-
-  .jump-zenn {
-    text-align: right;
-    padding-right: 25px;
   }
 
   .just-minutes {

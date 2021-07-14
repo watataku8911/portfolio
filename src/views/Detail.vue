@@ -184,7 +184,7 @@ export default {
     width: 85%;
     margin: 0 auto;
     overflow: hidden;
-    height: calc(55vw + 55vh);
+    height: calc(750px + 60vh);
     background-color: #cdebf7;
   }
 
@@ -230,21 +230,21 @@ export default {
     border: 2px solid black;
     width: 90%;
     margin: 0 auto;
-    height: calc(75vw + 35vh);
+    height: calc(750px + 20vh + 8vw);
     background-color: #cdebf7;
   }
 
   .detail-title {
     font-weight: bold;
     letter-spacing: 15px;
-    font-size: 5vh;
+    font-size: 3em;
     text-align: center;
   }
 
   .detail-work-img {
     box-shadow: 11px 12px 26px 7px rgba(115, 112, 112, 0.6);
     max-width: 90%;
-    height: calc(35vw + 15vh);
+    height: calc(40vw + 15vh);
     border-radius: 5px;
     margin-bottom: 10px;
     object-fit: cover;
@@ -259,7 +259,7 @@ export default {
 
   .detail-message {
     width: 90%;
-    height: calc(3vh + 20vw);
+    height: 200px;
     word-break: break-all;
     margin: 0% auto;
     overflow-y: scroll;
@@ -305,7 +305,7 @@ export default {
 
   .detail-message {
     width: 95%;
-    height: calc(23vh + 10vw);
+    height: calc(30vh + 10px);
     word-break: break-all;
     margin: 0% auto;
     overflow-y: scroll;
