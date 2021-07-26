@@ -2,7 +2,7 @@
 
 > my portfolio site✌️
 
-[https://watataku-portfolo.web.app/](https://watataku-portfolo.web.app/)
+[https://watataku-portfolio.web.app/](https://watataku-portfolio.web.app/)
 
 ## Technology used
 
@@ -14,11 +14,7 @@
 - PWA
 
 **Admin Page**
-<<<<<<< HEAD
-just minutes.
-=======
 [https://github.com/watataku8911/watataku-portfolio-admin](https://github.com/watataku8911/watataku-portfolio-admin)
->>>>>>> c0ae2dfec2b8d7b0037c0678e4928639c6d00af1
 
 - Vue.js(VueCLI3)
 - Firebase(Authentication, Firestore, Storage)

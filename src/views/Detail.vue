@@ -24,9 +24,10 @@
         @close="closeModal"
       />
     </div>
-    <p v-show="isHide">
+    <p v-show="isHide" class="link">
       <a v-bind:href="this.url" target="_blank" class="url">{{ this.url }}</a>
     </p>
+    <div class="module--spacing--verySmall"></div>
     <p class="detail-message" v-show="isHide">
       <span v-html="nl2br(this.description)"></span>
     </p>
@@ -184,7 +185,7 @@ export default {
     width: 85%;
     margin: 0 auto;
     overflow: hidden;
-    height: calc(750px + 60vh);
+    height: calc(750px + 70vh);
     background-color: #cdebf7;
   }
 
@@ -195,9 +196,13 @@ export default {
     text-align: center;
   }
 
+  .image_box {
+    height: 80vh;
+  }
+
   .detail-work-img {
-    box-shadow: 11px 12px 26px 7px rgba(115, 112, 112, 0.6);
-    max-width: 95%;
+    box-shadow: 11px 8px 10px 7px rgba(115, 112, 112, 0.6);
+    max-width: 100%;
     height: 80vh;
     border-radius: 5px;
     margin-bottom: 10px;
@@ -205,16 +210,13 @@ export default {
   }
 
   .url {
-    display: block;
-    margin-bottom: 10px;
-    overflow: auto;
-    font-size: calc(112.5% + 0.25vw);
+    font-size: 2em;
   }
 
   .detail-message {
     font-size: 2vh;
     width: 90%;
-    height: calc(20vh + 3vw);
+    height: calc(20vh + 150px);
     margin: 0% auto;
     word-break: break-all;
     overflow-y: scroll;
@@ -241,6 +243,10 @@ export default {
     text-align: center;
   }
 
+  .image_box {
+    height: calc(40vw + 15vh);
+  }
+
   .detail-work-img {
     box-shadow: 11px 12px 26px 7px rgba(115, 112, 112, 0.6);
     max-width: 90%;
@@ -252,14 +258,13 @@ export default {
 
   .url {
     display: block;
-    margin-bottom: 10px;
     overflow: auto;
-    font-size: calc(112.5% + 0.25vw);
+    font-size: 2.5em;
   }
 
   .detail-message {
     width: 90%;
-    height: 200px;
+    height: 220px;
     word-break: break-all;
     margin: 0% auto;
     overflow-y: scroll;
@@ -275,7 +280,7 @@ export default {
     border: 2px solid black;
     width: 99%;
     margin: 0 auto;
-    height: calc(85vh + 80px);
+    height: calc(85vh + 95px);
     background-color: #cdebf7;
   }
 
@@ -284,6 +289,10 @@ export default {
     letter-spacing: 15px;
     font-size: 3vh;
     text-align: center;
+  }
+
+  .image_box {
+    height: 30vh;
   }
 
   .detail-work-img {
@@ -296,11 +305,7 @@ export default {
   }
 
   .url {
-    display: block;
-    width: 100%;
-    margin-bottom: 10px;
-    overflow: auto;
-    font-size: calc(100% + 0.2vw);
+    margin-top: 10px;
   }
 
   .detail-message {

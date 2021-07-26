@@ -3,6 +3,24 @@
     <div class="opning" v-show="loading">
       <div class="bar" v-if="bar"></div>
       <p class="line-1">Watataku's</p>
+      <div class="now-loading">
+        <p class="str-loading" :class="{ visible: isActive }">
+          <span>N</span>
+          <span>o</span>
+          <span>w</span>
+          <span>&nbsp;</span>
+          <span>L</span>
+          <span>o</span>
+          <span>a</span>
+          <span>d</span>
+          <span>i</span>
+          <span>n</span>
+          <span>g</span>
+          <span>.</span>
+          <span>.</span>
+          <span>.</span>
+        </p>
+      </div>
     </div>
 
     <!--  これがサイトのメイン -->
@@ -26,7 +44,7 @@
 
 <script>
 import Header from "./components/Header";
-import Footer from "./components/Footer.vue";
+import Footer from "./components/Footer";
 
 export default {
   name: "app",
@@ -34,13 +52,25 @@ export default {
     Header,
     Footer,
   },
+
   data() {
     return {
       loading: true,
       bar: false,
+      isActive: false,
       image: "stand-by",
     };
   },
+
+  mounted() {
+    setInterval(() => {
+      this.isActive = true;
+      setTimeout(() => {
+        this.isActive = false;
+      }, 2500);
+    }, 3700);
+  },
+
   methods: {
     setMeta(to) {
       if (to.meta.title) {
@@ -120,6 +150,70 @@ export default {
   color: #555;
 }
 
+.now-loading {
+  position: absolute;
+  right: 3vw;
+  bottom: 0.5vh;
+}
+
+.now-loading .str-loading span {
+  display: block;
+  transform: translate(0, -35.5%);
+  transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
+}
+
+.now-loading .str-loading.visible span {
+  transform: translate(0, 0);
+}
+
+.now-loading .str-loading span:nth-child(2) {
+  transition-delay: 0.06s;
+}
+
+.now-loading .str-loading span:nth-child(3) {
+  transition-delay: 0.12s;
+}
+
+.now-loading .str-loading span:nth-child(4) {
+  transition-delay: 0.18s;
+}
+
+.now-loading .str-loading span:nth-child(5) {
+  transition-delay: 0.24s;
+}
+
+.now-loading .str-loading span:nth-child(6) {
+  transition-delay: 0.3s;
+}
+
+.now-loading .str-loading span:nth-child(7) {
+  transition-delay: 0.36s;
+}
+
+.now-loading .str-loading span:nth-child(8) {
+  transition-delay: 0.42s;
+}
+
+.now-loading .str-loading span:nth-child(9) {
+  transition-delay: 0.48s;
+}
+
+.now-loading .str-loading span:nth-child(10) {
+  transition-delay: 0.54s;
+}
+
+.now-loading .str-loading span:nth-child(11) {
+  transition-delay: 0.6s;
+}
+
+.now-loading .str-loading span:nth-child(12) {
+  transition-delay: 0.66s;
+}
+
+.now-loading .str-loading span:nth-child(13) {
+  transition-delay: 0.72s;
+}
+
 /* ----------------------------------------------
 ----------- transition animation ----------------
 ------------------------------------------------ */
@@ -133,5 +227,37 @@ export default {
 }
 .fade-enter-to {
   opacity: 1;
+}
+
+/*PC*/
+@media screen and (min-width: 1026px) {
+  .now-loading .str-loading {
+    font-size: 1.5em;
+    display: flex;
+    letter-spacing: 10px;
+    color: #5bbee4;
+    font-weight: 900;
+  }
+}
+/*タブレット*/
+@media screen and (min-width: 482px) and (max-width: 1025px) {
+  .now-loading .str-loading {
+    font-size: 1em;
+    display: flex;
+    letter-spacing: 10px;
+    color: #5bbee4;
+    font-weight: 900;
+  }
+}
+
+/*スマホ*/
+@media screen and (max-width: 481px) {
+  .now-loading .str-loading {
+    font-size: 0.5em;
+    display: flex;
+    letter-spacing: 5px;
+    color: #5bbee4;
+    font-weight: 900;
+  }
 }
 </style>

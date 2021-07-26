@@ -2,11 +2,16 @@
   <footer class="footer">
     <div class="f-top">
       <ul class="f-links">
-      <li>
-        <router-link to="/#profile-contents" class="link" v-smooth-scroll="{ duration: 1000, offset: -50 }">PLOFILE</router-link>
-      </li>
-      <li>
-         <router-link
+        <li>
+          <router-link
+            to="/#profile-contents"
+            class="link"
+            v-smooth-scroll="{ duration: 1000, offset: -50 }"
+            >PLOFILE</router-link
+          >
+        </li>
+        <li>
+          <router-link
             v-bind:to="{
               name: 'Content',
               hash: '#work-contents',
@@ -16,20 +21,31 @@
             v-smooth-scroll="{ duration: 1000, offset: -50 }"
             >WORKS</router-link
           >
-      </li>
-      <li>
-          <router-link to="/contact#c-box" class="link" v-smooth-scroll="{ duration: 1000, offset: -50 }">CONTACT</router-link>
-      </li>
-    </ul>
+        </li>
+        <li>
+          <router-link
+            to="/contact#c-box"
+            class="link"
+            v-smooth-scroll="{ duration: 1000, offset: -50 }"
+            >CONTACT</router-link
+          >
+        </li>
+      </ul>
       <section class="share-sns-area">
-        <label for="share" style="font-size: 1.2em;letter-spacing: 1px;">SHARE</label>
+        <label for="share" style="font-size: 1.2em;letter-spacing: 1px;"
+          >SHARE</label
+        >
         <ShareTwitter color="black" />
         <ShareFacebook color="black" />
       </section>
     </div>
 
     <div class="f-under">
-      <small><a href="https://watataku-portfolio.web.app" target="_blank">&copy; 2021 Watataku. </a></small>
+      <small
+        ><a href="https://watataku-portfolio.web.app" target="_blank"
+          >&copy; 2021 Watataku.
+        </a></small
+      >
     </div>
   </footer>
 </template>
@@ -40,9 +56,9 @@ import ShareFacebook from "./ShareFacebook.vue";
 export default {
   components: {
     ShareTwitter,
-    ShareFacebook
-  }
-}
+    ShareFacebook,
+  },
+};
 </script>
 
 <style scoped>
@@ -69,19 +85,35 @@ label {
   align-items: center;
 }
 
-.f-top{
+.f-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.f-links a{
+.f-links a {
   font-size: 1.35em;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
   color: #fff;
+  text-decoration: none;
 }
 
-.f-links a:hover{
-  border-bottom: solid 1px #fff;
+.f-links a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #fff;
+  transform: translate(-100%, 0);
+  transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s;
+  content: "";
+}
+
+.f-links a:hover:after {
+  transform: translate(0, 0);
 }
 
 .f-under a {
@@ -93,7 +125,7 @@ label {
 /*PC*/
 @media screen and (min-width: 1026px) {
   .share-sns-area {
-    box-shadow: -29px 21px 46px -11px rgba(0,0,0,0.6);
+    box-shadow: -29px 21px 46px -11px rgba(0, 0, 0, 0.6);
     width: 15%;
     height: 100px;
     padding: 1.5%;
@@ -113,7 +145,7 @@ label {
 /*タブレット*/
 @media screen and (min-width: 482px) and (max-width: 1025px) {
   .share-sns-area {
-    box-shadow: -29px 21px 46px -11px rgba(0,0,0,0.6);
+    box-shadow: -29px 21px 46px -11px rgba(0, 0, 0, 0.6);
     width: 23%;
     height: 100px;
     padding: 1.5%;
@@ -133,7 +165,7 @@ label {
 /*スマホ*/
 @media screen and (max-width: 481px) {
   .share-sns-area {
-    box-shadow: -29px 21px 46px -11px rgba(0,0,0,0.6);
+    box-shadow: -29px 21px 46px -11px rgba(0, 0, 0, 0.6);
     height: 100px;
     padding: 1.5%;
     border-radius: 15px;
