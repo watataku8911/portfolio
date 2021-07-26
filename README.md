@@ -2,12 +2,8 @@
 
 > my portfolio site✌️
 
-<<<<<<< HEAD
-[https://watataku-portfolio.web.app/](https://watataku-portfolio.web.app/)
-=======
 - [https://watataku-portfolio.web.app/](https://watataku-portfolio.web.app/)
 - [Qiita-解説記事](https://qiita.com/watataku8911/items/bb68616a11824345675d)
->>>>>>> efb69a34bce390237ce5a51ff95774032160853f
 
 ## Technology used
 
