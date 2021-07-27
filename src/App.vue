@@ -67,8 +67,8 @@ export default {
       this.isActive = true;
       setTimeout(() => {
         this.isActive = false;
-      }, 2500);
-    }, 3700);
+      }, 1200);
+    }, 2700);
   },
 
   methods: {
