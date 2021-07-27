@@ -152,7 +152,7 @@ export default {
 
 .now-loading {
   position: absolute;
-  right: 3vw;
+  right: 1vw;
   bottom: 0.5vh;
 }
 
@@ -232,9 +232,9 @@ export default {
 /*PC*/
 @media screen and (min-width: 1026px) {
   .now-loading .str-loading {
-    font-size: 1.5em;
+    font-size: 1.3em;
     display: flex;
-    letter-spacing: 10px;
+    letter-spacing: 3px;
     color: #5bbee4;
     font-weight: 900;
   }
