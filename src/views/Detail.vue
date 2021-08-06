@@ -24,6 +24,7 @@
         @close="closeModal"
       />
     </div>
+    <div class="module--spacing--verySmall"></div>
     <p v-show="isHide" class="link">
       <a v-bind:href="this.url" target="_blank" class="url">{{ this.url }}</a>
     </p>
@@ -197,13 +198,13 @@ export default {
   }
 
   .image_box {
-    height: 80vh;
+    height: 75vh;
   }
 
   .detail-work-img {
-    box-shadow: 11px 8px 10px 7px rgba(115, 112, 112, 0.6);
-    max-width: 100%;
-    height: 80vh;
+    box-shadow: 5px 3px 5px 2px rgba(115, 112, 112, 0.6);
+    max-width: 95%;
+    height: 75vh;
     border-radius: 5px;
     margin-bottom: 10px;
     object-fit: cover;
@@ -248,7 +249,7 @@ export default {
   }
 
   .detail-work-img {
-    box-shadow: 11px 12px 26px 7px rgba(115, 112, 112, 0.6);
+    box-shadow: 5px 3px 5px 2px rgba(115, 112, 112, 0.6);
     max-width: 90%;
     height: calc(40vw + 15vh);
     border-radius: 5px;
@@ -296,7 +297,7 @@ export default {
   }
 
   .detail-work-img {
-    box-shadow: 11px 12px 26px 7px rgba(115, 112, 112, 0.6);
+    box-shadow: 5px 3px 5px 2px rgba(115, 112, 112, 0.6);
     max-width: 95%;
     height: 30vh;
     border-radius: 5px;
