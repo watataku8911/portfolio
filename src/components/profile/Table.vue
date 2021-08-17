@@ -54,10 +54,6 @@
         </td>
       </tr>
       <tr>
-        <th>勉強中</th>
-        <td class="studing">WEBデザイン, モダンなWEB技術</td>
-      </tr>
-      <tr>
         <th>資格</th>
         <td>
           webデザイナー検定 ベーシック
