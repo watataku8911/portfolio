@@ -50,14 +50,12 @@
               Storage, Cloud Functions, Hosting)
             </li>
             <li class="li">RDB(MySQL)</li>
-            <br />
-            <li class="li">Vue.js/Firebaseの開発が得意。</li>
           </ul>
         </td>
       </tr>
       <tr>
         <th>勉強中</th>
-        <td class="studing">WEBデザイン, UI/UXデザイン, モダンなWEB技術</td>
+        <td class="studing">WEBデザイン, モダンなWEB技術</td>
       </tr>
       <tr>
         <th>資格</th>
@@ -86,6 +84,8 @@
 
 .li {
   list-style: square !important;
+  line-height: 2em;
+  letter-spacing: 0.1em;
 }
 
 .colorbox {
