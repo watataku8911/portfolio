@@ -14,10 +14,6 @@
         <td>WEB, 野球観戦, 坂道アイドル</td>
       </tr>
       <tr>
-        <th>好きな食べ物</th>
-        <td>ラーメンなどの麺系</td>
-      </tr>
-      <tr>
         <th>好きな色</th>
         <td style="display: flex; align-items: center;">
           #5bbee5
@@ -27,11 +23,11 @@
       <tr>
         <th>経歴</th>
         <td>
-          2019年にIT専門学校を卒業。その後、新卒でソフトウェア開発会社に入社するが病気が発覚し退社。
-          <br />
-          <br />
-          退社後,独学でプログラミングを勉強しつつ治療を行う。
-          <br />
+          <p v-for="item in careers" :key="item.id">
+            {{ item.career }}
+            <br />
+            <br />
+          </p>
           <br />
           <span class="finish">以上。</span>
         </td>
@@ -40,35 +36,41 @@
         <th>スキルセット</th>
         <td class="skil">
           <ul>
-            <li class="li">HTML5/CSS3</li>
-            <li class="li">
-              JavaScript(JQuery, Vue.js/Nuxt.js, React/Next.js)・TypeScript
+            <li class="li" v-for="item in skills" :key="item.id">
+              {{ item.skill }}
             </li>
-            <li class="li">PHP・Node.js</li>
-            <li class="li">
-              Firebase(Authencation, Cloud Firestore, Realtime Database,
-              Storage, Cloud Functions, Hosting)
-            </li>
-            <li class="li">RDB(MySQL)</li>
-            <br />
-            <li class="li">Vue.js/Firebaseの開発が得意。</li>
           </ul>
         </td>
       </tr>
       <tr>
-        <th>勉強中</th>
-        <td class="studing">WEBデザイン, UI/UXデザイン, モダンなWEB技術</td>
-      </tr>
-      <tr>
         <th>資格</th>
         <td>
-          webデザイナー検定 ベーシック
-          <br />情報活用試験１級 <br />システムエンジニア認定
+          <ul>
+            <li class="li" v-for="item in lisences" :key="item.id">
+              {{ item.lisence }}
+            </li>
+          </ul>
         </td>
       </tr>
     </tbody>
   </table>
 </template>
+
+<script>
+import careersData from "../../assets/data/career.json";
+import skillsData from "../../assets/data/skill.json";
+import lisencesData from "../../assets/data/lisence.json";
+
+export default {
+  data() {
+    return {
+      careers: careersData,
+      skills: skillsData,
+      lisences: lisencesData,
+    };
+  },
+};
+</script>
 
 <style>
 .table {
@@ -86,6 +88,8 @@
 
 .li {
   list-style: square !important;
+  line-height: 2em;
+  letter-spacing: 0.1em;
 }
 
 .colorbox {

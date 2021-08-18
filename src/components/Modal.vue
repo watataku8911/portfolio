@@ -49,7 +49,7 @@ export default {
   .panel img {
     object-fit: cover;
     height: 80vh;
-    transform: scale(1.2);
+    transform: scale(1);
   }
 }
 

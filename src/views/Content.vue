@@ -271,7 +271,7 @@ export default {
     width: calc(9vh + 12vw);
     height: 490px;
     border-radius: 89px 5px 87px 68px;
-    margin: 0% auto;
+    margin: 0 auto;
     transform: rotate(5deg);
   }
 
@@ -328,7 +328,7 @@ export default {
     width: calc(3vh + 16.5vw);
     height: calc(30vw + 45px);
     border-radius: 89px 5px 87px 68px;
-    margin: 0% auto;
+    margin: 0 auto;
     transform: rotate(5deg);
   }
 
@@ -385,6 +385,7 @@ export default {
     transform: rotate(5deg);
     width: 90%;
     height: 260px;
+    margin: 0 auto;
     border-radius: 89px 5px 87px 68px;
   }
 

@@ -1,0 +1,22 @@
+[
+  {
+    "id": 0,
+    "skill": "HTML5/CSS3"
+  },
+  {
+    "id": 1,
+    "skill": "JavaScript(JQuery, Vue.js/Nuxt.js, React/Next.js)・TypeScript"
+  },
+  {
+    "id": 2,
+    "skill": "PHP・Node.js"
+  },
+  {
+    "id": 3,
+    "skill": "Firebase(Authencation, Cloud Firestore, Realtime Database, Storage, Cloud Functions, Hosting)"
+  },
+  {
+    "id": 4,
+    "skill": "RDB(MySQL)"
+  }
+]

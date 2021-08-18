@@ -67,8 +67,8 @@ export default {
       this.isActive = true;
       setTimeout(() => {
         this.isActive = false;
-      }, 2500);
-    }, 3700);
+      }, 1200);
+    }, 2700);
   },
 
   methods: {
@@ -77,7 +77,6 @@ export default {
         document.title = to.meta.title;
       }
     },
-
     //メインイメージの読み込み完了時に呼ばれるメソッド
     imageLoadFinish(finish) {
       this.image = finish;
@@ -91,6 +90,7 @@ export default {
       }, 1200);
     },
   },
+
   watch: {
     $route(to) {
       this.setMeta(to);
@@ -152,13 +152,13 @@ export default {
 
 .now-loading {
   position: absolute;
-  right: 3vw;
+  right: 1vw;
   bottom: 0.5vh;
 }
 
 .now-loading .str-loading span {
   display: block;
-  transform: translate(0, -35.5%);
+  transform: translate(0, -25.5%);
   transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
 }
 
@@ -207,11 +207,15 @@ export default {
 }
 
 .now-loading .str-loading span:nth-child(12) {
-  transition-delay: 0.66s;
+  transition-delay: 0.6s;
 }
 
 .now-loading .str-loading span:nth-child(13) {
-  transition-delay: 0.72s;
+  transition-delay: 0.75s;
+}
+
+.now-loading .str-loading span:nth-child(14) {
+  transition-delay: 0.85s;
 }
 
 /* ----------------------------------------------
@@ -232,9 +236,9 @@ export default {
 /*PC*/
 @media screen and (min-width: 1026px) {
   .now-loading .str-loading {
-    font-size: 1.5em;
+    font-size: 1.3em;
     display: flex;
-    letter-spacing: 10px;
+    letter-spacing: 3px;
     color: #5bbee4;
     font-weight: 900;
   }

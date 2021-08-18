@@ -118,7 +118,7 @@ export default {
   }
 
   .categories .category {
-    font-size: 2.2em;
+    font-size: 3vw;
     font-weight: bold;
     color: #000;
     letter-spacing: 2px;
@@ -131,7 +131,7 @@ export default {
   }
 
   .categories ul li {
-    font-size: 1.5em;
+    font-size: 2vw;
     line-height: calc(2.5vh + 2.5vw);
   }
 

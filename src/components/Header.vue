@@ -17,13 +17,15 @@ export default {
   },
   mounted() {
     window.onload = () => {
-      imagesLoaded(
-        document.getElementsByClassName("main_image"),
-        { background: true },
-        () => {
-          this.$emit("image-load-finish", "complete");
-        }
-      );
+      setTimeout(() => {
+        imagesLoaded(
+          document.getElementsByClassName("main_image"),
+          { background: true },
+          () => {
+            this.$emit("image-load-finish", "complete");
+          }
+        );
+      }, 500);
     };
   },
 };
