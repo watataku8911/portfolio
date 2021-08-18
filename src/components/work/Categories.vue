@@ -1,5 +1,4 @@
 <template>
-  <!-------- div.categories -------->
   <div
     class="categories"
     v-on:mouseover="mouseover"
@@ -22,7 +21,6 @@
       </li>
     </ul>
   </div>
-  <!---- /div.categories ------->
 </template>
 <script>
 import { db } from "../../firebase/index";

@@ -39,6 +39,10 @@
             <li class="li" v-for="item in skills" :key="item.id">
               {{ item.skill }}
             </li>
+<<<<<<< HEAD
+=======
+            <li class="li">RDB(MySQL)</li>
+>>>>>>> 470a690a4305df659e10a74e491ad00be11c040d
           </ul>
         </td>
       </tr>
