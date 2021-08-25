@@ -27,8 +27,8 @@
 - heroku
 
 <hr>
+
 # Notes for myself
-## package
 
 ```
 $ npm install materialize-css vue-paginate vue-spiner vue-smooth-scroll register-service-worker firebase imagesloaded
