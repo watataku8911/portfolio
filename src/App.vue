@@ -3,24 +3,6 @@
     <div class="opning" v-show="loading">
       <div class="bar" v-if="bar"></div>
       <p class="line-1">Watataku's</p>
-      <div class="now-loading">
-        <p class="str-loading" :class="{ visible: isActive }">
-          <span>N</span>
-          <span>o</span>
-          <span>w</span>
-          <span>&nbsp;</span>
-          <span>L</span>
-          <span>o</span>
-          <span>a</span>
-          <span>d</span>
-          <span>i</span>
-          <span>n</span>
-          <span>g</span>
-          <span>.</span>
-          <span>.</span>
-          <span>.</span>
-        </p>
-      </div>
     </div>
 
     <!--  これがサイトのメイン -->
@@ -57,18 +39,8 @@ export default {
     return {
       loading: true,
       bar: false,
-      isActive: false,
       image: "stand-by",
     };
-  },
-
-  mounted() {
-    setInterval(() => {
-      this.isActive = true;
-      setTimeout(() => {
-        this.isActive = false;
-      }, 1200);
-    }, 2700);
   },
 
   methods: {
@@ -148,74 +120,6 @@ export default {
   font-size: calc(4rem + ((1vw - 0.64rem) * 0.7143));
   letter-spacing: 2px;
   color: #555;
-}
-
-.now-loading {
-  position: absolute;
-  right: 1vw;
-  bottom: 0.5vh;
-}
-
-.now-loading .str-loading span {
-  display: block;
-  transform: translate(0, -25.5%);
-  transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
-}
-
-.now-loading .str-loading.visible span {
-  transform: translate(0, 0);
-}
-
-.now-loading .str-loading span:nth-child(2) {
-  transition-delay: 0.06s;
-}
-
-.now-loading .str-loading span:nth-child(3) {
-  transition-delay: 0.12s;
-}
-
-.now-loading .str-loading span:nth-child(4) {
-  transition-delay: 0.18s;
-}
-
-.now-loading .str-loading span:nth-child(5) {
-  transition-delay: 0.24s;
-}
-
-.now-loading .str-loading span:nth-child(6) {
-  transition-delay: 0.3s;
-}
-
-.now-loading .str-loading span:nth-child(7) {
-  transition-delay: 0.36s;
-}
-
-.now-loading .str-loading span:nth-child(8) {
-  transition-delay: 0.42s;
-}
-
-.now-loading .str-loading span:nth-child(9) {
-  transition-delay: 0.48s;
-}
-
-.now-loading .str-loading span:nth-child(10) {
-  transition-delay: 0.54s;
-}
-
-.now-loading .str-loading span:nth-child(11) {
-  transition-delay: 0.6s;
-}
-
-.now-loading .str-loading span:nth-child(12) {
-  transition-delay: 0.6s;
-}
-
-.now-loading .str-loading span:nth-child(13) {
-  transition-delay: 0.75s;
-}
-
-.now-loading .str-loading span:nth-child(14) {
-  transition-delay: 0.85s;
 }
 
 /* ----------------------------------------------
