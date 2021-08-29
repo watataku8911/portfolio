@@ -1,23 +1,25 @@
 <template>
   <div id="app">
-    <div id="topLoading" :class="{ active: isActive }">
-      <div class="topLoading-mask">
-        <div class="bar" v-if="bar"></div>
-        <p class="line-1">Watataku's</p>
-      </div>
+    <div class="opning" v-show="loading">
+      <div class="bar" v-if="bar"></div>
+      <p class="line-1">Watataku's</p>
     </div>
 
     <!--  これがサイトのメイン -->
-    <div class="module--spacing--large"></div>
-    <Header v-on:image-load-finish="imageLoadFinish" />
-    <div class="module--spacing--veryLarge"></div>
-    <div class="module--spacing--small"></div>
-    <main class="site-main">
-      <router-view />
-    </main>
-    <div class="module--spacing--large"></div>
-    <div class="module--spacing--large"></div>
-    <Footer />
+    <transition name="fade">
+      <div v-show="!loading">
+        <div class="module--spacing--large"></div>
+        <Header v-on:image-load-finish="imageLoadFinish" />
+        <div class="module--spacing--veryLarge"></div>
+        <div class="module--spacing--small"></div>
+        <main class="site-main">
+          <router-view />
+        </main>
+        <div class="module--spacing--large"></div>
+        <div class="module--spacing--large"></div>
+        <Footer />
+      </div>
+    </transition>
     <!-- /これがサイトのメイン -->
   </div>
 </template>
@@ -38,7 +40,6 @@ export default {
       loading: true,
       bar: false,
       image: "stand-by",
-      isActive: false,
     };
   },
 
@@ -66,12 +67,6 @@ export default {
     $route(to) {
       this.setMeta(to);
     },
-
-    loading() {
-      if (!this.loading) {
-        this.isActive = true;
-      }
-    },
   },
 };
 </script>
@@ -91,33 +86,11 @@ export default {
   width: 100%;
 }
 
-#topLoading {
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  min-width: 1240px;
-  min-height: 640px;
-  z-index: 10000;
-}
-
-.topLoading-mask {
-  content: "";
+.opning {
+  position: relative;
+  background-color: #fff;
   width: 100%;
   height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: #fff;
-  -webkit-mask: url(/img/btn_sprite.png);
-  mask: url(/img/btn_sprite.webp);
-  -webkit-mask-size: 2300% 100%;
-  mask-size: 2300% 100%;
-}
-
-#topLoading.active .topLoading-mask {
-  animation: ani 1s steps(22) 0.3s both;
 }
 
 .bar {
@@ -126,6 +99,15 @@ export default {
   background: linear-gradient(to right, #5bbee4 0%, #52eac1 100%);
   position: absolute;
   top: 0;
+}
+
+@keyframes typewriter {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
 }
 
 .line-1 {
@@ -140,26 +122,18 @@ export default {
   color: #555;
 }
 
-/* --------------------------------------------------------------------------------------------------------------
----------------------------------------------- アニメーション設定 ----------------------------------------------------
----------------------------------------------------------------------------------------------------------------- */
-@keyframes ani {
-  from {
-    -webkit-mask-position: 0 0;
-    mask-position: 0 0;
-  }
-  to {
-    -webkit-mask-position: 100% 0;
-    mask-position: 100% 0;
-  }
+/* ----------------------------------------------
+----------- transition animation ----------------
+------------------------------------------------ */
+.fade-leave-active,
+.fade-enter-active {
+  transition: opacity 0.5s;
 }
 
-@keyframes typewriter {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 100%;
-  }
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-to {
+  opacity: 1;
 }
 </style>
