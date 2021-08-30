@@ -1,31 +1,14 @@
 <template>
   <div id="app">
-    <div class="opning" v-show="loading">
-      <div class="bar" v-if="bar"></div>
-      <p class="line-1">Watataku's</p>
-      <div class="now-loading">
-        <p class="str-loading" :class="{ visible: isActive }">
-          <span>N</span>
-          <span>o</span>
-          <span>w</span>
-          <span>&nbsp;</span>
-          <span>L</span>
-          <span>o</span>
-          <span>a</span>
-          <span>d</span>
-          <span>i</span>
-          <span>n</span>
-          <span>g</span>
-          <span>.</span>
-          <span>.</span>
-          <span>.</span>
-        </p>
+    <div id="topLoading" :class="{ active: isActive }" v-show="isShow">
+      <div class="topLoading-mask">
+        <div class="bar" v-if="bar"></div>
+        <p class="line-1">Watataku's</p>
       </div>
     </div>
-
-    <!--  これがサイトのメイン -->
     <transition name="fade">
-      <div v-show="!loading">
+      <div v-show="isActive">
+        <!--  これがサイトのメイン -->
         <div class="module--spacing--large"></div>
         <Header v-on:image-load-finish="imageLoadFinish" />
         <div class="module--spacing--veryLarge"></div>
@@ -36,9 +19,9 @@
         <div class="module--spacing--large"></div>
         <div class="module--spacing--large"></div>
         <Footer />
+        <!-- /これがサイトのメイン -->
       </div>
     </transition>
-    <!-- /これがサイトのメイン -->
   </div>
 </template>
 
@@ -57,18 +40,14 @@ export default {
     return {
       loading: true,
       bar: false,
-      isActive: false,
       image: "stand-by",
+      isActive: false,
+      isShow: true,
     };
   },
 
   mounted() {
-    setInterval(() => {
-      this.isActive = true;
-      setTimeout(() => {
-        this.isActive = false;
-      }, 1200);
-    }, 2700);
+    this.no_scroll();
   },
 
   methods: {
@@ -82,6 +61,8 @@ export default {
       this.image = finish;
       this.bar = true;
       setTimeout(() => {
+        this.isActive = true;
+        this.ok_scroll();
         if (this.image == "complete") {
           this.loading = false;
         } else {
@@ -89,11 +70,40 @@ export default {
         }
       }, 1200);
     },
+    // スクロール禁止
+    no_scroll() {
+      document.addEventListener("mousewheel", this.scroll_control, {
+        passive: false,
+      });
+      document.addEventListener("touchmove", this.scroll_control, {
+        passive: false,
+      });
+    },
+    // スクロール禁止解除
+    ok_scroll() {
+      document.removeEventListener("mousewheel", this.scroll_control, {
+        passive: false,
+      });
+      document.removeEventListener("touchmove", this.scroll_control, {
+        passive: false,
+      });
+    },
+    // スクロール関連メソッド
+    scroll_control(event) {
+      event.preventDefault();
+    },
   },
 
   watch: {
     $route(to) {
       this.setMeta(to);
+    },
+
+    // "active"クラスがつくと走る処理
+    isActive() {
+      setTimeout(() => {
+        this.isShow = false;
+      }, 800);
     },
   },
 };
@@ -114,11 +124,31 @@ export default {
   width: 100%;
 }
 
-.opning {
-  position: relative;
-  background-color: #fff;
+#topLoading {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 1;
+}
+
+.topLoading-mask {
+  content: "";
   width: 100%;
   height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fff;
+  -webkit-mask: url(/img/btn_sprite.png);
+  mask: url(/img/btn_sprite.webp);
+  -webkit-mask-size: 2300% 100%;
+  mask-size: 2300% 100%;
+}
+
+#topLoading.active .topLoading-mask {
+  animation: ani 0.8s steps(22) 0.3s both;
 }
 
 .bar {
@@ -127,15 +157,6 @@ export default {
   background: linear-gradient(to right, #5bbee4 0%, #52eac1 100%);
   position: absolute;
   top: 0;
-}
-
-@keyframes typewriter {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 100%;
-  }
 }
 
 .line-1 {
@@ -150,118 +171,40 @@ export default {
   color: #555;
 }
 
-.now-loading {
-  position: absolute;
-  right: 1vw;
-  bottom: 0.5vh;
+/* --------------------------------------------------------------------------------------------------------------
+---------------------------------------------- アニメーション設定 ----------------------------------------------------
+---------------------------------------------------------------------------------------------------------------- */
+@keyframes ani {
+  from {
+    -webkit-mask-position: 0 0;
+    mask-position: 0 0;
+  }
+  to {
+    -webkit-mask-position: 100% 0;
+    mask-position: 100% 0;
+  }
 }
 
-.now-loading .str-loading span {
-  display: block;
-  transform: translate(0, -25.5%);
-  transition: transform cubic-bezier(0.215, 0.61, 0.355, 1) 0.5s;
+@keyframes typewriter {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
 }
 
-.now-loading .str-loading.visible span {
-  transform: translate(0, 0);
-}
-
-.now-loading .str-loading span:nth-child(2) {
-  transition-delay: 0.06s;
-}
-
-.now-loading .str-loading span:nth-child(3) {
-  transition-delay: 0.12s;
-}
-
-.now-loading .str-loading span:nth-child(4) {
-  transition-delay: 0.18s;
-}
-
-.now-loading .str-loading span:nth-child(5) {
-  transition-delay: 0.24s;
-}
-
-.now-loading .str-loading span:nth-child(6) {
-  transition-delay: 0.3s;
-}
-
-.now-loading .str-loading span:nth-child(7) {
-  transition-delay: 0.36s;
-}
-
-.now-loading .str-loading span:nth-child(8) {
-  transition-delay: 0.42s;
-}
-
-.now-loading .str-loading span:nth-child(9) {
-  transition-delay: 0.48s;
-}
-
-.now-loading .str-loading span:nth-child(10) {
-  transition-delay: 0.54s;
-}
-
-.now-loading .str-loading span:nth-child(11) {
-  transition-delay: 0.6s;
-}
-
-.now-loading .str-loading span:nth-child(12) {
-  transition-delay: 0.6s;
-}
-
-.now-loading .str-loading span:nth-child(13) {
-  transition-delay: 0.75s;
-}
-
-.now-loading .str-loading span:nth-child(14) {
-  transition-delay: 0.85s;
-}
-
-/* ----------------------------------------------
------------ transition animation ----------------
------------------------------------------------- */
+/* --------------------------------------------------------------------------------------------------------------------
+----------------------------------------------- transition animation ---------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------ */
 .fade-leave-active,
 .fade-enter-active {
-  transition: opacity 0.5s;
+  transition: opacity 1s;
 }
-
 .fade-enter {
   opacity: 0;
 }
 .fade-enter-to {
   opacity: 1;
-}
-
-/*PC*/
-@media screen and (min-width: 1026px) {
-  .now-loading .str-loading {
-    font-size: 1.3em;
-    display: flex;
-    letter-spacing: 3px;
-    color: #5bbee4;
-    font-weight: 900;
-  }
-}
-/*タブレット*/
-@media screen and (min-width: 482px) and (max-width: 1025px) {
-  .now-loading .str-loading {
-    font-size: 1em;
-    display: flex;
-    letter-spacing: 10px;
-    color: #5bbee4;
-    font-weight: 900;
-  }
-}
-
-/*スマホ*/
-@media screen and (max-width: 481px) {
-  .now-loading .str-loading {
-    font-size: 0.5em;
-    display: flex;
-    letter-spacing: 5px;
-    color: #5bbee4;
-    font-weight: 900;
-  }
 }
 </style>

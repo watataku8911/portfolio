@@ -16,7 +16,7 @@
       </a>
     </p>
     <CommutionError v-show="isCommunicationError" v-on:reLoad="reLoad" />
-    <div class="module--spacing--small"></div>
+    <div class="module--spacing--large"></div>
     <pulse-loader :loading="isLoading"></pulse-loader>
   </article>
 </template>
