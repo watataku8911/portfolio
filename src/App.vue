@@ -6,6 +6,7 @@
         <p class="line-1">Watataku's</p>
       </div>
     </div>
+    
     <transition name="fade">
       <div v-show="isActive">
         <!--  これがサイトのメイン -->
@@ -45,11 +46,11 @@ export default {
       isShow: true,
     };
   },
-
+  
   mounted() {
     this.no_scroll();
   },
-
+  
   methods: {
     setMeta(to) {
       if (to.meta.title) {
@@ -197,6 +198,7 @@ export default {
 /* --------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------- transition animation ---------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------ */
+
 .fade-leave-active,
 .fade-enter-active {
   transition: opacity 1s;
