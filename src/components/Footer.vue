@@ -67,6 +67,7 @@ label {
 }
 
 .footer {
+  z-index: 999;
   background-color: #5bbee5;
   height: 350px;
 }
