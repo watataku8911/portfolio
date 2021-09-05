@@ -1,20 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-p {
-  font-family: "M PLUS 1p", sans-serif;
-  font-size: calc(112.5% + 0.25vw);
-}
-
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  text-align: center;
-  width: 100%;
-}
-
 /* ----------------------------------------------
 ----------------module--spacing----------------
 ----------------------------------------------------- */
@@ -32,17 +15,4 @@ p {
 
 .module--spacing--veryLarge {
   height: 40px;
-}
-
-/* ----------------------------------------------------
-----------------------loading---------------------
------------------------------------------------------ */
-.load {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 1000;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
 }

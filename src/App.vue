@@ -3,7 +3,9 @@
     <div id="topLoading" :class="{ active: isActive }" v-show="isShow">
       <div class="topLoading-mask">
         <div class="bar" v-if="bar"></div>
-        <p class="line-1">Watataku's</p>
+        <p class="line-1">
+          <img src="@/assets/watataku.png" alt="Watataku's" />
+        </p>
       </div>
     </div>
     <transition name="fade">
@@ -38,7 +40,6 @@ export default {
 
   data() {
     return {
-      loading: true,
       bar: false,
       image: "stand-by",
       isActive: false,
@@ -61,12 +62,12 @@ export default {
       this.image = finish;
       this.bar = true;
       setTimeout(() => {
-        this.isActive = true;
-        this.ok_scroll();
         if (this.image == "complete") {
-          this.loading = false;
+          this.isActive = true;
+          this.ok_scroll();
         } else {
-          this.loading = true;
+          this.isActive = false;
+          this.no_scroll();
         }
       }, 1200);
     },
@@ -99,7 +100,7 @@ export default {
       this.setMeta(to);
     },
 
-    // "active"クラスがつくと走る処理
+    //"active"クラスがつくと走る処理
     isActive() {
       setTimeout(() => {
         this.isShow = false;
@@ -110,8 +111,6 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Bad+Script&display=swap");
-
 * {
   margin: 0;
   padding: 0;
@@ -130,7 +129,7 @@ export default {
   top: 0px;
   right: 0px;
   bottom: 0px;
-  z-index: 1;
+  z-index: 999;
 }
 
 .topLoading-mask {
@@ -164,11 +163,10 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition: all 300ms ease-in-out;
-  font-family: "Bad Script", cursive;
-  font-size: calc(4rem + ((1vw - 0.64rem) * 0.7143));
-  letter-spacing: 2px;
-  color: #555;
+}
+
+.line-1 img {
+  height: calc(9vh + 9vw);
 }
 
 /* --------------------------------------------------------------------------------------------------------------
