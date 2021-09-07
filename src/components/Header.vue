@@ -30,9 +30,8 @@ export default {
   },
 };
 </script>
-<style>
-@import url("https://fonts.googleapis.com/css2?family=Bad+Script&display=swap");
 
+<style>
 .pic_down {
   text-align: -webkit-center;
   animation-name: picdown;

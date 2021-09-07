@@ -3,12 +3,9 @@
     <div id="topLoading" :class="{ active: isActive }" v-show="isShow">
       <div class="topLoading-mask">
         <div class="bar" v-if="bar"></div>
-        <p class="line-1">
-          <img src="@/assets/watataku.png" alt="Watataku's" />
-        </p>
+        <p class="line-1">Watataku's</p>
       </div>
     </div>
-    
     <transition name="fade">
       <div v-show="isActive">
         <!--  これがサイトのメイン -->
@@ -47,11 +44,11 @@ export default {
       isShow: true,
     };
   },
-  
+
   mounted() {
     this.no_scroll();
   },
-  
+
   methods: {
     setMeta(to) {
       if (to.meta.title) {
@@ -164,10 +161,10 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-.line-1 img {
-  height: calc(9vh + 9vw);
+  font-family: "Bad Script", cursive;
+  font-size: calc(4rem + ((1vw - 0.64rem) * 0.7143));
+  letter-spacing: 2px;
+  color: #555;
 }
 
 /* --------------------------------------------------------------------------------------------------------------
@@ -196,7 +193,6 @@ export default {
 /* --------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------- transition animation ---------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------ */
-
 .fade-leave-active,
 .fade-enter-active {
   transition: opacity 1s;
