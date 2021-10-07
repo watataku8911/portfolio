@@ -6,9 +6,10 @@
         <p class="line-1">Watataku's</p>
       </div>
     </div>
+
+    <!--  これがサイトのメイン -->
     <transition name="fade">
       <div v-show="isActive">
-        <!--  これがサイトのメイン -->
         <div class="module--spacing--large"></div>
         <Header v-on:image-load-finish="imageLoadFinish" />
         <div class="module--spacing--veryLarge"></div>
@@ -19,9 +20,9 @@
         <div class="module--spacing--large"></div>
         <div class="module--spacing--large"></div>
         <Footer />
-        <!-- /これがサイトのメイン -->
       </div>
     </transition>
+    <!-- /これがサイトのメイン -->
   </div>
 </template>
 
