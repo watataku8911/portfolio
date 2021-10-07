@@ -43,6 +43,12 @@
         </td>
       </tr>
       <tr>
+        <th>勉強中のスキル</th>
+        <td>
+          モダンなWEB開発、WEBデザイン
+        </td>
+      </tr>
+      <tr>
         <th>資格</th>
         <td>
           <ul>

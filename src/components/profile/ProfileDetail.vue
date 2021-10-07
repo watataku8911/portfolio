@@ -19,21 +19,33 @@
       </div>
 
       <!-- <div class="right">
-        <p class="message">
+        <p class="message" style="text-align: left">
           初めまして。この度は「Watataku's」をご覧いただき誠にありがとうございます。フロントエンドエンジニアのWatatakuです。
-          <br />こちらのサイトはフロントエンドエンジニアの<span>Watataku</span>が個人開発・運営しています。
-          誰しもが<i style="font-weight: bold">「使いやすく、見やすく、多種多様のデバイスから見てもデザイン崩れのないページ・アプリ開発」</i>を心がけています。
-          <br />お仕事のご相談やその他感想などがございましたら、
-          <router-link to="/contact#c-box" v-smooth-scroll="{ duration: 1000, offset: -50 }>こちら</router-link>からお願いします。
+          <br />
+          <br />
+          <i style="font-weight: bold"
+            >「使いやすく、見やすい多種多様のデバイスから見てもデザイン崩れのないページ・アプリ開発」</i
+          >を心がけています。
+          <br />
+          <br />
+          お仕事のご相談やその他感想などがございましたら、
+          <router-link
+            to="/contact#c-box"
+            v-smooth-scroll="{ duration: 1000, offset: -50 }"
+            >こちら</router-link
+          >からお願いします。
         </p>
       </div> -->
+
       <div class="right">
-        <p class="message">
+        <p class="message" style="text-align: left">
           はじめまして。この度は「Watataku's」をご覧いただき誠にありがとうございます。<br />
-          こちらのサイトはマークアップエンジニア/フロントエンドエンジニア志望のWatatakuが制作したページです。<br />
-          誰しもが<i style="font-weight: bold"
-            >「使いやすく、見やすく、多種多様のデバイスから見てもデザイン崩れのないページ・アプリ開発」</i
-          >を心がけています。よろしくお願いします。
+          こちらのサイトはマークアップエンジニア/フロントエンドエンジニア志望のWatatakuのページです。<br />
+          <br />
+          サイト制作では<i style="font-weight:600">「デザイン崩れ」</i
+          >がないサイト制作を目指し、アプリ開発では<i style="font-weight:600"
+            >「バグがなく、操作性に優れた」</i
+          >アプリケーション開発を目指しています。よろしくお願いします。
         </p>
       </div>
     </div>
