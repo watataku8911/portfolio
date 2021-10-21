@@ -18,35 +18,26 @@
         <p class="name">Watataku</p>
       </div>
 
-      <!-- <div class="right">
-        <p class="message" style="text-align: left">
-          初めまして。この度は「Watataku's」をご覧いただき誠にありがとうございます。フロントエンドエンジニアのWatatakuです。
-          <br />
-          <br />
-          <i style="font-weight: bold"
-            >「使いやすく、見やすい多種多様のデバイスから見てもデザイン崩れのないページ・アプリ開発」</i
-          >を心がけています。
-          <br />
-          <br />
-          お仕事のご相談やその他感想などがございましたら、
-          <router-link
-            to="/contact#c-box"
-            v-smooth-scroll="{ duration: 1000, offset: -50 }"
-            >こちら</router-link
-          >からお願いします。
-        </p>
-      </div> -->
-
       <div class="right">
         <p class="message" style="text-align: left">
           はじめまして。この度は「Watataku's」をご覧いただき誠にありがとうございます。<br />
-          こちらのサイトはマークアップエンジニア/フロントエンドエンジニア志望のWatatakuのページです。<br />
+          こちらのサイトはマークアップエンジニア/フロントエンドエンジニア、Watatakuのホームページです。<br />
           <br />
           WEBサイト制作では<i style="font-weight:600">「デザイン崩れ」</i
           >がないサイト制作を目指し、アプリケーション開発では<i
             style="font-weight:600"
             >「バグがなく、UI/UXを意識した」</i
-          >アプリ開発を目指しています。よろしくお願いします。
+          >アプリケーション開発を目指しています。<br />
+          お仕事のご相談やその他感想などがございましたら、
+          <router-link
+            to="/contact#c-box"
+            v-smooth-scroll="{ duration: 1000, offset: -50 }"
+            >こちら</router-link
+          >または<router-link
+            to="/#sub_contents"
+            v-smooth-scroll="{ duration: 1000, offset: -50 }"
+            >Twitter/Instagram</router-link
+          >のDMまでお願いします
         </p>
       </div>
     </div>
