@@ -1,5 +1,5 @@
 <template>
-  <div class="sub_contents">
+  <div class="sub_contents" id="sub_contents">
     <div class="sns">
       <div class="sns-item" :style="styleTw">
         <div class="chip" v-show="this.isOpenChipTw">

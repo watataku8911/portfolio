@@ -1,5 +1,4 @@
 <template>
-  <!-------- div.categories -------->
   <div
     class="categories"
     v-on:mouseover="mouseover"
@@ -8,7 +7,19 @@
   >
     <a href="javascript:void[0]" class="category">Category</a>
     <ul v-if="isCategoryFlg">
-      <li v-for="item in this.categories" v-bind:key="item.category_id">
+      <li>
+        <router-link
+          v-bind:to="{
+            name: 'Content',
+            params: { page: 1, categoryId: 0 },
+            hash: '#work-contents',
+          }"
+          @click.native="click(0)"
+          v-smooth-scroll="{ duration: 1000, offset: -50 }"
+          >全て</router-link
+        >
+      </li>
+      <li v-for="item in this.categories" :key="item.category_id">
         <router-link
           v-bind:to="{
             name: 'Content',
@@ -22,7 +33,6 @@
       </li>
     </ul>
   </div>
-  <!---- /div.categories ------->
 </template>
 <script>
 import { db } from "../../firebase/index";
@@ -73,7 +83,6 @@ export default {
 /*PC*/
 @media screen and (min-width: 1026px) {
   .categories {
-    z-index: 1;
     position: absolute;
     top: 1vh;
     right: 1vw;
@@ -111,14 +120,13 @@ export default {
 /*タブレット*/
 @media screen and (min-width: 482px) and (max-width: 1025px) {
   .categories {
-    z-index: 1;
     position: absolute;
     top: 1vh;
     right: 1vh;
   }
 
   .categories .category {
-    font-size: 3vw;
+    font-size: calc(2em - 1vw);
     font-weight: bold;
     color: #000;
     letter-spacing: 2px;
@@ -131,8 +139,7 @@ export default {
   }
 
   .categories ul li {
-    font-size: 2vw;
-    line-height: calc(2.5vh + 2.5vw);
+    line-height: calc(0.8vh + 2.8vw);
   }
 
   .categories ul li a {
@@ -147,9 +154,9 @@ export default {
 /*スマホ*/
 @media screen and (max-width: 481px) {
   .categories {
-    z-index: 1;
     position: absolute;
-    right: 0;
+    top: 0;
+    right: 1vw;
   }
 
   .categories .category {

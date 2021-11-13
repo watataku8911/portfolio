@@ -11,7 +11,7 @@
       </tr>
       <tr>
         <th>好きなもの</th>
-        <td>WEB, 野球観戦, 坂道アイドル</td>
+        <td>野球観戦, 坂道アイドル etc...</td>
       </tr>
       <tr>
         <th>好きな色</th>
@@ -40,12 +40,6 @@
               {{ item.skill }}
             </li>
           </ul>
-        </td>
-      </tr>
-      <tr>
-        <th>勉強中のスキル</th>
-        <td>
-          モダンなWEB開発、WEBデザイン
         </td>
       </tr>
       <tr>
