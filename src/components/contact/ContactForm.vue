@@ -107,7 +107,58 @@ export default {
     };
   },
   methods: {
-    // fetchメソッドでフォームの内容をSlackのIncoming Webhook URL に送信する
+    submitForm() {
+      let flg = false;
+
+      // name error
+      if (this.firstName.length == 0) {
+        flg = true;
+        this.isName = true;
+      } else {
+        this.isName = false;
+      }
+      if (this.lastName.length == 0) {
+        flg = true;
+        this.isName = true;
+      } else {
+        this.isName = false;
+      }
+
+      // email error
+      if (this.email.length == 0) {
+        flg = true;
+        this.isEmptyEmail = true;
+        this.isValidEmail = false;
+      } else if (!this.validateEmailFormat(this.email)) {
+        flg = true;
+        this.isEmptyEmail = false;
+        this.isValidEmail = true;
+      } else {
+        this.isEmptyEmail = false;
+        this.isValidEmail = false;
+      }
+
+      // description error
+      if (this.description.length == 0) {
+        flg = true;
+        this.isEmptyDescription = true;
+      } else {
+        this.isEmptyDescription = false;
+      }
+
+      if (!flg) {
+        this.goSlack();
+      } else {
+        this.checked = false;
+      }
+    },
+
+    //メアド形式チェック
+    validateEmailFormat(email) {
+      const regex = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
+      return regex.test(email);
+    },
+
     goSlack() {
       this.isLoading = true;
 
@@ -139,58 +190,6 @@ export default {
         this.isLoading = false;
         this.checked = false;
       });
-    },
-
-    //メアド形式チェック
-    validateEmailFormat(email) {
-      const regex = /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/;
-      return regex.test(email);
-    },
-
-    // clickイベント
-    submitForm() {
-      let flg = false;
-
-      //name error
-      if (this.firstName.length == 0) {
-        flg = true;
-        this.isName = true;
-      } else {
-        this.isName = false;
-      }
-      if (this.lastName.length == 0) {
-        flg = true;
-        this.isName = true;
-      } else {
-        this.isName = false;
-      }
-
-      //email error
-      if (this.email.length == 0) {
-        flg = true;
-        this.isEmptyEmail = true;
-        this.isValidEmail = false;
-      } else if (!this.validateEmailFormat(this.email)) {
-        flg = true;
-        this.isEmptyEmail = false;
-        this.isValidEmail = true;
-      } else {
-        this.isEmptyEmail = false;
-        this.isValidEmail = false;
-      }
-
-      //description error
-      if (this.description.length == 0) {
-        flg = true;
-        this.isEmptyDescription = true;
-      } else {
-        this.isEmptyDescription = false;
-      }
-
-      if (!flg) {
-        //Slack送信処理
-        this.goSlack();
-      }
     },
   },
 };

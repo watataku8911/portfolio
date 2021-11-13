@@ -1,6 +1,5 @@
 <template>
   <section id="work-contents" class="work-contents">
-    <Categories ref="categories" v-on:categoryId="changeCategoryId" />
     <h2 class="work-title">WORKS</h2>
 
     <!-- 画面中央に出しているやつ(ローディングなど) -->
@@ -46,6 +45,7 @@
       </div>
       <!-- 実際のWORK出力 -->
     </div>
+    <Categories ref="categories" v-on:categoryId="changeCategoryId" />
     <paginate
       v-if="getPageCount > 1"
       v-show="isPaging"
@@ -67,7 +67,7 @@ import { db } from "../firebase/index";
 
 import Categories from "../components/work/Categories";
 import CommutionError from "../components/UIKit/CommutionError";
-import Loading from "../components/Loading.vue";
+import Loading from "../components/Loading";
 import PulseLoader from "vue-spinner/src/PulseLoader";
 
 export default {
@@ -297,7 +297,7 @@ export default {
   .work-contents {
     position: relative;
     border: 2px solid black;
-    width: 90%;
+    width: 92%;
     margin: 0 auto;
     height: calc(52vw + 34px);
     background-color: #cdebf7;
