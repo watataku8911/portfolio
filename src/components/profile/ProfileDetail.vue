@@ -19,7 +19,7 @@
       </div>
 
       <div class="right">
-        <p class="message" style="text-align: left">
+        <p class="message">
           はじめまして。この度は「Watataku's」をご覧いただき誠にありがとうございます。<br />
           こちらのサイトはマークアップエンジニア/フロントエンドエンジニア、Watatakuのホームページです。<br />
           <br />
@@ -98,6 +98,7 @@ export default {
 
   .right .message {
     font-size: calc(112.5% + 0.25vw);
+    text-align: left;
     line-height: 5vh;
     letter-spacing: 5px;
   }
@@ -107,13 +108,14 @@ export default {
 @media screen and (min-width: 482px) and (max-width: 1025px) {
   .profile-detail {
     overflow: hidden;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 
   .profile {
     font-weight: bold;
-    letter-spacing: 15px;
-    margin-left: 15px;
+    letter-spacing: 30px;
+    margin-left: 30px;
+    margin-bottom: 20px;
   }
 
   .right-left {
@@ -122,13 +124,9 @@ export default {
     justify-content: space-around;
   }
 
-  .left {
-    width: 35%;
-  }
-
   .left img {
-    width: 23vh;
-    height: 23vh;
+    width: 24vw;
+    height: 24vw;
     border-radius: 50%;
     box-shadow: 0px 0px 2px 1px #777;
     -moz-box-shadow: 0px 0px 2px 1px #777;
@@ -147,8 +145,9 @@ export default {
   }
 
   .right .message {
-    font-size: 1.3em;
-    line-height: 5vh;
+    text-align: left;
+    /* font-size: 1.2rem;
+    line-height: 5vw; */
     letter-spacing: 3px;
   }
 }
@@ -187,6 +186,7 @@ export default {
   }
 
   .right .message {
+    text-align: center;
     font-size: 18px;
     line-height: 30px;
     letter-spacing: 1px;

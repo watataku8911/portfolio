@@ -146,20 +146,20 @@ label {
 @media screen and (min-width: 482px) and (max-width: 1025px) {
   .share-sns-area {
     box-shadow: -29px 21px 46px -11px rgba(0, 0, 0, 0.6);
-    width: 23%;
+    width: 200px;
     height: 100px;
     padding: 1.5%;
     border-radius: 15px;
     background-color: #fff;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
   .f-links {
     display: flex;
     justify-content: space-around;
-    width: 40%;
+    width: 50%;
   }
 }
 /*スマホ*/

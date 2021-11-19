@@ -25,7 +25,7 @@ export default {
 
 <style>
 .communicationError {
-  font-size: 4vh;
+  font-size: 2.5em;
   letter-spacing: 1px;
 }
 </style>
