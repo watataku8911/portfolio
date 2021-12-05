@@ -2,9 +2,7 @@
   <div class="sub_contents" id="sub_contents">
     <div class="sns">
       <div class="sns-item" :style="styleTw">
-        <div class="chip" v-show="this.isOpenChipTw">
-          Follow me.
-        </div>
+        <Chip msg="Follow me." v-show="this.isOpenChipTw" />
         <a
           href="https://twitter.com/watataku8911"
           target="_blank"
@@ -16,9 +14,7 @@
         </a>
       </div>
       <div class="sns-item" :style="styleInst">
-        <div class="chip" v-show="this.isOpenChipInst">
-          Follow me.
-        </div>
+        <Chip msg="Follow me." v-show="this.isOpenChipInst" />
         <a
           href="https://www.instagram.com/watataku8911/"
           target="_blank"
@@ -30,9 +26,7 @@
         </a>
       </div>
       <div class="sns-item" :style="styleGit">
-        <div class="chip" v-show="this.isOpenChipGit">
-          Follow me.
-        </div>
+        <Chip msg="Follow me." v-show="this.isOpenChipGit" />
         <a
           href="https://github.com/watataku8911"
           target="_blank"
@@ -48,12 +42,14 @@
 </template>
 
 <script>
+import Chip from "../UIKit/Chip.vue";
 import IcoTw from "@/assets/icon/ico_tw.svg";
 import IcoInst from "@/assets/icon/ico_inst.svg";
 import GithubLogo from "@/assets/icon/github.logo.svg";
 
 export default {
   components: {
+    Chip,
     IcoTw,
     IcoInst,
     GithubLogo,
@@ -113,30 +109,11 @@ export default {
   border-radius: 50px 50px 0px 0px;
 }
 
-.chip {
-  position: relative;
-  top: -1.5vh;
-}
-
-.chip::before {
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  content: "";
-  width: 0px;
-  border-color: #e4e4e4;
-  border-style: solid;
-  border-width: 10px;
-  border-left-color: transparent;
-  border-bottom-color: transparent;
-  border-right-color: transparent;
-}
 /*PC*/
 @media screen and (min-width: 1026px) {
   .sns {
     display: flex;
-    height: 45vh;
+    height: 55vh;
     flex-flow: wrap;
     justify-content: space-around;
     align-items: center;
@@ -157,11 +134,15 @@ export default {
 /*スマホ*/
 @media screen and (max-width: 481px) {
   .sns {
-    display: flex;
     height: 30vh;
+    display: flex;
     flex-flow: wrap;
     justify-content: space-around;
     align-items: center;
+  }
+
+  .sns-item {
+    width: 120px;
   }
 }
 </style>
