@@ -134,7 +134,7 @@ export default {
   .just-minutes {
     font-family: "Kaushan Script", cursive;
     font-family: "Bad Script", cursive;
-    font-size: 5em;
+    font-size: 4em;
   }
 }
 /*スマホ*/
