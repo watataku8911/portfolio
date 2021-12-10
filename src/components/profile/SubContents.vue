@@ -113,7 +113,7 @@ export default {
 @media screen and (min-width: 1026px) {
   .sns {
     display: flex;
-    height: 55vh;
+    height: 65vh;
     flex-flow: wrap;
     justify-content: space-around;
     align-items: center;
@@ -124,7 +124,7 @@ export default {
 @media screen and (min-width: 482px) and (max-width: 1025px) {
   .sns {
     display: flex;
-    height: 35vw;
+    height: 42vw;
     flex-flow: wrap;
     justify-content: space-around;
     align-items: center;
@@ -134,7 +134,7 @@ export default {
 /*スマホ*/
 @media screen and (max-width: 481px) {
   .sns {
-    height: 30vh;
+    height: 35vh;
     display: flex;
     flex-flow: wrap;
     justify-content: space-around;
