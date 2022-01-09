@@ -21,18 +21,6 @@
         </td>
       </tr>
       <tr>
-        <th>経歴</th>
-        <td>
-          <p v-for="item in careers" :key="item.id">
-            {{ item.career }}
-            <br />
-            <br />
-          </p>
-          <br />
-          <span class="finish">以上。</span>
-        </td>
-      </tr>
-      <tr>
         <th>スキルセット</th>
         <td class="skil">
           <ul>
@@ -48,6 +36,22 @@
           <ul>
             <li class="li" v-for="item in lisences" :key="item.id">
               {{ item.lisence }}
+            </li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <th>タイムライン</th>
+        <td>
+          <ul class="timeline">
+            <li v-for="item in careers" :key="item.id">
+              <p class="timeline-date">{{ item.timeline_date }}</p>
+              <div class="timeline-content">
+                <h3>{{ item.timeline_title }}</h3>
+                <p>
+                  {{ item.timeline_content }}
+                </p>
+              </div>
             </li>
           </ul>
         </td>
@@ -99,9 +103,54 @@ export default {
   margin-left: 13px;
 }
 
+CSSResult Skip Results iframe EDIT ON .timeline {
+  list-style: none;
+}
+.timeline > li {
+  margin-bottom: 60px;
+}
+
+@media screen and (min-width: 1026px) {
+  .timeline > li {
+    overflow: hidden;
+    margin: 0;
+    position: relative;
+  }
+  .timeline-date {
+    width: 110px;
+    float: left;
+    margin-top: 20px;
+  }
+  .timeline-content {
+    width: 75%;
+    float: left;
+    border-left: 3px #5bbee5 solid;
+    padding-left: 30px;
+  }
+
+  .timeline-content h3 {
+    font-size: 22px;
+  }
+
+  .timeline-content:before {
+    content: "";
+    width: 12px;
+    height: 12px;
+    background: #5bbee5;
+    position: absolute;
+    left: 106px;
+    top: 24px;
+    border-radius: 100%;
+  }
+}
+
 @media screen and (min-width: 482px) and (max-width: 1025px) {
   th {
     width: 35%;
+  }
+
+  .timeline-content h3 {
+    font-size: 32px;
   }
 }
 
@@ -109,6 +158,10 @@ export default {
 @media screen and (max-width: 481px) {
   th {
     width: 45%;
+  }
+
+  .timeline-content h3 {
+    font-size: 22px;
   }
 }
 </style>

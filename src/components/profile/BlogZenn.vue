@@ -1,12 +1,10 @@
 <template>
   <article class="zenn">
     <ul v-for="blog in blogs" v-bind:key="blog.id">
-      <li>
-        <p class="zenn-title">
-          <a v-bind:href="blog.link" target="_blank" class="click">
-            {{ blog.title }}
-          </a>
-        </p>
+      <li class="zenn-title">
+        <a v-bind:href="blog.link" target="_blank" class="click">
+          {{ blog.title }} ↗︎
+        </a>
       </li>
     </ul>
     <div class="module--spacing--small"></div>
@@ -134,7 +132,7 @@ export default {
   .just-minutes {
     font-family: "Kaushan Script", cursive;
     font-family: "Bad Script", cursive;
-    font-size: 5em;
+    font-size: 4em;
   }
 }
 /*スマホ*/

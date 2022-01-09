@@ -37,6 +37,14 @@
               >CONTACT</router-link
             >
           </li>
+          <li>
+            <router-link
+              to="/#blog"
+              @click.native="naviClose()"
+              v-smooth-scroll="{ duration: 1000, offset: -50 }"
+              >TECHBLOG</router-link
+            >
+          </li>
         </ul>
         <section class="navi-share-sns-area">
           <ShareTwitter color="white" />
@@ -65,42 +73,12 @@ export default {
   },
   methods: {
     naviOpen() {
-      this.no_scroll();
-
       this.active = !this.active;
       this.navi = !this.navi;
-
-      if (!this.active && !this.navi) {
-        this.ok_scroll();
-      }
     },
     naviClose() {
-      this.ok_scroll();
-
       this.active = false;
       this.navi = false;
-    },
-    // スクロール禁止
-    no_scroll() {
-      document.addEventListener("mousewheel", this.scroll_control, {
-        passive: false,
-      });
-      document.addEventListener("touchmove", this.scroll_control, {
-        passive: false,
-      });
-    },
-    // スクロール禁止解除
-    ok_scroll() {
-      document.removeEventListener("mousewheel", this.scroll_control, {
-        passive: false,
-      });
-      document.removeEventListener("touchmove", this.scroll_control, {
-        passive: false,
-      });
-    },
-    // スクロール関連メソッド
-    scroll_control(event) {
-      event.preventDefault();
     },
   },
 };

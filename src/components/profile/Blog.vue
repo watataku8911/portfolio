@@ -1,6 +1,6 @@
 <template>
-  <div class="blog">
-    <h2 class="b-new-article">最新記事</h2>
+  <div class="blog" id="blog">
+    <h2 class="b-new-article">ブログ記事</h2>
     <h3 class="article-h3">- Qiita</h3>
     <BlogQiita />
     <h3 class="article-h3">- Zenn</h3>
