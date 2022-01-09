@@ -30,6 +30,14 @@
             >CONTACT</router-link
           >
         </li>
+        <li>
+          <router-link
+            to="/#blog"
+            class="link"
+            v-smooth-scroll="{ duration: 1000, offset: -50 }"
+            >TECHBLOG</router-link
+          >
+        </li>
       </ul>
       <section class="share-sns-area">
         <label for="share" style="font-size: 1.2em;letter-spacing: 1px;"
@@ -91,15 +99,6 @@ label {
   align-items: center;
 }
 
-.f-links a {
-  font-size: 1.35em;
-  display: inline-block;
-  position: relative;
-  overflow: hidden;
-  color: #fff;
-  text-decoration: none;
-}
-
 .f-links a:after {
   position: absolute;
   bottom: 0;
@@ -126,7 +125,7 @@ label {
 @media screen and (min-width: 1026px) {
   .share-sns-area {
     box-shadow: -29px 21px 46px -11px rgba(0, 0, 0, 0.6);
-    width: 15%;
+    width: 220px;
     height: 100px;
     padding: 1.5%;
     border-radius: 15px;
@@ -139,7 +138,16 @@ label {
   .f-links {
     display: flex;
     justify-content: space-around;
-    width: 40%;
+    width: 35%;
+  }
+
+  .f-links a {
+    font-size: 1.35em;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    text-decoration: none;
   }
 }
 /*タブレット*/
@@ -161,24 +169,43 @@ label {
     justify-content: space-around;
     width: 50%;
   }
+
+  .f-links a {
+    font-size: 1.15em;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    text-decoration: none;
+  }
 }
 /*スマホ*/
 @media screen and (max-width: 481px) {
   .share-sns-area {
     box-shadow: -29px 21px 46px -11px rgba(0, 0, 0, 0.6);
+    width: 50%;
     height: 100px;
     padding: 1.5%;
     border-radius: 15px;
     background-color: #fff;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 
   .f-links {
     display: flex;
     flex-flow: column;
     align-items: baseline;
+  }
+
+  .f-links a {
+    font-size: 1.35em;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+    text-decoration: none;
   }
 }
 </style>

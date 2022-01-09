@@ -1,12 +1,10 @@
 <template>
   <article class="qiita">
     <ul v-for="blog in blogs" v-bind:key="blog.id">
-      <li>
-        <p class="qiita-title">
-          <a v-bind:href="blog.url" target="_blank" class="click">
-            {{ blog.title }}
-          </a>
-        </p>
+      <li class="qiita-title">
+        <a v-bind:href="blog.url" target="_blank" class="click">
+          {{ blog.title }} ↗︎
+        </a>
       </li>
     </ul>
     <div class="module--spacing--small"></div>

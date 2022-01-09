@@ -205,7 +205,7 @@ export default {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -35%);
+  transform: translate(-50%, -45%);
 }
 
 .item:nth-child(1) {

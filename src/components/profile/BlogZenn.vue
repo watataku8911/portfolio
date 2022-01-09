@@ -1,12 +1,10 @@
 <template>
   <article class="zenn">
     <ul v-for="blog in blogs" v-bind:key="blog.id">
-      <li>
-        <p class="zenn-title">
-          <a v-bind:href="blog.link" target="_blank" class="click">
-            {{ blog.title }}
-          </a>
-        </p>
+      <li class="zenn-title">
+        <a v-bind:href="blog.link" target="_blank" class="click">
+          {{ blog.title }} ↗︎
+        </a>
       </li>
     </ul>
     <div class="module--spacing--small"></div>
