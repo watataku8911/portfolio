@@ -7,7 +7,6 @@
         </a>
       </li>
     </ul>
-    <div class="module--spacing--small"></div>
     <p class="jump-qiita">
       <a href="https://qiita.com/watataku8911" target="_blank">
         <Button msg="MORE ▶︎" @push="jumpQiita" v-show="finish" />
@@ -51,7 +50,7 @@ export default {
   methods: {
     async getBlog() {
       await axios
-        .get(qiitaApiURL(1, 2), { headers: this.headers })
+        .get(qiitaApiURL(1, 3), { headers: this.headers })
         .then((resp) => {
           this.blogs = resp.data;
           this.isLoading = false;

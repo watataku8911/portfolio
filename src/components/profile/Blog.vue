@@ -3,18 +3,24 @@
     <h2 class="b-new-article">ブログ記事</h2>
     <h3 class="article-h3">- Qiita</h3>
     <BlogQiita />
+    <div class="module--spacing--small"></div>
     <h3 class="article-h3">- Zenn</h3>
     <BlogZenn />
+    <div class="module--spacing--small"></div>
+    <h3 class="article-h3">- Watataku&apos;s ブログ</h3>
+    <Blogwatataku />
   </div>
 </template>
 <script>
 import BlogQiita from "./BlogQiita";
 import BlogZenn from "./BlogZenn";
+import Blogwatataku from "./Blogwatataku";
 
 export default {
   components: {
     BlogQiita,
     BlogZenn,
+    Blogwatataku,
   },
 };
 </script>
