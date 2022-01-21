@@ -1,62 +1,76 @@
 <template>
-  <article class="zenn">
+  <article class="qiita">
     <ul v-for="blog in blogs" v-bind:key="blog.id">
-      <li class="zenn-title">
-        <a v-bind:href="blog.link" target="_blank" class="click">
+      <li class="qiita-title">
+        <a :href="url + '/blog/' + blog.id" target="_blank" class="click">
           {{ blog.title }} ↗︎
         </a>
       </li>
     </ul>
-    <p class="jump-zenn">
-      <a href="https://zenn.com/watataku" target="_blank">
-        <Button msg="MORE ▶︎" @push="jumpZenn" v-show="finish" />
+    <p class="jump-qiita">
+      <a href="https://watataku-blog.vercel.app" target="_blank">
+        <Button msg="MORE ▶︎" @push="jumpQiita" v-show="finish" />
       </a>
     </p>
-    <p class="just-minutes" v-if="isEmptyFlg">Coming Soon...</p>
+    <CommutionError v-show="isCommunicationError" v-on:reLoad="reLoad" />
+    <div class="module--spacing--large"></div>
+    <pulse-loader :loading="isLoading"></pulse-loader>
   </article>
 </template>
 
 <script>
+import CommutionError from "../UIKit/CommutionError";
 import Button from "../UIKit/Button";
+import PulseLoader from "vue-spinner/src/PulseLoader";
 import axios from "axios";
-import { getZennData } from "../../seacretDirectory/seacret";
+import { endpoint, X_MICROCMS_API_KEY } from "../../seacretDirectory/seacret";
 
 export default {
   data() {
     return {
       blogs: [],
+      isLoading: true,
       finish: false,
-      isEmptyFlg: true,
-      headers: {
-        "Content-Type": "application/json;charset=UTF-8",
-        "Access-Control-Allow-Origin": "*",
-      },
+      isCommunicationError: false,
+      url: "https://watataku-blog.vercel.app",
     };
   },
   components: {
+    CommutionError,
     Button,
+    PulseLoader,
   },
   created() {
     //API実行
-    this.getZenn();
+    this.getBlog();
   },
   methods: {
-    async getZenn() {
-      axios
-        .get(getZennData())
-        .then((resp) => {
-          if (resp.data.items.length == 0) {
-            this.isEmptyFlg = true;
-            this.finish = false;
-          } else {
-            this.blogs = resp.data.items;
-            this.isEmptyFlg = false;
-            this.finish = true;
-          }
+    async getBlog() {
+      await axios
+        .get(endpoint, {
+          headers: {
+            "X-MICROCMS-API-KEY": X_MICROCMS_API_KEY,
+          },
         })
-        .catch(() => {});
+        .then((resp) => {
+          this.blogs = resp.data.contents;
+          this.isLoading = false;
+          this.finish = true;
+          this.isCommunicationError = false;
+        })
+        .catch(() => {
+          this.isLoading = false;
+          this.isCommunicationError = true;
+        });
     },
-    jumpZenn() {
+    reLoad() {
+      this.isLoading = true;
+      this.isCommunicationError = false;
+      setTimeout(() => {
+        this.getBlog();
+      }, 1000);
+    },
+    jumpQiita() {
       return;
     },
   },
@@ -71,24 +85,23 @@ export default {
 </script>
 
 <style scoped>
-.jump-zenn {
+.jump-qiita {
   text-align: right;
   padding-right: 25px;
 }
-
 /*PC*/
 @media screen and (min-width: 1026px) {
-  .zenn {
+  .qiita {
     height: 245px;
   }
 
-  .zenn-title {
+  .qiita-title {
     text-align: left;
     margin-bottom: 10px;
     padding-left: 1%;
   }
 
-  .zenn-title a {
+  .qiita-title a {
     font-size: 3vh;
     color: rgb(99, 103, 103);
     line-height: 1.75;
@@ -97,29 +110,23 @@ export default {
       "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
   }
 
-  .zenn-title a:hover {
+  .qiita-title a:hover {
     color: #5bbee4;
     border-bottom: #5bbee4 2px solid;
-  }
-
-  .just-minutes {
-    font-family: "Kaushan Script", cursive;
-    font-family: "Bad Script", cursive;
-    font-size: 7.5em;
   }
 }
 /*タブレット*/
 @media screen and (min-width: 482px) and (max-width: 1025px) {
-  .zenn {
+  .qiita {
     height: 223px;
   }
 
-  .zenn-title {
+  .qiita-title {
     text-align: left;
     padding-left: 1%;
   }
 
-  .zenn-title a {
+  .qiita-title a {
     color: rgb(99, 103, 103);
     line-height: 1.75;
     font-size: 1.5rem;
@@ -127,38 +134,26 @@ export default {
     font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
       "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
   }
-
-  .just-minutes {
-    font-family: "Kaushan Script", cursive;
-    font-family: "Bad Script", cursive;
-    font-size: 4em;
-  }
 }
 /*スマホ*/
 @media screen and (max-width: 481px) {
-  .zenn {
+  .qiita {
     height: calc(28vh + 50px);
   }
 
-  .zenn-title {
+  .qiita-title {
     text-align: left;
     margin-bottom: 5px;
     padding-left: 1%;
   }
 
-  .zenn-title a {
+  .qiita-title a {
     color: rgb(99, 103, 103);
     line-height: 1.75;
     font-size: 3vh;
     letter-spacing: 0.1rem;
     font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
       "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
-  }
-
-  .just-minutes {
-    font-family: "Kaushan Script", cursive;
-    font-family: "Bad Script", cursive;
-    font-size: 4em;
   }
 }
 </style>
