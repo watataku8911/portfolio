@@ -186,38 +186,38 @@ export default {
     width: 85%;
     margin: 0 auto;
     overflow: hidden;
-    height: calc(750px + 70vh);
+    height: 1350px;
     background-color: #cdebf7;
   }
 
   .detail-title {
     font-weight: bold;
     letter-spacing: 15px;
-    font-size: 7vh;
+    font-size: 4em;
     text-align: center;
   }
 
   .image_box {
-    height: 75vh;
+    height: 600px;
   }
 
   .detail-work-img {
     box-shadow: 5px 3px 5px 2px rgba(115, 112, 112, 0.6);
     max-width: 95%;
-    height: 75vh;
+    height: 590px;
     border-radius: 5px;
     margin-bottom: 10px;
     object-fit: cover;
   }
 
   .url {
-    font-size: 2em;
+    font-size: 2.2em;
   }
 
   .detail-message {
-    font-size: 2vh;
+    font-size: 1.2em;
     width: 90%;
-    height: calc(20vh + 150px);
+    height: 350px;
     margin: 0% auto;
     word-break: break-all;
     overflow-y: scroll;
@@ -233,7 +233,7 @@ export default {
     border: 2px solid black;
     width: 90%;
     margin: 0 auto;
-    height: calc(750px + 20vh + 8vw);
+    height: 950px;
     background-color: #cdebf7;
   }
 
@@ -245,13 +245,13 @@ export default {
   }
 
   .image_box {
-    height: calc(40vw + 15vh);
+    height: 410px;
   }
 
   .detail-work-img {
     box-shadow: 5px 3px 5px 2px rgba(115, 112, 112, 0.6);
     max-width: 90%;
-    height: calc(40vw + 15vh);
+    height: 400px;
     border-radius: 5px;
     margin-bottom: 10px;
     object-fit: cover;
@@ -260,7 +260,7 @@ export default {
   .url {
     display: block;
     overflow: auto;
-    font-size: 2.5em;
+    font-size: 2em;
   }
 
   .detail-message {
@@ -281,37 +281,38 @@ export default {
     border: 2px solid black;
     width: 99%;
     margin: 0 auto;
-    height: calc(85vh + 95px);
+    height: 750px;
     background-color: #cdebf7;
   }
 
   .detail-title {
     font-weight: bold;
     letter-spacing: 15px;
-    font-size: 3vh;
+    font-size: 2em;
     text-align: center;
   }
 
   .image_box {
-    height: 30vh;
+    height: 210px;
   }
 
   .detail-work-img {
     box-shadow: 5px 3px 5px 2px rgba(115, 112, 112, 0.6);
     max-width: 95%;
-    height: 30vh;
+    height: 200px;
     border-radius: 5px;
     margin-bottom: 10px;
     object-fit: cover;
   }
 
   .url {
+    font-size: 1.5rem;
     margin-top: 10px;
   }
 
   .detail-message {
     width: 95%;
-    height: calc(30vh + 10px);
+    height: 250px;
     word-break: break-all;
     margin: 0% auto;
     overflow-y: scroll;

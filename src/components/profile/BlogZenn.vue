@@ -3,7 +3,8 @@
     <ul v-for="blog in blogs" v-bind:key="blog.id">
       <li class="zenn-title">
         <a v-bind:href="blog.link" target="_blank" class="click">
-          {{ blog.title }} ↗︎
+          ・{{ blog.title }}
+          <IconExternalLink />
         </a>
       </li>
     </ul>
@@ -20,6 +21,7 @@
 import Button from "../UIKit/Button";
 import axios from "axios";
 import { getZennData } from "../../seacretDirectory/seacret";
+import IconExternalLink from "@/assets/icon/icon_external_link.svg";
 
 export default {
   data() {
@@ -35,6 +37,7 @@ export default {
   },
   components: {
     Button,
+    IconExternalLink,
   },
   created() {
     //API実行
@@ -89,29 +92,36 @@ export default {
   }
 
   .zenn-title a {
+    display: flex;
+    align-items: center;
     font-size: 3vh;
     color: rgb(99, 103, 103);
-    line-height: 1.75;
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.5rem;
     font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
       "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
   }
 
   .zenn-title a:hover {
     color: #5bbee4;
-    border-bottom: #5bbee4 2px solid;
   }
 
   .just-minutes {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-family: "Kaushan Script", cursive;
     font-family: "Bad Script", cursive;
-    font-size: 7.5em;
+    font-size: 7em;
   }
 }
 /*タブレット*/
 @media screen and (min-width: 482px) and (max-width: 1025px) {
   .zenn {
     height: 223px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .zenn-title {
@@ -120,24 +130,29 @@ export default {
   }
 
   .zenn-title a {
+    display: flex;
+    align-items: center;
     color: rgb(99, 103, 103);
-    line-height: 1.75;
     font-size: 1.5rem;
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.5rem;
     font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
       "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
   }
 
   .just-minutes {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     font-family: "Kaushan Script", cursive;
     font-family: "Bad Script", cursive;
-    font-size: 4em;
+    font-size: 2em;
   }
 }
 /*スマホ*/
 @media screen and (max-width: 481px) {
   .zenn {
-    height: calc(28vh + 50px);
+    height: 250px;
   }
 
   .zenn-title {
@@ -147,18 +162,23 @@ export default {
   }
 
   .zenn-title a {
+    display: flex;
+    align-items: center;
     color: rgb(99, 103, 103);
-    line-height: 1.75;
-    font-size: 3vh;
-    letter-spacing: 0.1rem;
+    font-size: 1.25em;
+    letter-spacing: 0.2rem;
     font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
       "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
   }
 
   .just-minutes {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
     font-family: "Kaushan Script", cursive;
     font-family: "Bad Script", cursive;
-    font-size: 4em;
+    font-size: 2em;
   }
 }
 </style>

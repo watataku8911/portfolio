@@ -3,12 +3,11 @@
     <h2 class="b-new-article">ブログ記事</h2>
     <h3 class="article-h3">- Qiita</h3>
     <BlogQiita />
-    <div class="module--spacing--small"></div>
     <h3 class="article-h3">- Zenn</h3>
     <BlogZenn />
-    <div class="module--spacing--small"></div>
     <h3 class="article-h3">- Watataku&apos;s ブログ</h3>
     <Blogwatataku />
+    <div class="module--spacing--small"></div>
   </div>
 </template>
 <script>
@@ -31,7 +30,7 @@ export default {
 /*PC*/
 @media screen and (min-width: 1026px) {
   .b-new-article {
-    font-size: 5vh;
+    font-size: 2.5em;
     font-weight: bold;
     letter-spacing: 50px;
     margin-left: 50px;
@@ -40,14 +39,14 @@ export default {
 
   .article-h3 {
     text-align: left;
-    font-size: 3vh;
+    font-size: 1.5em;
     margin-left: 1%;
   }
 }
 /*タブレット*/
 @media screen and (min-width: 482px) and (max-width: 1025px) {
   .b-new-article {
-    font-size: 5vw;
+    font-size: 2em;
     font-weight: bold;
     letter-spacing: 10px;
     margin-left: 10px;
@@ -63,7 +62,7 @@ export default {
 /*スマホ*/
 @media screen and (max-width: 481px) {
   .b-new-article {
-    font-size: 5vh;
+    font-size: 2em;
     font-weight: bold;
     letter-spacing: 10px;
     margin-left: 10px;
@@ -72,7 +71,7 @@ export default {
 
   .article-h3 {
     text-align: left;
-    font-size: 3vh;
+    font-size: 1.5em;
     margin-left: 1%;
   }
 }

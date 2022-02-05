@@ -82,7 +82,7 @@ export default {
     transform: translateX(-50%) translateY(-50%);
     font-weight: bold;
     color: #eee;
-    font-size: 8.5vw;
+    font-size: 8em;
     font-family: "Bad Script", cursive;
     letter-spacing: 5px;
   }
@@ -95,7 +95,7 @@ export default {
     border-radius: 40pt;
     box-shadow: -10px 10px 13px -2px #2f2d33;
     width: 75%;
-    height: 60vh;
+    height: 630px;
     margin: 0 auto;
     background-image: url(../assets/Hight_main.jpeg);
     background-repeat: no-repeat;
@@ -108,7 +108,7 @@ export default {
     top: 30%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-    font-size: 8vw;
+    font-size: 6em;
     font-weight: bold;
     color: #eee;
     font-family: "Bad Script", cursive;
@@ -122,7 +122,7 @@ export default {
     border-radius: 10%;
     box-shadow: -5px 5px 13px -2px #2f2d33;
     width: 85%;
-    height: calc(45vh + 25vw);
+    height: 350px;
     margin: 0 auto;
     background-image: url(../assets/Hight_main.jpeg);
     background-repeat: no-repeat;
@@ -135,7 +135,7 @@ export default {
     top: 30%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-    font-size: 6vh;
+    font-size: 3em;
     font-weight: bold;
     color: #eee;
     font-family: "Bad Script", cursive;

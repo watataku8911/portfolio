@@ -59,7 +59,7 @@ export default {
   }
 
   .profile {
-    font-size: 7vh;
+    font-size: 4em;
     font-weight: bold;
     letter-spacing: 50px;
     margin-left: 50px;
@@ -77,8 +77,8 @@ export default {
   }
 
   .left img {
-    width: 25vh;
-    height: 25vh;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     box-shadow: 0px 0px 2px 1px #777;
     -moz-box-shadow: 0px 0px 2px 1px #777;
@@ -125,8 +125,8 @@ export default {
   }
 
   .left img {
-    width: 24vw;
-    height: 24vw;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     box-shadow: 0px 0px 2px 1px #777;
     -moz-box-shadow: 0px 0px 2px 1px #777;
@@ -134,7 +134,7 @@ export default {
   }
 
   .left .name {
-    font-size: 1.5em;
+    font-size: calc(1.5em + 12px);
     letter-spacing: 5px;
   }
 
@@ -146,8 +146,7 @@ export default {
 
   .right .message {
     text-align: left;
-    /* font-size: 1.2rem;
-    line-height: 5vw; */
+    font-size: calc(1.5vh + 1.5vw);
     letter-spacing: 3px;
   }
 }
@@ -166,8 +165,8 @@ export default {
   }
 
   .left img {
-    width: 18vh;
-    height: 18vh;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     box-shadow: 0px 0px 2px 1px #777;
     -moz-box-shadow: 0px 0px 2px 1px #777;
