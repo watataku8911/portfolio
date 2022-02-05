@@ -20,7 +20,7 @@ export default {
 @media screen and (min-width: 1026px) {
   .contact-title {
     font-weight: bold;
-    font-size: 7vh;
+    font-size: 4em;
     letter-spacing: 20px;
     margin-left: 20px;
     margin-bottom: 5vh;
@@ -44,7 +44,7 @@ export default {
 @media screen and (min-width: 482px) and (max-width: 1025px) {
   .contact-title {
     font-weight: bold;
-    font-size: 7vh;
+    font-size: 3.5em;
     letter-spacing: 20px;
     margin-left: 20px;
     margin-bottom: 5vh;
@@ -67,7 +67,7 @@ export default {
 @media screen and (max-width: 481px) {
   .contact-title {
     font-weight: bold;
-    font-size: 7vh;
+    font-size: 3em;
     margin-bottom: 5vh;
   }
 

@@ -1,15 +1,16 @@
 <template>
-  <article class="qiita">
+  <article class="watataku-blog">
     <ul v-for="blog in blogs" v-bind:key="blog.id">
-      <li class="qiita-title">
+      <li class="watataku-blog-title">
         <a :href="url + '/blog/' + blog.id" target="_blank" class="click">
-          {{ blog.title }} ↗︎
+          ・{{ blog.title }}
+          <IconExternalLink />
         </a>
       </li>
     </ul>
-    <p class="jump-qiita">
+    <p class="jump-watataku-blog">
       <a href="https://watataku-blog.vercel.app" target="_blank">
-        <Button msg="MORE ▶︎" @push="jumpQiita" v-show="finish" />
+        <Button msg="MORE ▶︎" @push="jumpWatatakuBlog" v-show="finish" />
       </a>
     </p>
     <CommutionError v-show="isCommunicationError" v-on:reLoad="reLoad" />
@@ -24,6 +25,7 @@ import Button from "../UIKit/Button";
 import PulseLoader from "vue-spinner/src/PulseLoader";
 import axios from "axios";
 import { endpoint, X_MICROCMS_API_KEY } from "../../seacretDirectory/seacret";
+import IconExternalLink from "@/assets/icon/icon_external_link.svg";
 
 export default {
   data() {
@@ -39,6 +41,7 @@ export default {
     CommutionError,
     Button,
     PulseLoader,
+    IconExternalLink,
   },
   created() {
     //API実行
@@ -70,7 +73,7 @@ export default {
         this.getBlog();
       }, 1000);
     },
-    jumpQiita() {
+    jumpWatatakuBlog() {
       return;
     },
   },
@@ -85,73 +88,75 @@ export default {
 </script>
 
 <style scoped>
-.jump-qiita {
+.jump-watataku-blog {
   text-align: right;
   padding-right: 25px;
 }
 /*PC*/
 @media screen and (min-width: 1026px) {
-  .qiita {
+  .watataku-blog {
     height: 245px;
   }
 
-  .qiita-title {
+  .watataku-blog-title {
     text-align: left;
     margin-bottom: 10px;
     padding-left: 1%;
   }
 
-  .qiita-title a {
+  .watataku-blog-title a {
+    display: flex;
+    align-items: center;
     font-size: 3vh;
     color: rgb(99, 103, 103);
-    line-height: 1.75;
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.5rem;
     font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
       "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
   }
 
-  .qiita-title a:hover {
+  .watataku-blog-title a:hover {
     color: #5bbee4;
-    border-bottom: #5bbee4 2px solid;
   }
 }
 /*タブレット*/
 @media screen and (min-width: 482px) and (max-width: 1025px) {
-  .qiita {
+  .watataku-blog {
     height: 223px;
   }
 
-  .qiita-title {
+  .watataku-blog-title {
     text-align: left;
     padding-left: 1%;
   }
 
-  .qiita-title a {
+  .watataku-blog-title a {
+    display: flex;
+    align-items: center;
     color: rgb(99, 103, 103);
-    line-height: 1.75;
     font-size: 1.5rem;
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.5rem;
     font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
       "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
   }
 }
 /*スマホ*/
 @media screen and (max-width: 481px) {
-  .qiita {
-    height: calc(28vh + 50px);
+  .watataku-blog {
+    height: 250px;
   }
 
-  .qiita-title {
+  .watataku-blog-title {
     text-align: left;
     margin-bottom: 5px;
     padding-left: 1%;
   }
 
-  .qiita-title a {
+  .watataku-blog-title a {
+    display: flex;
+    align-items: center;
     color: rgb(99, 103, 103);
-    line-height: 1.75;
-    font-size: 3vh;
-    letter-spacing: 0.1rem;
+    font-size: 1.25em;
+    letter-spacing: 0.2rem;
     font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
       "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
   }

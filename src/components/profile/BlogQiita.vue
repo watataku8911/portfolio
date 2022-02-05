@@ -3,7 +3,8 @@
     <ul v-for="blog in blogs" v-bind:key="blog.id">
       <li class="qiita-title">
         <a v-bind:href="blog.url" target="_blank" class="click">
-          {{ blog.title }} ↗︎
+          ・{{ blog.title }}
+          <IconExternalLink />
         </a>
       </li>
     </ul>
@@ -24,6 +25,7 @@ import Button from "../UIKit/Button";
 import PulseLoader from "vue-spinner/src/PulseLoader";
 import axios from "axios";
 import { qiitaApiURL } from "../../seacretDirectory/seacret";
+import IconExternalLink from "@/assets/icon/icon_external_link.svg";
 
 export default {
   data() {
@@ -42,6 +44,7 @@ export default {
     CommutionError,
     Button,
     PulseLoader,
+    IconExternalLink,
   },
   created() {
     //API実行
@@ -94,17 +97,17 @@ export default {
   }
 
   .qiita-title a {
+    display: flex;
+    align-items: center;
     font-size: 3vh;
     color: rgb(99, 103, 103);
-    line-height: 1.75;
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.5rem;
     font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
       "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
   }
 
   .qiita-title a:hover {
     color: #5bbee4;
-    border-bottom: #5bbee4 2px solid;
   }
 }
 /*タブレット*/
@@ -119,10 +122,11 @@ export default {
   }
 
   .qiita-title a {
+    display: flex;
+    align-items: center;
     color: rgb(99, 103, 103);
-    line-height: 1.75;
     font-size: 1.5rem;
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.5rem;
     font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
       "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
   }
@@ -130,20 +134,22 @@ export default {
 /*スマホ*/
 @media screen and (max-width: 481px) {
   .qiita {
-    height: calc(28vh + 50px);
+    height: 250px;
   }
 
   .qiita-title {
+    list-style: square;
     text-align: left;
     margin-bottom: 5px;
     padding-left: 1%;
   }
 
   .qiita-title a {
+    display: flex;
+    align-items: center;
     color: rgb(99, 103, 103);
-    line-height: 1.75;
-    font-size: 3vh;
-    letter-spacing: 0.1rem;
+    font-size: 1.25em;
+    letter-spacing: 0.2rem;
     font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
       "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
   }

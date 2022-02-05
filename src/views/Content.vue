@@ -46,6 +46,7 @@
       <!-- 実際のWORK出力 -->
     </div>
     <Categories ref="categories" v-on:categoryId="changeCategoryId" />
+    <div class="module--spacing--small"></div>
     <paginate
       v-if="getPageCount > 1"
       v-show="isPaging"
@@ -241,13 +242,13 @@ export default {
     border: 3px solid black;
     width: 85%;
     margin: 0 auto;
-    height: 670px;
+    height: 710px;
     background-color: #cdebf7;
   }
 
   .work-title {
     font-weight: bold;
-    font-size: 7vh;
+    font-size: 4em;
     letter-spacing: 50px;
     margin-left: 50px;
   }
@@ -268,7 +269,7 @@ export default {
 
   .item .image-box {
     border: black solid 1px;
-    width: calc(9vh + 12vw);
+    width: 85%;
     height: 490px;
     border-radius: 89px 5px 87px 68px;
     margin: 0 auto;
@@ -280,7 +281,6 @@ export default {
     height: 490px;
     border-radius: 89px 5px 87px 68px;
     width: 100%;
-    height: 490px;
     object-fit: cover;
   }
 
@@ -299,20 +299,20 @@ export default {
     border: 2px solid black;
     width: 92%;
     margin: 0 auto;
-    height: calc(52vw + 34px);
+    height: 500px;
     background-color: #cdebf7;
   }
 
   .work-title {
     font-weight: bold;
     letter-spacing: 15px;
-    font-size: calc(2vh + 3vw);
+    font-size: 2.5em;
     margin-left: 15px;
   }
 
   .items {
     width: 100%;
-    height: calc(35vw + 17px);
+    height: 300px;
     display: flex;
     flex-flow: row;
   }
@@ -325,8 +325,8 @@ export default {
 
   .item .image-box {
     border: black solid 1px;
-    width: calc(3vh + 16.5vw);
-    height: calc(30vw + 45px);
+    width: 90%;
+    height: 300px;
     border-radius: 89px 5px 87px 68px;
     margin: 0 auto;
     transform: rotate(5deg);
@@ -335,7 +335,7 @@ export default {
   .item .work_img {
     box-shadow: 11px 12px 26px 7px rgba(115, 112, 112, 0.6);
     width: 100%;
-    height: calc(30vw + 45px);
+    height: 300px;
     border-radius: 89px 5px 87px 68px;
     object-fit: cover;
   }
@@ -355,7 +355,7 @@ export default {
     border: 2px solid black;
     width: 99%;
     margin: 0 auto;
-    height: 650px;
+    height: 700px;
     background-color: #cdebf7;
   }
 
@@ -363,7 +363,7 @@ export default {
     font-weight: bold;
     letter-spacing: 15px;
     margin-left: 15px;
-    font-size: 3vh;
+    font-size: 2em;
   }
 
   .items {
@@ -401,7 +401,7 @@ export default {
     width: 100%;
     font-family: "Kaushan Script", cursive;
     font-family: "Bad Script", cursive;
-    font-size: calc(4.5em - 2vh);
+    font-size: 3em;
   }
 }
 </style>

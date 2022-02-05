@@ -130,6 +130,7 @@ CSSResult Skip Results iframe EDIT ON .timeline {
 
   .timeline-content h3 {
     font-size: 22px;
+    font-weight: bold;
   }
 
   .timeline-content:before {
@@ -149,19 +150,32 @@ CSSResult Skip Results iframe EDIT ON .timeline {
     width: 35%;
   }
 
+  td {
+    font-size: 2.5vw;
+    letter-spacing: 1.2px;
+  }
+
   .timeline-content h3 {
-    font-size: 32px;
+    letter-spacing: 1px;
+    font-size: 25px;
+    font-weight: bold;
   }
 }
 
 /*スマホ*/
 @media screen and (max-width: 481px) {
   th {
-    width: 45%;
+    width: 35%;
+  }
+
+  td {
+    letter-spacing: 1.2px;
   }
 
   .timeline-content h3 {
-    font-size: 22px;
+    letter-spacing: 1px;
+    font-size: 18px;
+    font-weight: bold;
   }
 }
 </style>
