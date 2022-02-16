@@ -13,7 +13,6 @@
         <div class="module--spacing--large"></div>
         <Header v-on:image-load-finish="imageLoadFinish" />
         <div class="module--spacing--veryLarge"></div>
-        <div class="module--spacing--small"></div>
         <main class="site-main">
           <router-view />
         </main>

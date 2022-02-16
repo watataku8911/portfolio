@@ -2,10 +2,15 @@
   <div class="blog" id="blog">
     <h2 class="b-new-article">ブログ記事</h2>
     <h3 class="article-h3">- Qiita</h3>
+    <div class="module--spacing--verySmall"></div>
     <BlogQiita />
+    <div class="module--spacing--small"></div>
     <h3 class="article-h3">- Zenn</h3>
+    <div class="module--spacing--verySmall"></div>
     <BlogZenn />
+    <div class="module--spacing--small"></div>
     <h3 class="article-h3">- Watataku&apos;s ブログ</h3>
+    <div class="module--spacing--verySmall"></div>
     <Blogwatataku />
     <div class="module--spacing--small"></div>
   </div>

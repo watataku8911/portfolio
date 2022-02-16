@@ -4,10 +4,11 @@
       <li class="watataku-blog-title">
         <a :href="url + '/blog/' + blog.id" target="_blank" class="click">
           ・{{ blog.title }}
-          <IconExternalLink />
         </a>
+        <IconExternalLink />
       </li>
     </ul>
+    <div class="module--spacing--verySmall"></div>
     <p class="jump-watataku-blog">
       <a href="https://watataku-blog.vercel.app" target="_blank">
         <Button msg="MORE ▶︎" @push="jumpWatatakuBlog" v-show="finish" />
@@ -99,17 +100,18 @@ export default {
   }
 
   .watataku-blog-title {
+    display: flex;
+    align-items: center;
     text-align: left;
     margin-bottom: 10px;
     padding-left: 1%;
   }
 
   .watataku-blog-title a {
-    display: flex;
-    align-items: center;
-    font-size: 3vh;
+    display: block;
+    font-size: 1.5em;
     color: rgb(99, 103, 103);
-    letter-spacing: 0.5rem;
+    letter-spacing: 0.3rem;
     font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
       "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
   }
@@ -125,13 +127,14 @@ export default {
   }
 
   .watataku-blog-title {
+    display: flex;
+    align-items: center;
     text-align: left;
     padding-left: 1%;
   }
 
   .watataku-blog-title a {
-    display: flex;
-    align-items: center;
+    display: block;
     color: rgb(99, 103, 103);
     font-size: 1.5rem;
     letter-spacing: 0.5rem;
@@ -146,17 +149,19 @@ export default {
   }
 
   .watataku-blog-title {
+    display: flex;
+    align-items: center;
     text-align: left;
     margin-bottom: 5px;
-    padding-left: 1%;
+    padding-left: 1px;
   }
 
   .watataku-blog-title a {
-    display: flex;
-    align-items: center;
+    display: block;
     color: rgb(99, 103, 103);
-    font-size: 1.25em;
-    letter-spacing: 0.2rem;
+    font-size: 1.35em;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
     font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
       "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
   }
