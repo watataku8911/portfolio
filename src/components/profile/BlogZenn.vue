@@ -4,10 +4,12 @@
       <li class="zenn-title">
         <a v-bind:href="blog.link" target="_blank" class="click">
           ・{{ blog.title }}
-          <IconExternalLink />
         </a>
+        <IconExternalLink />
       </li>
     </ul>
+
+    <div class="module--spacing--verySmall"></div>
     <p class="jump-zenn">
       <a href="https://zenn.com/watataku" target="_blank">
         <Button msg="MORE ▶︎" @push="jumpZenn" v-show="finish" />
@@ -89,14 +91,15 @@ export default {
     text-align: left;
     margin-bottom: 10px;
     padding-left: 1%;
+    display: flex;
+    align-items: center;
   }
 
   .zenn-title a {
-    display: flex;
-    align-items: center;
-    font-size: 3vh;
+    display: block;
+    font-size: 1.5em;
     color: rgb(99, 103, 103);
-    letter-spacing: 0.5rem;
+    letter-spacing: 0.3rem;
     font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
       "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
   }
@@ -112,7 +115,7 @@ export default {
     transform: translate(-50%, -50%);
     font-family: "Kaushan Script", cursive;
     font-family: "Bad Script", cursive;
-    font-size: 7em;
+    font-size: 6em;
   }
 }
 /*タブレット*/
@@ -127,11 +130,12 @@ export default {
   .zenn-title {
     text-align: left;
     padding-left: 1%;
+    display: flex;
+    align-items: center;
   }
 
   .zenn-title a {
-    display: flex;
-    align-items: center;
+    display: block;
     color: rgb(99, 103, 103);
     font-size: 1.5rem;
     letter-spacing: 0.5rem;
@@ -158,14 +162,16 @@ export default {
   .zenn-title {
     text-align: left;
     margin-bottom: 5px;
-    padding-left: 1%;
+    padding-left: 1px;
+    display: flex;
+    align-items: center;
   }
 
   .zenn-title a {
-    display: flex;
-    align-items: center;
+    display: block;
     color: rgb(99, 103, 103);
-    font-size: 1.25em;
+    font-size: 1.15em;
+    font-weight: bold;
     letter-spacing: 0.2rem;
     font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
       "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;

@@ -4,16 +4,20 @@
     <div class="main_image">
       <p>Watataku's</p>
     </div>
-    <div class="pic_down"></div>
+    <div class="pic_down">
+      <IconDown />
+    </div>
   </header>
 </template>
 <script>
 import HamburgerMenu from "../components/HamburgerMenu";
 import imagesLoaded from "imagesloaded";
+import IconDown from "@/assets/icon/icon_down.svg";
 
 export default {
   components: {
     HamburgerMenu,
+    IconDown,
   },
   mounted() {
     window.onload = () => {
@@ -33,22 +37,13 @@ export default {
 
 <style>
 .pic_down {
-  text-align: -webkit-center;
+  width: 85%;
+  margin: 0 auto;
   animation-name: picdown;
   animation-duration: 1s;
   animation-iteration-count: infinite;
   animation-timing-function: ease;
   will-change: transform;
-}
-
-.pic_down::after {
-  content: "";
-  display: block;
-  width: 40px;
-  height: 40px;
-  border-top: 5px solid #000;
-  border-right: 5px solid #000;
-  transform: rotate(135deg);
 }
 
 @keyframes picdown {
