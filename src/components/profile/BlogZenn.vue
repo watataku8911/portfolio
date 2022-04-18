@@ -1,13 +1,15 @@
 <template>
   <article class="zenn">
-    <ul v-for="blog in blogs" v-bind:key="blog.id">
-      <li class="zenn-title">
-        <a v-bind:href="blog.link" target="_blank" class="click">
-          ・{{ blog.title }}
-        </a>
-        <IconExternalLink />
-      </li>
-    </ul>
+    <div class="zenn-box">
+      <Card
+        v-for="blog in blogs"
+        v-bind:key="blog.id"
+        :url="blog.link"
+        :img="image"
+        :title="blog.title"
+        :date="blog.pubDate"
+      />
+    </div>
 
     <div class="module--spacing--verySmall"></div>
     <p class="jump-zenn">
@@ -23,23 +25,20 @@
 import Button from "../UIKit/Button";
 import axios from "axios";
 import { getZennData } from "../../seacretDirectory/seacret";
-import IconExternalLink from "@/assets/icon/icon_external_link.svg";
+import Card from "../profile/Card.vue";
 
 export default {
   data() {
     return {
       blogs: [],
+      image: require("@/assets/zenn.png"),
       finish: false,
       isEmptyFlg: true,
-      headers: {
-        "Content-Type": "application/json;charset=UTF-8",
-        "Access-Control-Allow-Origin": "*",
-      },
     };
   },
   components: {
     Button,
-    IconExternalLink,
+    Card,
   },
   created() {
     //API実行
@@ -47,7 +46,7 @@ export default {
   },
   methods: {
     async getZenn() {
-      axios
+      await axios
         .get(getZennData())
         .then((resp) => {
           if (resp.data.items.length == 0) {
@@ -67,7 +66,7 @@ export default {
   },
   watch: {
     blogs() {
-      if (this.blogs.length > 3) {
+      if (this.blogs.length > 1) {
         this.blogs.pop();
       }
     },
@@ -81,31 +80,30 @@ export default {
   padding-right: 25px;
 }
 
+.zenn-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 /*PC*/
 @media screen and (min-width: 1026px) {
   .zenn {
-    height: 245px;
+    height: 350px;
   }
 
-  .zenn-title {
-    text-align: left;
-    margin-bottom: 10px;
-    padding-left: 1%;
-    display: flex;
-    align-items: center;
-  }
-
-  .zenn-title a {
+  .zenn-box::after {
     display: block;
-    font-size: 1.5em;
-    color: rgb(99, 103, 103);
-    letter-spacing: 0.3rem;
-    font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
-      "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
+    width: 20vw;
+    content: "";
   }
 
-  .zenn-title a:hover {
-    color: #5bbee4;
+  .zenn-box::before {
+    display: block;
+    width: 20vw;
+    content: "";
+    order: 1;
   }
 
   .just-minutes {
@@ -115,32 +113,13 @@ export default {
     transform: translate(-50%, -50%);
     font-family: "Kaushan Script", cursive;
     font-family: "Bad Script", cursive;
-    font-size: 6em;
+    font-size: 4em;
   }
 }
 /*タブレット*/
 @media screen and (min-width: 482px) and (max-width: 1025px) {
   .zenn {
-    height: 223px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .zenn-title {
-    text-align: left;
-    padding-left: 1%;
-    display: flex;
-    align-items: center;
-  }
-
-  .zenn-title a {
-    display: block;
-    color: rgb(99, 103, 103);
-    font-size: 1.5rem;
-    letter-spacing: 0.5rem;
-    font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
-      "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
+    height: 680px;
   }
 
   .just-minutes {
@@ -156,25 +135,7 @@ export default {
 /*スマホ*/
 @media screen and (max-width: 481px) {
   .zenn {
-    height: 250px;
-  }
-
-  .zenn-title {
-    text-align: left;
-    margin-bottom: 5px;
-    padding-left: 1px;
-    display: flex;
-    align-items: center;
-  }
-
-  .zenn-title a {
-    display: block;
-    color: rgb(99, 103, 103);
-    font-size: 1.15em;
-    font-weight: bold;
-    letter-spacing: 0.2rem;
-    font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
-      "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
+    height: 430px;
   }
 
   .just-minutes {

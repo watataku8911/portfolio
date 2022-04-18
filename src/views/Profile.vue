@@ -1,5 +1,9 @@
 <template>
-  <section id="profile-contents" class="profile-contents" v-if="imageLoad != 'complete'">
+  <section
+    id="profile-contents"
+    class="profile-contents"
+    v-if="imageLoad != 'complete'"
+  >
     <Profile />
     <Table />
     <Blog />
@@ -47,7 +51,7 @@ export default {
   .profile-contents {
     font-size: 2vh;
     border: 2px solid black;
-    width: 90%;
+    width: 99%;
     margin: 0 auto;
     background-color: #cdebf7;
   }

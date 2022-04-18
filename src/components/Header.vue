@@ -4,6 +4,7 @@
     <div class="main_image">
       <p>Watataku's</p>
     </div>
+    <div class="module--spacing--small"></div>
     <div class="pic_down">
       <IconDown />
     </div>

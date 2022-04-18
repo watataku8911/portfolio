@@ -1,13 +1,15 @@
 <template>
   <article class="qiita">
-    <ul v-for="blog in blogs" v-bind:key="blog.id">
-      <li class="qiita-title">
-        <a v-bind:href="blog.url" target="_blank" class="click">
-          ・{{ blog.title }}
-        </a>
-        <IconExternalLink />
-      </li>
-    </ul>
+    <div class="qiita-box">
+      <Card
+        v-for="blog in blogs"
+        v-bind:key="blog.id"
+        :url="blog.url"
+        :img="image"
+        :title="blog.title"
+        :date="blog.created_at"
+      />
+    </div>
     <div class="module--spacing--verySmall"></div>
     <p class="jump-qiita">
       <a href="https://qiita.com/watataku8911" target="_blank">
@@ -26,12 +28,14 @@ import Button from "../UIKit/Button";
 import PulseLoader from "vue-spinner/src/PulseLoader";
 import axios from "axios";
 import { qiitaApiURL } from "../../seacretDirectory/seacret";
-import IconExternalLink from "@/assets/icon/icon_external_link.svg";
+
+import Card from "../profile/Card.vue";
 
 export default {
   data() {
     return {
       blogs: [],
+      image: require("@/assets/qiita-ogp.png"),
       isLoading: true,
       finish: false,
       isCommunicationError: false,
@@ -45,7 +49,7 @@ export default {
     CommutionError,
     Button,
     PulseLoader,
-    IconExternalLink,
+    Card,
   },
   created() {
     //API実行
@@ -54,7 +58,7 @@ export default {
   methods: {
     async getBlog() {
       await axios
-        .get(qiitaApiURL(1, 3), { headers: this.headers })
+        .get(qiitaApiURL, { headers: this.headers })
         .then((resp) => {
           this.blogs = resp.data;
           this.isLoading = false;
@@ -77,6 +81,13 @@ export default {
       return;
     },
   },
+  watch: {
+    blogs() {
+      if (this.blogs.length > 4) {
+        this.blogs.pop();
+      }
+    },
+  },
 };
 </script>
 
@@ -85,77 +96,44 @@ export default {
   text-align: right;
   padding-right: 25px;
 }
+
+.qiita-box {
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 /*PC*/
 @media screen and (min-width: 1026px) {
   .qiita {
-    height: 245px;
+    height: 350px;
   }
 
-  .qiita-title {
-    text-align: left;
-    margin-bottom: 10px;
-    padding-left: 1%;
-    display: flex;
-    align-items: center;
-  }
-
-  .qiita-title a {
+  .qiita-box::after {
     display: block;
-    font-size: 1.5em;
-    color: rgb(99, 103, 103);
-    letter-spacing: 0.3rem;
-    font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
-      "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
+    width: 20vw;
+    content: "";
   }
 
-  .qiita-title a:hover {
-    color: #5bbee4;
+  .qiita-blog-box::before {
+    display: block;
+    width: 20vw;
+    content: "";
+    order: 1;
   }
 }
 /*タブレット*/
 @media screen and (min-width: 482px) and (max-width: 1025px) {
   .qiita {
-    height: 223px;
-  }
-
-  .qiita-title {
-    text-align: left;
-    padding-left: 1%;
-    display: flex;
-    align-items: center;
-  }
-
-  .qiita-title a {
-    display: block;
-    color: rgb(99, 103, 103);
-    font-size: 1.5rem;
-    letter-spacing: 0.5rem;
-    font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
-      "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
+    height: 680px;
   }
 }
 /*スマホ*/
 @media screen and (max-width: 481px) {
   .qiita {
-    height: 250px;
-  }
-
-  .qiita-title {
-    text-align: left;
-    margin-bottom: 5px;
-    padding-left: 1%;
-    display: flex;
-    align-items: center;
-  }
-
-  .qiita-title a {
-    display: block;
-    color: rgb(99, 103, 103);
-    font-size: 1.35em;
-    font-weight: bold;
-    letter-spacing: 0.1rem;
-    font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
-      "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
+    height: 430px;
   }
 }
 </style>

@@ -177,8 +177,7 @@ export default {
           this.description,
       };
 
-      const WEBHOOK_URL = slackApiURL();
-      fetch(WEBHOOK_URL, {
+      fetch(slackApiURL, {
         method: "POST",
         body: JSON.stringify(payload),
       }).then(() => {

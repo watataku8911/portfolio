@@ -288,7 +288,7 @@ export default {
   .detail-title {
     font-weight: bold;
     letter-spacing: 15px;
-    font-size: 2em;
+    font-size: 1.8em;
     text-align: center;
   }
 
@@ -308,6 +308,8 @@ export default {
   .url {
     font-size: 1.5rem;
     margin-top: 10px;
+    display: block;
+    overflow: auto;
   }
 
   .detail-message {

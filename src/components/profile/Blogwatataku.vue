@@ -1,13 +1,15 @@
 <template>
   <article class="watataku-blog">
-    <ul v-for="blog in blogs" v-bind:key="blog.id">
-      <li class="watataku-blog-title">
-        <a :href="url + '/blog/' + blog.id" target="_blank" class="click">
-          ・{{ blog.title }}
-        </a>
-        <IconExternalLink />
-      </li>
-    </ul>
+    <div class="watataku-blog-box">
+      <Card
+        v-for="blog in blogs"
+        v-bind:key="blog.id"
+        :url="url + '/blog/' + blog.id"
+        :img="blog.thumbnail.url"
+        :title="blog.title"
+        :date="blog.publishedAt"
+      />
+    </div>
     <div class="module--spacing--verySmall"></div>
     <p class="jump-watataku-blog">
       <a href="https://watataku-blog.vercel.app" target="_blank">
@@ -26,7 +28,7 @@ import Button from "../UIKit/Button";
 import PulseLoader from "vue-spinner/src/PulseLoader";
 import axios from "axios";
 import { endpoint, X_MICROCMS_API_KEY } from "../../seacretDirectory/seacret";
-import IconExternalLink from "@/assets/icon/icon_external_link.svg";
+import Card from "../profile/Card.vue";
 
 export default {
   data() {
@@ -42,7 +44,7 @@ export default {
     CommutionError,
     Button,
     PulseLoader,
-    IconExternalLink,
+    Card,
   },
   created() {
     //API実行
@@ -80,7 +82,7 @@ export default {
   },
   watch: {
     blogs() {
-      if (this.blogs.length > 3) {
+      if (this.blogs.length > 4) {
         this.blogs.pop();
       }
     },
@@ -93,77 +95,43 @@ export default {
   text-align: right;
   padding-right: 25px;
 }
+
+.watataku-blog-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
 /*PC*/
 @media screen and (min-width: 1026px) {
   .watataku-blog {
-    height: 245px;
+    height: 350px;
   }
 
-  .watataku-blog-title {
-    display: flex;
-    align-items: center;
-    text-align: left;
-    margin-bottom: 10px;
-    padding-left: 1%;
-  }
-
-  .watataku-blog-title a {
+  .watataku-blog-box::after {
     display: block;
-    font-size: 1.5em;
-    color: rgb(99, 103, 103);
-    letter-spacing: 0.3rem;
-    font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
-      "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
+    width: 20vw;
+    content: "";
   }
 
-  .watataku-blog-title a:hover {
-    color: #5bbee4;
+  .watataku-blog-box::before {
+    display: block;
+    width: 20vw;
+    content: "";
+    order: 1;
   }
 }
 /*タブレット*/
 @media screen and (min-width: 482px) and (max-width: 1025px) {
   .watataku-blog {
-    height: 223px;
-  }
-
-  .watataku-blog-title {
-    display: flex;
-    align-items: center;
-    text-align: left;
-    padding-left: 1%;
-  }
-
-  .watataku-blog-title a {
-    display: block;
-    color: rgb(99, 103, 103);
-    font-size: 1.5rem;
-    letter-spacing: 0.5rem;
-    font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
-      "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
+    height: 680px;
   }
 }
 /*スマホ*/
 @media screen and (max-width: 481px) {
   .watataku-blog {
-    height: 250px;
-  }
-
-  .watataku-blog-title {
-    display: flex;
-    align-items: center;
-    text-align: left;
-    margin-bottom: 5px;
-    padding-left: 1px;
-  }
-
-  .watataku-blog-title a {
-    display: block;
-    color: rgb(99, 103, 103);
-    font-size: 1.35em;
-    font-weight: bold;
-    letter-spacing: 0.1rem;
-    font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
-      "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
+    height: 430px;
   }
 }
 </style>

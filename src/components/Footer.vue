@@ -30,14 +30,6 @@
             >CONTACT</router-link
           >
         </li>
-        <li>
-          <router-link
-            to="/#blog"
-            class="link"
-            v-smooth-scroll="{ duration: 1000, offset: -50 }"
-            >TECHBLOG</router-link
-          >
-        </li>
       </ul>
       <section class="share-sns-area">
         <label for="share" style="font-size: 1.2em;letter-spacing: 1px;"

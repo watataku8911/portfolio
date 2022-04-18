@@ -16,7 +16,7 @@
         <main class="site-main">
           <router-view />
         </main>
-        <div class="module--spacing--large"></div>
+        <div class="module--spacing--veryLarge"></div>
         <div class="module--spacing--large"></div>
         <Footer />
       </div>

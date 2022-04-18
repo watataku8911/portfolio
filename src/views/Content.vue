@@ -133,7 +133,7 @@ export default {
       let query = db
         .collection("works")
         .where("deleted_flg", "==", false)
-        .orderBy("updated_at", "desc");
+        .orderBy("created_at", "desc");
       query =
         Number(this.categoryId) != 0
           ? query.where("category_id", "==", Number(this.categoryId))
