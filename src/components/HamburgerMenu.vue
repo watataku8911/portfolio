@@ -37,14 +37,6 @@
               >CONTACT</router-link
             >
           </li>
-          <li>
-            <router-link
-              to="/#blog"
-              @click.native="naviClose()"
-              v-smooth-scroll="{ duration: 1000, offset: -50 }"
-              >TECHBLOG</router-link
-            >
-          </li>
         </ul>
         <section class="navi-share-sns-area">
           <ShareTwitter color="white" />
