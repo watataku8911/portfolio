@@ -48,11 +48,11 @@
             to="/contact#c-box"
             v-smooth-scroll="{ duration: 1000, offset: -50 }"
             >こちら</router-link
-          >のお問い合わせフォームまたは<router-link
+          >または<router-link
             to="/#sub_contents"
             v-smooth-scroll="{ duration: 1000, offset: -50 }"
             >Twitter/Instagram</router-link
-          >のDMまでお願いします。
+          >のDMまでお願いします
         </p>
         <br />
         <br />
