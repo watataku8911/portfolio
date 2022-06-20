@@ -91,7 +91,7 @@ export default {
     border-radius: 40pt;
     box-shadow: -10px 10px 13px -2px #2f2d33;
     width: 75%;
-    height: 630px;
+    height: 730px;
     margin: 0 auto;
     background-image: url(../assets/Hight_main.jpeg);
     background-repeat: no-repeat;
@@ -123,7 +123,7 @@ export default {
     background-image: url(../assets/Hight_main.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center right;
+    background-position: right;
   }
 
   .main_image p {

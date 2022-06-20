@@ -28,8 +28,8 @@ export default {
 /*タブレット*/
 @media screen and (min-width: 482px) and (max-width: 1025px) {
   .button {
-    font-size: 1em;
-    border-radius: 20px;
+    font-size: 3vw;
+    border-radius: 15px;
     background: linear-gradient(to bottom, #5bbee4 0%, #52eac1 100%);
     color: #fff;
     border-style: none;
@@ -38,8 +38,8 @@ export default {
 /*スマホ*/
 @media screen and (max-width: 481px) {
   .button {
-    font-size: 1em;
-    border-radius: 20px;
+    font-size: 1.5em;
+    border-radius: 15px;
     background: linear-gradient(to bottom, #5bbee4 0%, #52eac1 100%);
     color: #fff;
     border-style: none;

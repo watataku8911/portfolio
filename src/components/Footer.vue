@@ -43,7 +43,7 @@
     <div class="f-under">
       <small
         ><a href="https://watataku-portfolio.web.app" target="_blank"
-          >&copy; 2021 Watataku.
+          >&copy; 2022 Watataku.
         </a></small
       >
     </div>

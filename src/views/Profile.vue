@@ -43,7 +43,7 @@ export default {
     border: 3px solid black;
     width: 85%;
     margin: 0 auto;
-    background-color: #cdebf7;
+    background-color: #ebfeff;
   }
 }
 /*タブレット*/
@@ -51,9 +51,9 @@ export default {
   .profile-contents {
     font-size: 2vh;
     border: 2px solid black;
-    width: 99%;
+    width: 92%;
     margin: 0 auto;
-    background-color: #cdebf7;
+    background-color: #ebfeff;
   }
 }
 /*スマホ*/
@@ -62,7 +62,7 @@ export default {
     border: 2px solid black;
     width: 99%;
     margin: 0 auto;
-    background-color: #cdebf7;
+    background-color: #ebfeff;
   }
 }
 </style>

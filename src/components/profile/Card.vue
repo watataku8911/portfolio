@@ -1,6 +1,6 @@
 <template>
   <a :href="url" target="_blank">
-    <section class="card">
+    <section class="card" ref="card">
       <div class="thumbnail">
         <img :src="img" :alt="title" />
       </div>
@@ -32,6 +32,7 @@ export default {
       require: true,
     },
   },
+
   methods: {
     dates(dateString) {
       return datePlasticSurgery(dateString);
@@ -83,7 +84,7 @@ export default {
 /*タブレット*/
 @media screen and (min-width: 482px) and (max-width: 1025px) {
   .card {
-    width: 48vw;
+    width: 45vw;
     background-color: white;
     height: 280px;
   }
@@ -95,7 +96,7 @@ export default {
 
   .thumbnail img {
     object-fit: cover;
-    width: 48vw;
+    width: 45vw;
     height: 169px;
   }
 
@@ -120,7 +121,7 @@ export default {
 /*スマホ*/
 @media screen and (max-width: 481px) {
   .card {
-    width: 47vw;
+    width: 48vw;
     background-color: white;
     height: 160px;
   }
@@ -132,7 +133,7 @@ export default {
 
   .thumbnail img {
     object-fit: cover;
-    width: 47vw;
+    width: 48vw;
     height: 79px;
     border-bottom: 1px solid black;
   }

@@ -1,23 +1,23 @@
 <template>
   <article class="zenn">
-    <div class="zenn-box">
-      <Card
-        v-for="blog in blogs"
-        v-bind:key="blog.id"
-        :url="blog.link"
-        :img="image"
-        :title="blog.title"
-        :date="blog.pubDate"
-      />
+    <div class="zenn-area" ref="zennArea">
+      <div class="zenn-box">
+        <Card
+          v-for="blog in blogs"
+          :key="blog.id"
+          :url="blog.link"
+          :img="image"
+          :title="blog.title"
+          :date="blog.pubDate"
+        />
+        <p class="just-minutes" v-if="isEmptyFlg">Coming Soon...</p>
+      </div>
+      <p class="jump-zenn">
+        <a href="https://zenn.com/watataku" target="_blank">
+          <Button msg="MORE ▶︎" @push="jumpZenn" v-show="finish" />
+        </a>
+      </p>
     </div>
-
-    <div class="module--spacing--verySmall"></div>
-    <p class="jump-zenn">
-      <a href="https://zenn.com/watataku" target="_blank">
-        <Button msg="MORE ▶︎" @push="jumpZenn" v-show="finish" />
-      </a>
-    </p>
-    <p class="just-minutes" v-if="isEmptyFlg">Coming Soon...</p>
   </article>
 </template>
 
@@ -44,7 +44,19 @@ export default {
     //API実行
     this.getZenn();
   },
+  mounted() {
+    const options = {};
+    const observer = new IntersectionObserver(this.setItemAction, options);
+    observer.observe(this.$refs.zennArea);
+  },
   methods: {
+    setItemAction(entries) {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+        }
+      });
+    },
     async getZenn() {
       await axios
         .get(getZennData())
@@ -75,11 +87,16 @@ export default {
 </script>
 
 <style scoped>
-.jump-zenn {
-  text-align: right;
-  padding-right: 25px;
+.zenn-area.active {
+  animation: example 0.5s ease 0.5s 1 forwards;
 }
 
+@keyframes example {
+  100% {
+    opacity: 1;
+    transform: translate(0, 0px);
+  }
+}
 .zenn-box {
   display: flex;
   align-items: center;
@@ -87,10 +104,20 @@ export default {
   flex-wrap: wrap;
 }
 
+.jump-zenn {
+  text-align: right;
+  padding-right: 25px;
+}
 /*PC*/
 @media screen and (min-width: 1026px) {
   .zenn {
     height: 350px;
+  }
+
+  .zenn-area {
+    opacity: 0;
+    transform: translate(30px, 0px);
+    height: 100%;
   }
 
   .zenn-box::after {
@@ -122,6 +149,12 @@ export default {
     height: 680px;
   }
 
+  .zenn-area {
+    opacity: 0;
+    transform: translate(10px, 0px);
+    height: 100%;
+  }
+
   .just-minutes {
     position: absolute;
     top: 50%;
@@ -129,7 +162,7 @@ export default {
     transform: translate(-50%, -50%);
     font-family: "Kaushan Script", cursive;
     font-family: "Bad Script", cursive;
-    font-size: 2em;
+    font-size: 5vw;
   }
 }
 /*スマホ*/
@@ -138,11 +171,17 @@ export default {
     height: 430px;
   }
 
+  .zenn-area {
+    opacity: 0;
+    transform: translate(0px, 20px);
+    height: 100%;
+  }
+
   .just-minutes {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, 50%);
+    transform: translate(-50%, -50%);
     font-family: "Kaushan Script", cursive;
     font-family: "Bad Script", cursive;
     font-size: 2em;
