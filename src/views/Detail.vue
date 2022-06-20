@@ -8,7 +8,7 @@
     </div>
     <!-- 画面中央に出しているやつ(ローディングなど) -->
 
-    <h2 class="detail-title">{{ this.title }}</h2>
+    <h2 class="detail-title" ref="detailTitle">{{ this.title }}</h2>
     <div class="image_box">
       <img
         :src="this.image"
@@ -33,16 +33,18 @@
       <span v-html="nl2br(this.description)"></span>
     </p>
     <div class="module--spacing--small"></div>
-    <router-link
-      v-bind:to="{
-        name: 'Content',
-        hash: '#work-contents',
-        params: { page: this.page, categoryId: categoryId },
-      }"
-      v-smooth-scroll="{ duration: 1000, offset: -50 }"
-    >
-      <Button msg="一覧へもどる" @push="backPage" v-show="isHide" />
-    </router-link>
+    <div class="back-button">
+      <router-link
+        v-bind:to="{
+          name: 'Content',
+          hash: '#work-contents',
+          params: { page: this.page, categoryId: categoryId },
+        }"
+        v-smooth-scroll="{ duration: 1000, offset: -50 }"
+      >
+        <Button msg="一覧へもどる" @push="backPage" v-show="isHide" />
+      </router-link>
+    </div>
   </section>
 </template>
 
@@ -187,7 +189,7 @@ export default {
     margin: 0 auto;
     overflow: hidden;
     height: 1350px;
-    background-color: #cdebf7;
+    background-color: #ebfeff;
   }
 
   .detail-title {
@@ -206,18 +208,19 @@ export default {
     max-width: 95%;
     height: 590px;
     border-radius: 5px;
-    margin-bottom: 10px;
     object-fit: cover;
   }
 
   .url {
+    display: block;
+    overflow: auto;
     font-size: 2.2em;
   }
 
   .detail-message {
     font-size: 1.2em;
     width: 90%;
-    height: 350px;
+    height: 400px;
     margin: 0% auto;
     word-break: break-all;
     overflow-y: scroll;
@@ -234,7 +237,7 @@ export default {
     width: 90%;
     margin: 0 auto;
     height: 950px;
-    background-color: #cdebf7;
+    background-color: #ebfeff;
   }
 
   .detail-title {
@@ -253,7 +256,6 @@ export default {
     max-width: 90%;
     height: 400px;
     border-radius: 5px;
-    margin-bottom: 10px;
     object-fit: cover;
   }
 
@@ -265,7 +267,7 @@ export default {
 
   .detail-message {
     width: 90%;
-    height: 220px;
+    height: 250px;
     word-break: break-all;
     margin: 0% auto;
     overflow-y: scroll;
@@ -274,7 +276,7 @@ export default {
     text-align: left;
   }
 }
-/*スマホ*/
+/* スマホ */
 @media screen and (max-width: 481px) {
   .detail-contents {
     position: relative;
@@ -282,7 +284,7 @@ export default {
     width: 99%;
     margin: 0 auto;
     height: 750px;
-    background-color: #cdebf7;
+    background-color: #ebfeff;
   }
 
   .detail-title {
@@ -301,7 +303,6 @@ export default {
     max-width: 95%;
     height: 200px;
     border-radius: 5px;
-    margin-bottom: 10px;
     object-fit: cover;
   }
 
@@ -314,7 +315,7 @@ export default {
 
   .detail-message {
     width: 95%;
-    height: 250px;
+    height: 265px;
     word-break: break-all;
     margin: 0% auto;
     overflow-y: scroll;

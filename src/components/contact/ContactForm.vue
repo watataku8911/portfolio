@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="contact-form">
+    <h2 class="contact-title">CONTACT</h2>
     <div class="row">
       <p v-if="isName">
         <ErrMsg msg="お名前が入力されていません。" />
@@ -194,4 +195,32 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+@media screen and (min-width: 1026px) {
+  .contact-title {
+    font-weight: bold;
+    font-size: 4em;
+    letter-spacing: 20px;
+    margin-left: 20px;
+    margin-bottom: 5vh;
+  }
+}
+/*タブレット*/
+@media screen and (min-width: 482px) and (max-width: 1025px) {
+  .contact-title {
+    font-weight: bold;
+    font-size: 3.5em;
+    letter-spacing: 20px;
+    margin-left: 20px;
+    margin-bottom: 5vh;
+  }
+}
+/*スマホ*/
+@media screen and (max-width: 481px) {
+  .contact-title {
+    font-weight: bold;
+    font-size: 3em;
+    margin-bottom: 5vh;
+  }
+}
+</style>

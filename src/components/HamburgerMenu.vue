@@ -1,6 +1,5 @@
 <template>
   <section class="hamburger-menu">
-    <div class="triangle"></div>
     <div class="navToggle" @click="naviOpen()" :class="{ 'is-active': active }">
       <span></span>
       <span></span>
@@ -39,8 +38,8 @@
           </li>
         </ul>
         <section class="navi-share-sns-area">
-          <ShareTwitter color="white" />
-          <ShareFacebook color="white" />
+          <ShareTwitter color="red" />
+          <ShareFacebook color="red" />
         </section>
       </nav>
     </transition>
@@ -58,6 +57,7 @@ export default {
   },
   data() {
     return {
+      checked: false,
       active: false,
       navi: false,
       showContactModal: false,
@@ -80,12 +80,13 @@ export default {
 .top-enter-active,
 .top-leave-active {
   transform: translate(0px, 0px);
-  transition: transform 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  transition: all 0.5s;
 }
 
 .top-enter,
 .top-leave-to {
-  transform: translateY(-100vh) translateY(0px);
+  transform: translate(100vw, 0px);
+  transition: all 0.5s;
 }
 
 .navToggle {
@@ -104,7 +105,7 @@ export default {
   display: block;
   position: absolute; /* .navToggleに対して */
   width: 30px;
-  border-bottom: solid 3px #000;
+  border-bottom: solid 5px #db929d;
   -webkit-transition: 0.35s ease-in-out;
   -moz-transition: 0.35s ease-in-out;
   transition: 0.35s ease-in-out;
@@ -150,7 +151,7 @@ export default {
 
 .navi {
   z-index: 99;
-  background-color: #5bbee4;
+  background-color: #fbf4e4;
   position: fixed;
   top: 0%;
   height: 100%;
@@ -173,49 +174,14 @@ export default {
 .navi li a {
   font-size: 5vh;
   letter-spacing: 5px;
+  color: #db929d;
 }
 
 .navi-share-sns-area {
+  position: absolute;
+  bottom: 0;
+  right: 13px;
   display: flex;
-}
-
-/*PC*/
-@media screen and (min-width: 1026px) {
-  .triangle {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: -999;
-    border-top: 550px solid #b1e0f3;
-    border-right: 550px solid #b1e0f3;
-    border-bottom: 550px solid transparent;
-    border-left: 550px solid transparent;
-  }
-}
-/*タブレット*/
-@media screen and (min-width: 482px) and (max-width: 1025px) {
-  .triangle {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: -999;
-    border-top: 300px solid #b1e0f3;
-    border-right: 300px solid #b1e0f3;
-    border-bottom: 300px solid transparent;
-    border-left: 300px solid transparent;
-  }
-}
-/*スマホ*/
-@media screen and (max-width: 481px) {
-  .triangle {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: -999;
-    border-top: 150px solid #b1e0f3;
-    border-right: 150px solid #b1e0f3;
-    border-bottom: 150px solid transparent;
-    border-left: 150px solid transparent;
-  }
+  gap: 8px;
 }
 </style>

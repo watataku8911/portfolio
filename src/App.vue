@@ -102,7 +102,7 @@ export default {
     isActive() {
       setTimeout(() => {
         this.isShow = false;
-      }, 800);
+      }, 1000);
     },
   },
 };
@@ -113,6 +113,10 @@ export default {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  background-color: #fbf4e4;
 }
 
 #app {
@@ -137,7 +141,7 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  background: #fff;
+  background-color: #fbf4e4;
   -webkit-mask: url(/img/btn_sprite.png);
   mask: url(/img/btn_sprite.webp);
   -webkit-mask-size: 2300% 100%;
@@ -145,7 +149,7 @@ export default {
 }
 
 #topLoading.active .topLoading-mask {
-  animation: ani 0.8s steps(22) 0.3s both;
+  animation: ani 1.3s steps(22) 0.3s both;
 }
 
 .bar {
@@ -163,8 +167,9 @@ export default {
   transform: translate(-50%, -50%);
   font-family: "Bad Script", cursive;
   font-size: calc(4rem + ((1vw - 0.64rem) * 0.7143));
-  letter-spacing: 2px;
-  color: #555;
+  letter-spacing: 4px;
+  color: #db929d;
+  font-weight: 900;
 }
 
 /* --------------------------------------------------------------------------------------------------------------
@@ -195,7 +200,7 @@ export default {
 ------------------------------------------------------------------------------------------------------------------------ */
 .fade-leave-active,
 .fade-enter-active {
-  transition: opacity 1s;
+  transition: opacity 1.5s;
 }
 .fade-enter {
   opacity: 0;

@@ -1,12 +1,10 @@
 <template>
   <section id="work-contents" class="work-contents">
     <h2 class="work-title">WORKS</h2>
-
     <!-- 画面中央に出しているやつ(ローディングなど) -->
     <div class="align-center">
       <p v-if="isEmptyWorks" class="msg">Coming Soon...</p>
       <CommutionError v-if="isCommunicationError" v-on:reLoad="reLoad" />
-      <div class="module--spacing--large"></div>
       <pulse-loader :loading="isLoading"></pulse-loader>
     </div>
     <!-- 画面中央に出しているやつ(ローディングなど) -->
@@ -113,6 +111,7 @@ export default {
 
     this.getWorks();
   },
+
   methods: {
     changeCategoryId(categoryId) {
       this.categoryId = categoryId;
@@ -243,7 +242,7 @@ export default {
     width: 85%;
     margin: 0 auto;
     height: 710px;
-    background-color: #cdebf7;
+    background-color: #ebfeff;
   }
 
   .work-title {
@@ -299,8 +298,8 @@ export default {
     border: 2px solid black;
     width: 92%;
     margin: 0 auto;
-    height: 500px;
-    background-color: #cdebf7;
+    height: 470px;
+    background-color: #ebfeff;
   }
 
   .work-title {
@@ -356,7 +355,7 @@ export default {
     width: 99%;
     margin: 0 auto;
     height: 700px;
-    background-color: #cdebf7;
+    background-color: #ebfeff;
   }
 
   .work-title {
