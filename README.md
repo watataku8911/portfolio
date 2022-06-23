@@ -2,6 +2,9 @@
 
 > my portfolio site✌️
 
+<img width="1428" alt="スクリーンショット 2022-06-21 17 27 16" src="https://user-images.githubusercontent.com/39507718/175207165-e48148db-d74f-4cfc-860e-550273a1669e.png">
+
+
 - [https://watataku-portfolio.web.app/](https://watataku-portfolio.web.app/)
 - [Qiita-解説記事](https://qiita.com/watataku8911/items/bb68616a11824345675d)
 
