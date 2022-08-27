@@ -1,6 +1,7 @@
 <template>
   <header class="header">
     <HamburgerMenu />
+    <Triangle color="b1e0f3" :pcSize="550" :tabSize="300" :spSize="150" />
     <div class="main_image">
       <p>Watataku's</p>
     </div>
@@ -11,14 +12,16 @@
   </header>
 </template>
 <script>
-import HamburgerMenu from "../components/HamburgerMenu";
 import imagesLoaded from "imagesloaded";
+import HamburgerMenu from "../components/HamburgerMenu";
 import IconDown from "@/assets/icon/icon_down.svg";
+import Triangle from "./Triangle.vue";
 
 export default {
   components: {
     HamburgerMenu,
     IconDown,
+    Triangle,
   },
   mounted() {
     window.onload = () => {
@@ -78,7 +81,7 @@ export default {
     transform: translateX(-50%) translateY(-50%);
     font-weight: bold;
     color: #eee;
-    font-size: 8em;
+    font-size: 9vw;
     font-family: "Bad Script", cursive;
     letter-spacing: 5px;
   }
@@ -117,8 +120,8 @@ export default {
     position: relative;
     border-radius: 10%;
     box-shadow: -5px 5px 13px -2px #2f2d33;
-    width: 85%;
-    height: 350px;
+    width: 75%;
+    height: 300px;
     margin: 0 auto;
     background-image: url(../assets/Hight_main.jpeg);
     background-repeat: no-repeat;

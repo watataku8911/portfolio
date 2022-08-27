@@ -45,6 +45,11 @@
     </div>
     <Categories ref="categories" v-on:categoryId="changeCategoryId" />
     <div class="module--spacing--small"></div>
+    <!-- <router-link
+      to="/work#work-contents"
+      @click.native="naviClose()"
+      v-smooth-scroll="{ duration: 1000, offset: -50 }"
+    > -->
     <paginate
       v-if="getPageCount > 1"
       v-show="isPaging"
@@ -58,6 +63,7 @@
       :container-class="'pagination'"
       :page-class="'page-item'"
     ></paginate>
+    <!-- </router-link> -->
   </section>
 </template>
 
@@ -242,7 +248,7 @@ export default {
     width: 85%;
     margin: 0 auto;
     height: 710px;
-    background-color: #ebfeff;
+    background-color: #cdebf7;
   }
 
   .work-title {
@@ -277,7 +283,7 @@ export default {
 
   .item .work_img {
     box-shadow: 11px 12px 26px 7px rgba(115, 112, 112, 0.6);
-    height: 490px;
+    height: 100%;
     border-radius: 89px 5px 87px 68px;
     width: 100%;
     object-fit: cover;
@@ -299,7 +305,7 @@ export default {
     width: 92%;
     margin: 0 auto;
     height: 470px;
-    background-color: #ebfeff;
+    background-color: #cdebf7;
   }
 
   .work-title {
@@ -334,7 +340,7 @@ export default {
   .item .work_img {
     box-shadow: 11px 12px 26px 7px rgba(115, 112, 112, 0.6);
     width: 100%;
-    height: 300px;
+    height: 100%;
     border-radius: 89px 5px 87px 68px;
     object-fit: cover;
   }
@@ -354,8 +360,8 @@ export default {
     border: 2px solid black;
     width: 99%;
     margin: 0 auto;
-    height: 700px;
-    background-color: #ebfeff;
+    height: 500px;
+    background-color: #cdebf7;
   }
 
   .work-title {
@@ -367,7 +373,7 @@ export default {
 
   .items {
     width: 100%;
-    height: 530px;
+    height: 350px;
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
@@ -383,16 +389,16 @@ export default {
     border: solid #000 1px;
     transform: rotate(5deg);
     width: 90%;
-    height: 260px;
+    height: 150px;
     margin: 0 auto;
-    border-radius: 89px 5px 87px 68px;
+    border-radius: 29px 5px 27px 18px;
   }
 
   .item .work_img {
     box-shadow: 11px 12px 26px 7px rgba(115, 112, 112, 0.6);
     width: 100%;
-    height: 260px;
-    border-radius: 89px 5px 87px 68px;
+    height: 100%;
+    border-radius: 29px 5px 27px 18px;
     object-fit: cover;
   }
 

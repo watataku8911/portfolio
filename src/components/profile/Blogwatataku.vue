@@ -1,9 +1,5 @@
 <template>
-  <article class="watataku-blog">
-    <div class="center">
-      <CommutionError v-show="isCommunicationError" v-on:reLoad="reLoad" />
-      <pulse-loader :loading="isLoading"></pulse-loader>
-    </div>
+  <section class="watataku-blog">
     <div class="watataku-blog-area" ref="watatakuBlogArea">
       <div class="watataku-blog-box">
         <Card
@@ -14,6 +10,11 @@
           :title="blog.title"
           :date="blog.publishedAt"
         />
+        <div class="center">
+          <p class="just-minutes" v-if="isEmptyFlg">Coming Soon...</p>
+          <CommutionError v-if="isCommunicationError" v-on:reLoad="reLoad" />
+          <pulse-loader :loading="isLoading"></pulse-loader>
+        </div>
       </div>
       <p class="jump-watataku-blog">
         <a href="https://watataku-blog.vercel.app" target="_blank">
@@ -21,7 +22,7 @@
         </a>
       </p>
     </div>
-  </article>
+  </section>
 </template>
 
 <script>
@@ -38,6 +39,7 @@ export default {
       blogs: [],
       isLoading: true,
       finish: false,
+      isEmptyFlg: false,
       isCommunicationError: false,
       url: "https://watataku-blog.vercel.app",
     };
@@ -73,14 +75,23 @@ export default {
           },
         })
         .then((resp) => {
-          this.blogs = resp.data.contents;
-          this.isLoading = false;
-          this.finish = true;
-          this.isCommunicationError = false;
+          if (resp.status == 200) {
+            if (resp.data.contents.length == 0) {
+              this.isLoading = false;
+              this.isEmptyFlg = true;
+            } else {
+              this.blogs = resp.data.contents;
+              this.isLoading = false;
+              this.finish = true;
+              this.isCommunicationError = false;
+            }
+          }
         })
-        .catch(() => {
-          this.isLoading = false;
-          this.isCommunicationError = true;
+        .catch((err) => {
+          if (err) {
+            this.isLoading = false;
+            this.isCommunicationError = true;
+          }
         });
     },
     reLoad() {
@@ -160,6 +171,12 @@ export default {
     content: "";
     order: 1;
   }
+
+  .just-minutes {
+    font-family: "Kaushan Script", cursive;
+    font-family: "Bad Script", cursive;
+    font-size: 4em;
+  }
 }
 /*タブレット*/
 @media screen and (min-width: 482px) and (max-width: 1025px) {
@@ -173,6 +190,12 @@ export default {
     transform: translate(-10px, 0px);
     height: 100%;
   }
+
+  .just-minutes {
+    font-family: "Kaushan Script", cursive;
+    font-family: "Bad Script", cursive;
+    font-size: 5vw;
+  }
 }
 /*スマホ*/
 @media screen and (max-width: 481px) {
@@ -185,6 +208,12 @@ export default {
     opacity: 0;
     transform: translate(0px, 20px);
     height: 100%;
+  }
+
+  .just-minutes {
+    font-family: "Kaushan Script", cursive;
+    font-family: "Bad Script", cursive;
+    font-size: 2em;
   }
 }
 </style>

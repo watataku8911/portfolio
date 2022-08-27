@@ -1,30 +1,36 @@
 <template>
-  <article class="zenn">
+  <section class="zenn">
     <div class="zenn-area" ref="zennArea">
       <div class="zenn-box">
         <Card
           v-for="blog in blogs"
-          :key="blog.id"
+          v-bind:key="blog.id"
           :url="blog.link"
           :img="image"
           :title="blog.title"
           :date="blog.pubDate"
         />
-        <p class="just-minutes" v-if="isEmptyFlg">Coming Soon...</p>
+        <div class="center">
+          <p class="just-minutes" v-if="isEmptyFlg">Coming Soon...</p>
+          <CommutionError v-if="isCommunicationError" v-on:reLoad="reLoad" />
+          <pulse-loader :loading="isLoading"></pulse-loader>
+        </div>
       </div>
       <p class="jump-zenn">
-        <a href="https://zenn.com/watataku" target="_blank">
+        <a href="https://zenn.dev/watataku" target="_blank">
           <Button msg="MORE ▶︎" @push="jumpZenn" v-show="finish" />
         </a>
       </p>
     </div>
-  </article>
+  </section>
 </template>
 
 <script>
-import Button from "../UIKit/Button";
+import CommutionError from "../UIKit/CommutionError";
+import PulseLoader from "vue-spinner/src/PulseLoader";
 import axios from "axios";
 import { getZennData } from "../../seacretDirectory/seacret";
+import Button from "../UIKit/Button";
 import Card from "../profile/Card.vue";
 
 export default {
@@ -32,11 +38,15 @@ export default {
     return {
       blogs: [],
       image: require("@/assets/zenn.png"),
+      isLoading: false,
+      isCommunicationError: false,
       finish: false,
       isEmptyFlg: true,
     };
   },
   components: {
+    CommutionError,
+    PulseLoader,
     Button,
     Card,
   },
@@ -61,16 +71,31 @@ export default {
       await axios
         .get(getZennData())
         .then((resp) => {
-          if (resp.data.items.length == 0) {
-            this.isEmptyFlg = true;
-            this.finish = false;
-          } else {
-            this.blogs = resp.data.items;
-            this.isEmptyFlg = false;
-            this.finish = true;
+          if (resp.status == 200) {
+            if (resp.data.items.length == 0) {
+              this.isEmptyFlg = true;
+              this.finish = false;
+            } else {
+              this.blogs = resp.data.items;
+              this.isEmptyFlg = false;
+              this.finish = true;
+            }
           }
         })
-        .catch(() => {});
+        .catch((err) => {
+          if (err) {
+            this.isLoading = false;
+            this.isCommunicationError = true;
+            this.isEmptyFlg = false;
+          }
+        });
+    },
+    reLoad() {
+      this.isLoading = true;
+      this.isCommunicationError = false;
+      setTimeout(() => {
+        this.getZenn();
+      }, 1000);
     },
     jumpZenn() {
       return;
@@ -78,7 +103,7 @@ export default {
   },
   watch: {
     blogs() {
-      if (this.blogs.length > 1) {
+      if (this.blogs.length > 4) {
         this.blogs.pop();
       }
     },
@@ -87,6 +112,13 @@ export default {
 </script>
 
 <style scoped>
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .zenn-area.active {
   animation: example 0.5s ease 0.5s 1 forwards;
 }
@@ -108,10 +140,12 @@ export default {
   text-align: right;
   padding-right: 25px;
 }
+
 /*PC*/
 @media screen and (min-width: 1026px) {
   .zenn {
     height: 350px;
+    position: relative;
   }
 
   .zenn-area {
@@ -134,10 +168,6 @@ export default {
   }
 
   .just-minutes {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     font-family: "Kaushan Script", cursive;
     font-family: "Bad Script", cursive;
     font-size: 4em;
@@ -147,6 +177,7 @@ export default {
 @media screen and (min-width: 482px) and (max-width: 1025px) {
   .zenn {
     height: 680px;
+    position: relative;
   }
 
   .zenn-area {
@@ -156,10 +187,6 @@ export default {
   }
 
   .just-minutes {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     font-family: "Kaushan Script", cursive;
     font-family: "Bad Script", cursive;
     font-size: 5vw;
@@ -169,6 +196,7 @@ export default {
 @media screen and (max-width: 481px) {
   .zenn {
     height: 430px;
+    position: relative;
   }
 
   .zenn-area {
@@ -178,10 +206,6 @@ export default {
   }
 
   .just-minutes {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     font-family: "Kaushan Script", cursive;
     font-family: "Bad Script", cursive;
     font-size: 2em;

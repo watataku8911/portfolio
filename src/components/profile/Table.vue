@@ -3,21 +3,24 @@
     <tbody>
       <tr>
         <th>生年月日</th>
-        <td>1996年9月11日</td>
+        <td>{{ birthDay }}</td>
       </tr>
       <tr>
         <th>出身地</th>
-        <td>大阪府</td>
+        <td>{{ liveIn }}</td>
       </tr>
       <tr>
-        <th>好きなもの</th>
-        <td>野球観戦(プロ野球), 坂道アイドル etc...</td>
-      </tr>
-      <tr>
-        <th ref="leftColor">好きな色</th>
-        <td style="display: flex; align-items: center;" ref="rightColor">
-          #5bbee5
-          <p class="colorbox"></p>
+        <th>好きな色</th>
+        <td style="display: flex; align-items: center;">
+          {{ color }}
+          <p
+            :style="{
+              backgroundColor: `${color}`,
+              width: `30px`,
+              height: `30px`,
+              marginLeft: `15px`,
+            }"
+          ></p>
         </td>
       </tr>
       <tr>
@@ -72,6 +75,9 @@ import lisencesData from "../../assets/data/lisence.json";
 export default {
   data() {
     return {
+      birthDay: "1996年9月11日",
+      liveIn: "大阪府",
+      color: "#5bbee5",
       careers: careersData,
       skills: skillsData,
       lisences: lisencesData,
@@ -145,13 +151,6 @@ td.active {
   list-style: square !important;
   line-height: 2em;
   letter-spacing: 0.1em;
-}
-
-.colorbox {
-  width: 30px;
-  height: 30px;
-  background-color: #5bbee5;
-  margin-left: 13px;
 }
 
 .rightTimeLine {
