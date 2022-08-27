@@ -1,9 +1,5 @@
 <template>
-  <article class="qiita">
-    <div class="center">
-      <CommutionError v-show="isCommunicationError" v-on:reLoad="reLoad" />
-      <pulse-loader :loading="isLoading"></pulse-loader>
-    </div>
+  <section class="qiita">
     <div class="qiita-area" ref="qiitaArea">
       <div class="qiita-box">
         <Card
@@ -14,6 +10,11 @@
           :title="blog.title"
           :date="blog.created_at"
         />
+        <div class="center">
+          <p class="just-minutes" v-if="isEmptyFlg">Coming Soon...</p>
+          <CommutionError v-if="isCommunicationError" v-on:reLoad="reLoad" />
+          <pulse-loader :loading="isLoading"></pulse-loader>
+        </div>
       </div>
       <p class="jump-qiita" ref="qiitaButton">
         <a href="https://qiita.com/watataku8911" target="_blank">
@@ -21,7 +22,7 @@
         </a>
       </p>
     </div>
-  </article>
+  </section>
 </template>
 
 <script>
@@ -41,6 +42,7 @@ export default {
       isLoading: true,
       finish: false,
       isCommunicationError: false,
+      isEmptyFlg: false,
       headers: {
         "Content-Type": "application/json;charset=UTF-8",
         "Access-Control-Allow-Origin": "*",
@@ -75,14 +77,24 @@ export default {
       await axios
         .get(qiitaApiURL, { headers: this.headers })
         .then((resp) => {
-          this.blogs = resp.data;
-          this.isLoading = false;
-          this.finish = true;
-          this.isCommunicationError = false;
+          if (resp.status == 200) {
+            if (resp.data.length == 0) {
+              this.isEmptyFlg = true;
+              this.isLoading = false;
+              this.isCommunicationError = false;
+            } else {
+              this.blogs = resp.data;
+              this.isLoading = false;
+              this.finish = true;
+              this.isCommunicationError = false;
+            }
+          }
         })
-        .catch(() => {
-          this.isLoading = false;
-          this.isCommunicationError = true;
+        .catch((err) => {
+          if (err) {
+            this.isLoading = false;
+            this.isCommunicationError = true;
+          }
         });
     },
     reLoad() {
@@ -146,6 +158,7 @@ export default {
   .qiita-area {
     opacity: 0;
     transform: translate(-30px, 0px);
+    height: 100%;
   }
 
   .qiita-box::after {
@@ -160,6 +173,12 @@ export default {
     content: "";
     order: 1;
   }
+
+  .just-minutes {
+    font-family: "Kaushan Script", cursive;
+    font-family: "Bad Script", cursive;
+    font-size: 4em;
+  }
 }
 /*タブレット*/
 @media screen and (min-width: 482px) and (max-width: 1025px) {
@@ -171,6 +190,13 @@ export default {
   .qiita-area {
     opacity: 0;
     transform: translate(-10px, 0px);
+    height: 100%;
+  }
+
+  .just-minutes {
+    font-family: "Kaushan Script", cursive;
+    font-family: "Bad Script", cursive;
+    font-size: 5vw;
   }
 }
 /*スマホ*/
@@ -183,6 +209,14 @@ export default {
   .qiita-area {
     opacity: 0;
     transform: translate(0px, 20px);
+
+    height: 100%;
+  }
+
+  .just-minutes {
+    font-family: "Kaushan Script", cursive;
+    font-family: "Bad Script", cursive;
+    font-size: 2em;
   }
 }
 </style>

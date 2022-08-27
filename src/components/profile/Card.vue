@@ -1,12 +1,12 @@
 <template>
   <a :href="url" target="_blank">
-    <section class="card" ref="card">
+    <article class="card" ref="card">
       <div class="thumbnail">
         <img :src="img" :alt="title" />
       </div>
       <p class="title">{{ slice(title, 15) }}</p>
       <p class="date">{{ dates(date) }}</p>
-    </section>
+    </article>
   </a>
 </template>
 
@@ -46,6 +46,23 @@ export default {
 </script>
 
 <style scoped>
+.thumbnail img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.date {
+  padding-right: 3px;
+  color: black;
+  text-align: right;
+}
+
+.card:hover {
+  transform: translate(0, -5px);
+}
+
+/* PC */
 @media screen and (min-width: 1026px) {
   .card {
     width: 20vw;
@@ -58,12 +75,6 @@ export default {
     border-bottom: 1px solid black;
   }
 
-  .thumbnail img {
-    object-fit: cover;
-    width: 20vw;
-    height: 144px;
-  }
-
   .title {
     padding-left: 3px;
     text-align: left;
@@ -74,13 +85,8 @@ export default {
     font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
       "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
   }
-
-  .date {
-    padding-right: 3px;
-    color: black;
-    text-align: right;
-  }
 }
+
 /*タブレット*/
 @media screen and (min-width: 482px) and (max-width: 1025px) {
   .card {
@@ -94,12 +100,6 @@ export default {
     border-bottom: 1px solid black;
   }
 
-  .thumbnail img {
-    object-fit: cover;
-    width: 45vw;
-    height: 169px;
-  }
-
   .title {
     padding-left: 3px;
     text-align: left;
@@ -110,14 +110,8 @@ export default {
     font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
       "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
   }
-
-  .date {
-    font-size: 2vw;
-    padding-right: 3px;
-    color: black;
-    text-align: right;
-  }
 }
+
 /*スマホ*/
 @media screen and (max-width: 481px) {
   .card {
@@ -131,13 +125,6 @@ export default {
     border-bottom: 1px solid black;
   }
 
-  .thumbnail img {
-    object-fit: cover;
-    width: 48vw;
-    height: 79px;
-    border-bottom: 1px solid black;
-  }
-
   .title {
     padding-left: 3px;
     text-align: left;
@@ -147,15 +134,5 @@ export default {
     font-family: Overpass, "Noto Sans JP", -apple-system, BlinkMacSystemFont,
       "Helvetica Neue", "Segoe UI", "ヒラギノ角ゴ ProN W3", Meiryo, sans-serif;
   }
-}
-
-.date {
-  padding-right: 3px;
-  color: black;
-  text-align: right;
-}
-
-.card:hover {
-  transform: translate(0, -5px);
 }
 </style>

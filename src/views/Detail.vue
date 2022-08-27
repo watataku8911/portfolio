@@ -189,7 +189,7 @@ export default {
     margin: 0 auto;
     overflow: hidden;
     height: 1350px;
-    background-color: #ebfeff;
+    background-color: #cdebf7;
   }
 
   .detail-title {
@@ -237,7 +237,7 @@ export default {
     width: 90%;
     margin: 0 auto;
     height: 950px;
-    background-color: #ebfeff;
+    background-color: #cdebf7;
   }
 
   .detail-title {
@@ -284,7 +284,7 @@ export default {
     width: 99%;
     margin: 0 auto;
     height: 750px;
-    background-color: #ebfeff;
+    background-color: #cdebf7;
   }
 
   .detail-title {

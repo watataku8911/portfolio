@@ -4,7 +4,7 @@
     class="profile-contents"
     v-if="imageLoad != 'complete'"
   >
-    <Profile />
+    <ProfileDetail />
     <Table />
     <Blog />
     <SubContents />
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Profile from "../components/profile/ProfileDetail";
+import ProfileDetail from "../components/profile/ProfileDetail";
 import Table from "../components/profile/Table";
 import Blog from "../components/profile/Blog";
 import SubContents from "../components/profile/SubContents";
@@ -20,7 +20,7 @@ import SubContents from "../components/profile/SubContents";
 export default {
   props: ["imageLoad"],
   components: {
-    Profile,
+    ProfileDetail,
     Table,
     Blog,
     SubContents,
@@ -43,7 +43,7 @@ export default {
     border: 3px solid black;
     width: 85%;
     margin: 0 auto;
-    background-color: #ebfeff;
+    background-color: #cdebf7;
   }
 }
 /*タブレット*/
@@ -53,7 +53,7 @@ export default {
     border: 2px solid black;
     width: 92%;
     margin: 0 auto;
-    background-color: #ebfeff;
+    background-color: #cdebf7;
   }
 }
 /*スマホ*/
@@ -62,7 +62,7 @@ export default {
     border: 2px solid black;
     width: 99%;
     margin: 0 auto;
-    background-color: #ebfeff;
+    background-color: #cdebf7;
   }
 }
 </style>

@@ -1,6 +1,10 @@
 <template>
   <section class="hamburger-menu">
-    <div class="navToggle" @click="naviOpen()" :class="{ 'is-active': active }">
+    <div
+      class="navToggle"
+      @click="naviToggle()"
+      :class="{ 'is-active': active }"
+    >
       <span></span>
       <span></span>
       <span></span>
@@ -11,7 +15,7 @@
           <li>
             <router-link
               to="/#profile-contents"
-              @click.native="naviClose()"
+              @click.native="naviToggle()"
               v-smooth-scroll="{ duration: 1000, offset: -50 }"
               >PLOFILE</router-link
             >
@@ -23,7 +27,7 @@
                 hash: '#work-contents',
                 params: { page: 1, categoryId: 0 },
               }"
-              @click.native="naviClose()"
+              @click.native="naviToggle()"
               v-smooth-scroll="{ duration: 1000, offset: -50 }"
               >WORKS</router-link
             >
@@ -31,15 +35,15 @@
           <li>
             <router-link
               to="/contact#c-box"
-              @click.native="naviClose()"
+              @click.native="naviToggle()"
               v-smooth-scroll="{ duration: 1000, offset: -50 }"
               >CONTACT</router-link
             >
           </li>
         </ul>
         <section class="navi-share-sns-area">
-          <ShareTwitter color="red" />
-          <ShareFacebook color="red" />
+          <ShareTwitter color="black" />
+          <ShareFacebook color="black" />
         </section>
       </nav>
     </transition>
@@ -57,20 +61,14 @@ export default {
   },
   data() {
     return {
-      checked: false,
       active: false,
       navi: false,
-      showContactModal: false,
     };
   },
   methods: {
-    naviOpen() {
+    naviToggle() {
       this.active = !this.active;
       this.navi = !this.navi;
-    },
-    naviClose() {
-      this.active = false;
-      this.navi = false;
     },
   },
 };
@@ -92,7 +90,7 @@ export default {
 .navToggle {
   display: block;
   position: fixed; /* bodyに対しての絶対位置指定 */
-  right: 13px;
+  right: 8px;
   top: 12px;
   width: 42px;
   height: 51px;
@@ -105,7 +103,7 @@ export default {
   display: block;
   position: absolute; /* .navToggleに対して */
   width: 30px;
-  border-bottom: solid 5px #db929d;
+  border-bottom: solid 4px #555;
   -webkit-transition: 0.35s ease-in-out;
   -moz-transition: 0.35s ease-in-out;
   transition: 0.35s ease-in-out;
@@ -151,7 +149,7 @@ export default {
 
 .navi {
   z-index: 99;
-  background-color: #fbf4e4;
+  background-color: #ece4e4;
   position: fixed;
   top: 0%;
   height: 100%;
@@ -174,7 +172,7 @@ export default {
 .navi li a {
   font-size: 5vh;
   letter-spacing: 5px;
-  color: #db929d;
+  color: black;
 }
 
 .navi-share-sns-area {

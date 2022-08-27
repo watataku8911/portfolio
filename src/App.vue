@@ -115,10 +115,6 @@ export default {
   box-sizing: border-box;
 }
 
-body {
-  background-color: #fbf4e4;
-}
-
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   text-align: center;
@@ -141,7 +137,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #fbf4e4;
+  background-color: #fff;
   -webkit-mask: url(/img/btn_sprite.png);
   mask: url(/img/btn_sprite.webp);
   -webkit-mask-size: 2300% 100%;
@@ -168,7 +164,7 @@ body {
   font-family: "Bad Script", cursive;
   font-size: calc(4rem + ((1vw - 0.64rem) * 0.7143));
   letter-spacing: 4px;
-  color: #db929d;
+  color: #666;
   font-weight: 900;
 }
 
