@@ -2,7 +2,7 @@
 
 > my portfolio site✌️
 
-<img width="1436" style="border: solid 1px black" alt="スクリーンショット 2022-08-27 18 42 21" src="https://user-images.githubusercontent.com/39507718/187024760-1f5ac57a-2823-4167-a23c-5eb2f92b5239.png">
+<img width="1438" alt="スクリーンショット 2022-08-29 17 44 56" src="https://user-images.githubusercontent.com/39507718/187162651-10ed1f09-05b5-4a77-8928-bded17bd4856.png">
 
 
 - [https://watataku-portfolio.web.app/](https://watataku-portfolio.web.app/)
