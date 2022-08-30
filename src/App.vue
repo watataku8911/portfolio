@@ -1,10 +1,8 @@
 <template>
   <div id="app">
-    <div id="topLoading" :class="{ active: isActive }" v-show="isShow">
-      <div class="topLoading-mask">
-        <div class="bar" v-if="bar"></div>
-        <p class="line-1">Watataku's</p>
-      </div>
+    <div class="opning" v-show="!isActive">
+      <div class="bar" v-if="bar"></div>
+      <p class="line-1">Watataku's</p>
     </div>
 
     <!--  これがサイトのメイン -->
@@ -41,7 +39,6 @@ export default {
       bar: false,
       image: "stand-by",
       isActive: false,
-      isShow: true,
     };
   },
 
@@ -67,7 +64,7 @@ export default {
           this.isActive = false;
           this.no_scroll();
         }
-      }, 1200);
+      }, 1600);
     },
     // スクロール禁止
     no_scroll() {
@@ -97,13 +94,6 @@ export default {
     $route(to) {
       this.setMeta(to);
     },
-
-    //"active"クラスがつくと走る処理
-    isActive() {
-      setTimeout(() => {
-        this.isShow = false;
-      }, 1000);
-    },
   },
 };
 </script>
@@ -121,31 +111,11 @@ export default {
   width: 100%;
 }
 
-#topLoading {
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  z-index: 999;
-}
-
-.topLoading-mask {
-  content: "";
+.opning {
+  position: relative;
+  background-color: #fff;
   width: 100%;
   height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #fff;
-  -webkit-mask: url(/img/btn_sprite.png);
-  mask: url(/img/btn_sprite.webp);
-  -webkit-mask-size: 2300% 100%;
-  mask-size: 2300% 100%;
-}
-
-#topLoading.active .topLoading-mask {
-  animation: ani 1.3s steps(22) 0.3s both;
 }
 
 .bar {
@@ -163,9 +133,8 @@ export default {
   transform: translate(-50%, -50%);
   font-family: "Bad Script", cursive;
   font-size: calc(4rem + ((1vw - 0.64rem) * 0.7143));
-  letter-spacing: 4px;
+  letter-spacing: 2px;
   color: #666;
-  font-weight: 900;
 }
 
 /* --------------------------------------------------------------------------------------------------------------
